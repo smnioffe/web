@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>RX Case Study</title>
+<style>
+
+dropdown-content {
+  background-color: #001100;
+
+}
+
+
+p4 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 13px;
+	  font-weight: bold;
+	  text-align: center;
+ 
+	 
+    }
+p5 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+	  font-weight: bold;
+	  text-align: center;
+ 
+	 
+    }	
+	
+	
+
+	
+
+
+</style>
+<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+<link href="css/d3.geomap.css" rel="stylesheet">
+<link href="css/nv.d3.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<link href='//fonts.googleapis.com/css?family=Roboto' type="text/css" rel="stylesheet" media="all"/>
+	<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700' type="text/css" rel="stylesheet" media="all"/>
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,900italic,700italic,900,700,500italic,500,400italic,300italic,300,100italic,100' type="text/css" rel="stylesheet" media="all"/>
+    <link href='//fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' type="text/css" rel="stylesheet" media="all"/>
+    <link href='//fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900' type="text/css" rel="stylesheet" media="all"/>
+    <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+	<link href='//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' type="text/css" rel="stylesheet" media="all"/>
+
+
+<script src="js/d3.v3.min.js"></script>
+<script src="vendor/d3.geomap.dependencies.min.js"></script>
+<script src="js/d3.geomap.min.js"></script>
+<script src="js/nv.d3.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+
+</head>
+<body onload="loadMap('Total_Patients',fDec,0,1000)">
+
+
+<ul id="dropdownTotal" class="dropdown-content">
+  <li class="droptext" onclick="loadMap('Total_Patients',fDec,0,1000)"><a style="color:#696969;font-size: 14px;">Total Patients</a></li>
+  <li class="droptext" onclick="loadMap('Number_of_Years',fDec,0,1000)"><a style="color:#696969;font-size: 14px;">Number of Years</a></li>
+  <li class="droptext" onclick="loadMap('count',fInt,0,1000)"><a style="color:#696969;font-size: 14px;">Number of Providers</a></li>
+  <!--<li class="divider"></li> -->
+</ul>
+
+<ul id="dropdownMed" class="dropdown-content">
+  <li class="droptext" onclick="
+		loadMap('Crudaxil_Aware',fDec,1,700);
+		loadMap('Xanastin_Aware',fDec,2,700);
+		loadMap('Plasmotropin_Aware',fDec,3,700);
+		loadMap('Spamoprofin_Aware',fDec,4,700);"><a style="color:#696969;font-size: 14px;">Awareness</a></li>
+  <li class="droptext" onclick="
+		loadMap('Crudaxil_estimate',fInt,1,700);
+		loadMap('Xanastin_estimate',fInt,2,700);
+		loadMap('Plasmotropin_estimate',fInt,3,700);
+		loadMap('Spamoprofin_estimate',fInt,4,700);"><a style="color:#696969;font-size: 14px;">Prescription</a></li>
+  <li class="droptext" onclick="
+		loadMap('Efficacy_Crudaxil',fInt,1,700);
+		loadMap('Efficacy_Xanastin',fInt,2,700);
+		loadMap('Efficacy_Plasmotropin',fInt,3,700);
+		loadMap('Efficacy_Spamoprofin',fInt,4,700);"><a style="color:#696969;font-size: 14px;">Efficacy</a></li>
+  <li class="droptext" onclick="
+		loadMap('Safety_Tolerability_Crudaxil',fInt,1,700);
+		loadMap('Safety_Tolerability_Xanastin',fInt,2,700);
+		loadMap('Safety_Tolerability_Plasmotropin',fInt,3,700);
+		loadMap('Safety_Tolerability_Spamoprofin',fInt,4,700);"><a style="color:#696969;font-size: 14px;">Safety</a></li>		
+  <li class="droptext" onclick="
+		loadMap('Patient_Convenience_Crudaxil',fInt,1,700);
+		loadMap('Patient_Convenience_Xanastin',fInt,2,700);
+		loadMap('Patient_Convenience_Plasmotropin',fInt,3,700);
+		loadMap('Patient_Convenience_Spamoprofin',fInt,4,700);"><a style="color:#696969;font-size: 14px;">Patient Convenience</a></li>	
+  <li class="droptext" onclick="
+		loadMap('Insurance_Coverage_Crudaxil',fInt,1,700);
+		loadMap('Insurance_Coverage_Xanastin',fInt,2,700);
+		loadMap('Insurance_Coverage_Plasmotropin',fInt,3,700);
+		loadMap('Insurance_Coverage_Spamoprofin',fInt,4,700);"><a style="color:#696969;font-size: 14px;">Insurance Coverage</a></li>
+				
+  <li class="divider"></li> 
+  <li class="droptext" onclick="
+		loadMap('Crudaxil__with_cytogenetic_anomaly',fInt,1,700);
+		loadMap('Xanastin__with_cytogenetic_anomaly',fInt,2,700);
+		loadMap('Plasmotropin__with_cytogenetic_anomaly',fInt,3,700);
+		loadMap('Spamoprofin__with_cytogenetic_anomaly',fInt,4,700);"><a style="color:#696969;font-size: 14px;">With Cytogenetic Anomaly</a></li>
+  <li class="droptext" onclick="
+		loadMap('Crudaxil__without_cytogenetic_anomaly',fInt,1,700);
+		loadMap('Xanastin__without_cytogenetic_anomaly',fInt,2,700);
+		loadMap('Plasmotropin__without_cytogenetic_anomaly',fInt,3,700);
+		loadMap('Spamoprofin__without_cytogenetic_anomaly',fInt,4,700);"><a style="color:#696969;font-size: 14px;">Without Cytogenetic Anomaly</a></li>		
+
+</ul>
+
+  <nav class="grey darken-1">
+    <div class="nav-wrapper" >
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+	  <li id="geoTotal" ><a href="bar.html" >Main<i class="material-icons right">view_module</i></a></li>
+		<li id="geoTotal" ><a class="dropdown-button" href="#!" data-activates="dropdownTotal">Totals by State<i class="material-icons right">arrow_drop_down</i></a></li>
+		<li id="geoTotal" ><a class="dropdown-button" href="#!" data-activates="dropdownMed">Medications by State<i class="material-icons right">arrow_drop_down</i></a></li>
+	
+
+
+      </ul>
+    </div>
+  </nav>
+  
+   <div id="map0" style="position:absolute; left:100px;	top:200px; width:900px;	height:800px;"></div>
+<div id="map1"  style=" position:absolute;	left:40px;	top:80px;	width:650px;	height:400px;";></div>
+<div id="map2"  style=" position:absolute;	left:690px;	top:80px;	width:650px;	height:400px;";></div>
+<div id="map3"  style=" position:absolute;	left:40px;	top:480px;	width:650px;	height:400px;";></div>
+<div id="map4"  style=" position:absolute;	left:690px;	top:480px;	width:650px;	height:400px;";></div>
+
+<div id="chart1"  style=" position:absolute;	left:100px;	top:100px;	width:650px;	height:650px;";></div>
+
+
+<p5  class="right-align" id="Title0" style="left:520px;	top:170px; position: absolute; margin-top: 0px; text-align: right;"></p5>
+<p4  class="right-align" id="Title1" style="left:300px;	top:80px; position: absolute; margin-top: 0px; text-align: right;"></p4>
+<p4  class="right-align" id="Title2" style="left:960px;	top:80px; position: absolute; margin-top: 0px; text-align: right;"></p4>
+<p4  class="right-align" id="Title3" style="left:300px;	top:480px; position: absolute; margin-top: 0px; text-align: right;"></p4>
+<p4  class="right-align" id="Title4" style="left:960px;	top:480px; position: absolute; margin-top: 0px; text-align: right;"></p4>	
+
+<script>
+
+
+
+ var fDec = d3.format(',.02f');	 
+ var fInt = d3.format('.0f');	 
+ 
+ function loadMap(type,formatType,objectNum,scaleNum){
+ 
+
+        
+ 
+ 
+d3.select("#map0").select("svg").remove();	
+
+ if (objectNum==0||objectNum==1)
+ {
+d3.select("#map1").select("svg").remove();
+d3.select("#map2").select("svg").remove();
+d3.select("#map3").select("svg").remove();
+d3.select("#map4").select("svg").remove(); 
+
+ }
+ 
+ 
+   d3.select("#Title0").text("");
+ if (objectNum==0)
+ {
+    d3.select("#Title1").text("");
+	d3.select("#Title2").text("");
+	d3.select("#Title3").text("");
+	d3.select("#Title4").text("");
+ };
+
+var typeUpdated
+
+if (type=="count"){typeUpdated="Number_of_Providers";}
+else {typeUpdated=type;}
+
+
+ 
+ function toTitleCase(str)
+{
+    str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+	return str.replace("_", " ");
+}
+
+typeUpdated=toTitleCase(typeUpdated.replace("_", " "))
+ 
+ d3.select("#Title"+objectNum).text(typeUpdated);
+	 
+var map = d3.geomap.choropleth()
+    .geofile('topojson/countries/USA.json')
+    .projection(d3.geo.albersUsa)
+    .column(type)
+	.format(formatType)
+    .unitId('fips')
+    .scale(scaleNum)
+    .legend(true);
+	
+	
+
+d3.csv('data/states.csv', function(error, data) {
+    d3.select("#map"+objectNum)
+        .datum(data)
+        .call(map.draw, map);
+});
+ }
+
+ $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: true, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    }
+  );
+      
+
+$(".button-collapse").sideNav();
+
+
+
+
+
+
+
+</script>
+
+<script>
+
+</script>
+</body>
+</html>

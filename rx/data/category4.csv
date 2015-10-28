@@ -1,0 +1,209 @@
+type,dimension,category,Plasmotropin,Crudaxil,Xanastin,Spamoprofin,n
+3,Number of Years,Aware,1,6,4,4,1
+3,Number of Years,Efficacy,6,2,6,6,1
+3,Number of Years,Insurance,2,7,3,6,1
+3,Number of Years,Safety,4,2,1,7,1
+4,Number of Years,Aware,1,5,5,4,1
+4,Number of Years,Efficacy,3,2,6,4,1
+4,Number of Years,Insurance,1,7,6,2,1
+4,Number of Years,Safety,1,4,7,1,1
+5,Number of Years,Aware,2,2,5,3,1
+5,Number of Years,Efficacy,6,4,4,1,1
+5,Number of Years,Insurance,1,3,7,5,1
+5,Number of Years,Safety,7,3,6,7,1
+6,Number of Years,Aware,3.83,5.33,5.33,2.33,6
+6,Number of Years,Efficacy,3.83,4.5,6,5.83,6
+6,Number of Years,Insurance,3.67,4.17,4.67,4.5,6
+6,Number of Years,Safety,4.67,3.67,3.67,5.5,6
+7,Number of Years,Aware,2.67,5.33,4.33,3.33,3
+7,Number of Years,Efficacy,6,5.33,4.33,4.67,3
+7,Number of Years,Insurance,3,5.33,3.67,5,3
+7,Number of Years,Safety,4,4,3,3,3
+8,Number of Years,Aware,2.8,6.6,6.2,3.2,5
+8,Number of Years,Efficacy,4,4.8,4,4,5
+8,Number of Years,Insurance,4.6,4.2,3.8,4.2,5
+8,Number of Years,Safety,5.6,3.8,3.8,4.6,5
+9,Number of Years,Aware,5,6.6,6,2,5
+9,Number of Years,Efficacy,3.8,4.4,4.8,3,5
+9,Number of Years,Insurance,4,4.2,4.8,4.2,5
+9,Number of Years,Safety,4.6,5.6,3.4,4.6,5
+10,Number of Years,Aware,3.555555,5.888888,5.777777,2.555555,9
+10,Number of Years,Efficacy,3.222222,3.666666,4,4,9
+10,Number of Years,Insurance,3.888888,5.666666,6.111111,3.777777,9
+10,Number of Years,Safety,4.666666,3.111111,4,3.555555,9
+11,Number of Years,Aware,2.83,4,3.83,2.33,6
+11,Number of Years,Efficacy,4,5,4.33,4.67,6
+11,Number of Years,Insurance,4.17,5,5.17,3,6
+11,Number of Years,Safety,3.83,4.33,3.67,4.17,6
+12,Number of Years,Aware,2.2,5,3.6,2.2,5
+12,Number of Years,Efficacy,5.6,4.6,4.2,4,5
+12,Number of Years,Insurance,3.6,3.6,3,3.4,5
+12,Number of Years,Safety,3.8,3.8,3.2,5.6,5
+13,Number of Years,Aware,3,6,5,6,1
+13,Number of Years,Efficacy,6,6,3,3,1
+13,Number of Years,Insurance,2,6,1,5,1
+13,Number of Years,Safety,6,2,1,7,1
+14,Number of Years,Aware,4.5,5.5,5.5,1.5,2
+14,Number of Years,Efficacy,3,5.5,4.5,4.5,2
+14,Number of Years,Insurance,3,5,5,1.5,2
+14,Number of Years,Safety,5.5,5.5,6.5,3,2
+15,Number of Years,Aware,2.67,4.67,4.33,3.33,3
+15,Number of Years,Efficacy,4.67,2.67,4.67,3.67,3
+15,Number of Years,Insurance,3.67,6.33,5,4.33,3
+15,Number of Years,Safety,5,2.67,4,3.33,3
+16,Number of Years,Aware,2,6,5.5,1.5,2
+16,Number of Years,Efficacy,3.5,5,5,4,2
+16,Number of Years,Insurance,5.5,3.5,6,5,2
+16,Number of Years,Safety,6.5,3,3,3.5,2
+17,Number of Years,Aware,2.75,5.75,6,2.25,4
+17,Number of Years,Efficacy,3.75,6,2.5,6.25,4
+17,Number of Years,Insurance,3.75,4.5,2,1.75,4
+17,Number of Years,Safety,4.5,3,3.75,3.5,4
+18,Number of Years,Aware,2.5,4.5,5,2.75,4
+18,Number of Years,Efficacy,3.25,5.5,3,6,4
+18,Number of Years,Insurance,5,5,4.25,5.25,4
+18,Number of Years,Safety,3.75,3.25,4.25,4.25,4
+19,Number of Years,Aware,2.33,7,6.67,2.67,3
+19,Number of Years,Efficacy,6.67,4.67,6.67,3,3
+19,Number of Years,Insurance,3.67,3.33,5,4.33,3
+19,Number of Years,Safety,4.33,6.67,1.33,5.67,3
+20,Number of Years,Aware,3.6,6.2,6.2,2.2,5
+20,Number of Years,Efficacy,4,5,3,3.2,5
+20,Number of Years,Insurance,4.2,5.2,4.8,3,5
+20,Number of Years,Safety,4.4,4.2,4.8,4,5
+21,Number of Years,Aware,2,5,5,2.5,2
+21,Number of Years,Efficacy,2.5,6.5,2.5,4,2
+21,Number of Years,Insurance,5,4.5,6,5,2
+21,Number of Years,Safety,1.5,2,3,3,2
+22,Number of Years,Aware,6,4,2,2,1
+22,Number of Years,Efficacy,7,7,6,4,1
+22,Number of Years,Insurance,5,6,7,7,1
+22,Number of Years,Safety,3,7,4,2,1
+24,Number of Years,Aware,3.25,5.25,4.25,3.25,4
+24,Number of Years,Efficacy,3.5,5,1.75,3.5,4
+24,Number of Years,Insurance,2.75,6.25,4,4.5,4
+24,Number of Years,Safety,3.25,3.5,4.5,3,4
+25,Number of Years,Aware,3.5,5,5,1,2
+25,Number of Years,Efficacy,2,6.5,6,3.5,2
+25,Number of Years,Insurance,6,7,4,5,2
+25,Number of Years,Safety,6.5,1.5,5.5,4,2
+26,Number of Years,Aware,5,6,5,3,1
+26,Number of Years,Efficacy,1,5,4,2,1
+26,Number of Years,Insurance,6,3,6,7,1
+26,Number of Years,Safety,7,1,6,2,1
+27,Number of Years,Aware,1.5,6,6,1.5,2
+27,Number of Years,Efficacy,2.5,6.5,1.5,5.5,2
+27,Number of Years,Insurance,3.5,3,1.5,1.5,2
+27,Number of Years,Safety,5,4,4.5,6.5,2
+29,Number of Years,Aware,4,7,5,2,1
+29,Number of Years,Efficacy,2,4,2,6,1
+29,Number of Years,Insurance,2,3,2,4,1
+29,Number of Years,Safety,5,1,7,1,1
+30,Number of Years,Aware,4,2.5,3,1,2
+30,Number of Years,Efficacy,1.5,4,3.5,3.5,2
+30,Number of Years,Insurance,5,5.5,4,4,2
+30,Number of Years,Safety,6,6.5,6.5,4.5,2
+3,Total Patients,Aware,6,7,5.5,1,2
+3,Total Patients,Efficacy,2.5,3,4,3.5,2
+3,Total Patients,Insurance,4.5,5,3.5,4.5,2
+3,Total Patients,Safety,6.5,5.5,3.5,4.5,2
+5,Total Patients,Aware,3.4,3.8,3.6,1.4,5
+5,Total Patients,Efficacy,2.8,5.4,4.8,3.2,5
+5,Total Patients,Insurance,4.8,5.2,3.6,4.8,5
+5,Total Patients,Safety,5.8,1.6,4.6,4.4,5
+6,Total Patients,Aware,4,3.5,3.5,2,2
+6,Total Patients,Efficacy,5,6,3.5,4,2
+6,Total Patients,Insurance,3.5,5.5,4.5,4,2
+6,Total Patients,Safety,4,6,3.5,5,2
+8,Total Patients,Aware,3.5,6.75,5.75,1.25,4
+8,Total Patients,Efficacy,5,5.5,3,6.5,4
+8,Total Patients,Insurance,3.25,5,4.5,3.25,4
+8,Total Patients,Safety,4.75,3.5,5,2.5,4
+10,Total Patients,Aware,3.142857,5.642857,5.571428,2.071428,14
+10,Total Patients,Efficacy,4,4.571428,4.714285,4.571428,14
+10,Total Patients,Insurance,2.642857,4.785714,4.5,3.928571,14
+10,Total Patients,Safety,4.36,4.36,3.71,4.43,14
+12,Total Patients,Aware,2,5.5,5.83,2.5,6
+12,Total Patients,Efficacy,3,4.33,3.83,4.67,6
+12,Total Patients,Insurance,4.17,4.83,4,4.5,6
+12,Total Patients,Safety,3.67,2.83,3.83,4.5,6
+13,Total Patients,Aware,2,6,4,5,1
+13,Total Patients,Efficacy,5,5,6,3,1
+13,Total Patients,Insurance,3,4,1,2,1
+13,Total Patients,Safety,1,2,2,6,1
+14,Total Patients,Aware,6,4,2,2,1
+14,Total Patients,Efficacy,7,7,6,4,1
+14,Total Patients,Insurance,5,6,7,7,1
+14,Total Patients,Safety,3,7,4,2,1
+15,Total Patients,Aware,2.5,6.5,6.25,1.25,4
+15,Total Patients,Efficacy,3.75,4,4.25,3,4
+15,Total Patients,Insurance,3.5,3.75,5.25,3.75,4
+15,Total Patients,Safety,5.5,3.5,4.5,2.75,4
+18,Total Patients,Aware,4,5.25,4.5,2,4
+18,Total Patients,Efficacy,4.75,4.5,3.5,2.5,4
+18,Total Patients,Insurance,5.25,4,4.5,4.25,4
+18,Total Patients,Safety,2.5,3.75,4,5.25,4
+19,Total Patients,Aware,6,5,6,4,1
+19,Total Patients,Efficacy,1,6,2,7,1
+19,Total Patients,Insurance,4,6,1,1,1
+19,Total Patients,Safety,2,1,4,2,1
+20,Total Patients,Aware,2.5,5.5,5,3,6
+20,Total Patients,Efficacy,3,4.83,3,2.5,6
+20,Total Patients,Insurance,3.67,4.67,5.5,2.5,6
+20,Total Patients,Safety,3.83,3.17,3.67,3.33,6
+25,Total Patients,Aware,3.86,5.71,5.57,4.14,7
+25,Total Patients,Efficacy,3.29,4.43,3.71,5,7
+25,Total Patients,Insurance,3.29,5,4.14,5,7
+25,Total Patients,Safety,4.86,4,3.43,5.14,7
+26,Total Patients,Aware,1,7,7,7,1
+26,Total Patients,Efficacy,3,7,6,3,1
+26,Total Patients,Insurance,7,2,1,5,1
+26,Total Patients,Safety,7,2,3,2,1
+30,Total Patients,Aware,3,5.4,4.6,2.2,5
+30,Total Patients,Efficacy,3.6,5.4,3.8,3.8,5
+30,Total Patients,Insurance,3.4,5.6,4.4,4.4,5
+30,Total Patients,Safety,4.4,4.2,6.4,4.2,5
+32,Total Patients,Aware,5,6,2,4,1
+32,Total Patients,Efficacy,7,2,2,4,1
+32,Total Patients,Insurance,3,6,3,7,1
+32,Total Patients,Safety,3,3,4,7,1
+35,Total Patients,Aware,1.5,6,6.5,3.5,2
+35,Total Patients,Efficacy,5,4,5.5,2.5,2
+35,Total Patients,Insurance,3.5,4,4,6,2
+35,Total Patients,Safety,1.5,3.5,3.5,4,2
+40,Total Patients,Aware,2.67,5.33,4.67,1.67,3
+40,Total Patients,Efficacy,6.33,4,4.67,6.33,3
+40,Total Patients,Insurance,5,3.33,5,2.33,3
+40,Total Patients,Safety,5,3.67,2.67,3.33,3
+45,Total Patients,Aware,3,7,7,2,1
+45,Total Patients,Efficacy,4,7,7,5,1
+45,Total Patients,Insurance,5,6,6,2,1
+45,Total Patients,Safety,7,7,7,5,1
+50,Total Patients,Aware,1.33,5,4.67,2.33,3
+50,Total Patients,Efficacy,5.33,5.33,3.67,5.33,3
+50,Total Patients,Insurance,3.67,6.33,4.67,3.33,3
+50,Total Patients,Safety,5.33,2.67,3,3.33,3
+60,Total Patients,Aware,3,4,4,1,1
+60,Total Patients,Efficacy,1,7,4,6,1
+60,Total Patients,Insurance,5,4,7,4,1
+60,Total Patients,Safety,6,2,4,6,1
+77,Total Patients,Aware,2,7,6,4,1
+77,Total Patients,Efficacy,7,6,6,4,1
+77,Total Patients,Insurance,7,5,7,3,1
+77,Total Patients,Safety,6,7,1,5,1
+80,Total Patients,Aware,3,7,7,4.5,2
+80,Total Patients,Efficacy,6,4,3.5,5.5,2
+80,Total Patients,Insurance,3.5,6,5.5,4,2
+80,Total Patients,Safety,5,4,3,4.5,2
+90,Total Patients,Aware,2,7,7,1,1
+90,Total Patients,Efficacy,7,6,6,7,1
+90,Total Patients,Insurance,7,2,2,2,1
+90,Total Patients,Safety,7,6,2,7,1
+100,Total Patients,Aware,3.5,1.5,3,5,2
+100,Total Patients,Efficacy,1,3.5,3,2.5,2
+100,Total Patients,Insurance,5.5,6,7,4,2
+100,Total Patients,Safety,5.5,5,5,3.5,2
+150,Total Patients,Aware,6,1,2,1,1
+150,Total Patients,Efficacy,1,4,3,4,1
+150,Total Patients,Insurance,7,5,4,2,1
+150,Total Patients,Safety,6,6,6,4,1

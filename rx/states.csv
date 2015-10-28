@@ -1,0 +1,30 @@
+State_code,State,fips,count,Number_of_Years,Total_Patients,Crudaxil_Aware,Xanastin_Aware,Plasmotropin_Aware,Spamoprofin_Aware,perc_patients_with_cytogenic_anomaly,perc_patients_without_cytogenic_anomaly,Crudaxil__with_cytogenetic_anomaly,Xanastin__with_cytogenetic_anomaly,Plasmotropin__with_cytogenetic_anomaly,Spamoprofin__with_cytogenetic_anomaly,Crudaxil__without_cytogenetic_anomaly,Xanastin__without_cytogenetic_anomaly,Plasmotropin__without_cytogenetic_anomaly,Spamoprofin__without_cytogenetic_anomaly,Crudaxil_estimate,Xanastin_estimate,Plasmotropin_estimate,Spamoprofin_estimate,Efficacy_overall,Safety_Tolerability_overall,Patient_Convenience_overall,Insurance_Coverage_overall,Efficacy_Crudaxil,Safety_Tolerability_Crudaxil,Patient_Convenience_Crudaxil,Insurance_Coverage_Crudaxil,Efficacy_Xanastin,Safety_Tolerability_Xanastin,Patient_Convenience_Xanastin,Insurance_Coverage_Xanastin,Efficacy_Plasmotropin,Safety_Tolerability_Plasmotropin,Patient_Convenience_Plasmotropin,Insurance_Coverage_Plasmotropin,Efficacy_Spamoprofin,Safety_Tolerability_Spamoprofin,Patient_Convenience_Spamoprofin,Insurance_Coverage_Spamoprofin
+AR,Arkansas,US05,1,4,12,5,5,1,4,20,80,0,0,100,0,50,50,0,0,20,20,40,20,70,20,5,5,2,4,2,7,6,7,6,6,3,1,7,1,4,1,7,2
+AZ,Arizona,US04,3,8,15,4,4,4,1,7,93,38,61,0,0,31,60,8,0,36,36,26,0,43,33,4,19,4,2,5,3,5,4,4,5,2,4,3,4,4,4,6,6
+CA,California,US06,12,12,27,5,5,3,2,17,82,40,38,8,12,52,27,10,10,36,16,19,27,57,24,7,10,4,4,3,5,3,3,4,5,3,5,4,3,4,4,4,3
+CO,Colorado,US08,1,6,10,7,7,1,1,10,90,50,50,0,0,45,40,15,0,55,25,20,0,70,10,5,15,2,6,2,4,6,3,3,4,7,4,2,2,6,7,2,3
+CT,Connecticut,US09,1,19,35,7,7,2,3,10,90,100,0,0,0,80,0,20,0,60,0,0,40,65,25,5,5,2,6,1,4,7,2,3,3,7,1,7,1,3,5,2,7
+FL,Florida,US12,3,20,31,5,5,2,1,15,85,40,26,0,0,60,33,0,6,55,26,15,3,60,25,8,6,4,3,4,6,2,6,2,4,2,6,3,2,3,3,4,2
+GA,Georgia,US13,4,14,32,6,5,2,3,19,80,32,30,12,0,85,2,12,0,62,8,25,3,50,27,16,5,4,3,5,5,2,3,5,3,5,3,4,2,4,2,4,3
+IA,Iowa,US19,1,26,5,6,5,5,3,5,95,100,0,0,0,50,50,0,0,50,10,20,20,30,35,31,4,5,1,2,3,4,6,7,6,1,7,4,6,2,2,1,7
+IL,Illinois,US17,2,7,14,6,6,4,1,15,85,27,17,30,25,40,20,25,15,50,5,22,22,45,35,13,7,5,2,5,3,3,5,2,3,3,5,4,3,5,4,6,5
+IN,Indiana,US18,2,25,81,3,4,5,1,47,52,25,0,50,25,50,10,27,12,37,12,37,12,60,20,16,4,3,4,4,4,2,4,4,2,1,6,2,5,2,5,3,4
+KY,Kentucky,US21,1,20,30,6,6,1,5,5,95,0,100,0,0,0,100,0,0,30,50,20,0,50,25,5,20,6,6,5,6,3,7,4,5,1,2,5,7,5,3,2,1
+LA,Louisiana,US22,4,10,18,5,5,2,2,32,67,65,10,25,0,40,25,10,0,53,15,26,5,70,18,7,3,6,3,3,5,4,4,3,2,4,3,3,3,5,5,5,4
+MA,Massachusetts,US25,1,25,5,5,5,5,1,20,80,100,0,0,0,100,0,0,0,5,5,35,55,40,20,10,30,7,2,2,7,6,5,2,6,2,6,6,6,5,1,5,6
+MD,Maryland,US24,1,19,15,7,7,3,1,0,100,0,0,0,0,70,30,0,0,0,30,70,0,70,25,0,5,6,7,1,1,7,1,2,5,6,6,2,3,2,7,4,3
+MI,Michigan,US26,1,24,10,7,7,4,1,10,90,70,30,0,0,80,20,0,0,75,25,0,0,70,20,3,7,7,1,1,7,2,6,4,5,1,2,2,1,6,1,4,7
+MO,Missouri,US29,4,12,29,5,4,3,3,18,81,21,57,10,11,33,51,2,12,28,37,13,20,58,20,9,11,4,5,4,5,6,2,4,3,5,5,4,5,3,5,5,4
+NC,North Carolina,US37,2,14,26,6,5,2,3,35,65,25,32,42,0,35,20,45,0,40,12,11,36,40,27,21,11,4,2,3,2,3,2,4,1,5,4,2,4,5,4,4,1
+NH,New Hampshire,US33,1,8,12,7,7,1,1,40,60,0,100,0,0,20,80,0,0,20,50,30,0,90,5,0,5,5,6,6,6,7,1,4,7,4,7,3,5,4,4,6,5
+NJ,New Jersey,US34,3,11,20,4,5,3,3,30,70,28,38,0,0,65,23,11,0,67,10,11,11,65,13,12,9,4,3,3,5,6,3,4,4,5,3,6,5,7,6,4,3
+NV,Nevada,US32,1,20,30,6,6,4,1,0,100,0,0,0,0,70,30,0,0,60,30,10,0,40,25,32,3,7,2,5,7,5,4,5,7,7,7,6,4,1,2,6,2
+NY,New York,US36,10,16,25,4,4,3,2,17,83,45,26,15,3,58,24,13,4,41,32,12,14,62,16,7,13,5,4,4,4,3,3,3,4,4,4,3,4,3,3,4,4
+OH,Ohio,US39,3,11,51,3,4,2,3,40,60,13,36,13,36,15,33,16,35,16,33,16,33,60,18,2,19,4,3,4,6,4,3,5,6,5,5,4,3,5,3,5,5
+PA,Pennsylvania,US42,2,16,15,6,5,4,3,6,94,5,40,0,5,60,35,0,5,55,35,2,7,45,35,0,20,4,2,6,5,4,4,4,2,3,4,4,4,3,6,4,4
+TN,Tennessee,US47,1,20,10,7,6,5,3,10,90,40,30,30,0,40,40,20,0,35,35,30,0,40,25,25,10,4,6,2,6,4,5,6,4,6,2,3,2,4,3,3,1
+TX,Texas,US48,5,15,19,6,6,3,1,24,76,39,59,0,2,52,46,0,2,49,39,7,4,61,23,2,14,5,3,3,3,4,4,3,4,3,5,5,4,3,5,3,3
+UT,Utah,US49,2,13,34,5,5,2,1,19,81,30,70,0,0,95,5,0,0,65,2,32,0,40,30,11,19,6,4,3,4,3,5,3,7,4,6,4,4,6,5,4,3
+VA,Virginia,US51,6,14,25,6,5,3,3,40,59,56,15,18,9,40,10,20,12,36,10,24,29,55,21,13,9,5,3,3,4,3,3,3,4,3,4,3,3,5,5,4,4
+WI,Wisconsin,US55,1,12,5,2,2,1,1,20,80,0,100,0,0,0,30,30,40,50,10,20,20,50,40,3,7,4,3,3,4,1,3,2,1,7,6,6,3,2,6,7,1
+WV,West Virginia,US54,2,16,27,6,5,1,3,2,97,25,25,0,0,50,40,10,0,50,50,0,0,55,22,3,19,5,2,3,3,5,4,3,5,4,2,1,6,2,3,4,3
