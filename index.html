@@ -22,9 +22,15 @@
 	
 	
     <style>
-body{
-	<!-- background:#B5CCEE -->
-}
+html, body {margin: 0; height: 100%; overflow: hidden}
+      
+
+	  p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+        }
+
+
 
         p4 {
             font-family: 'Roboto', sans-serif;
@@ -59,14 +65,24 @@ container img {position: fixed;}
 <script src="js/colorbrewer.v1.min.js"></script>
 
 <!--colors: http://paletton.com/#uid=33L0u0kllllaFw0g0qFqFg0w0aF -->
-		<div id="slider1_container"  style="position:relative;margin:70px auto;margin-left:100px;top:-130px;left:70px;width:1500px;height:1000px;overflow:hidden;">
+		<div id="slider1_container"  style="position:relative;margin:70px auto;margin-left:85px;top:-140px;left:70px;width:1500px;height:1050px;overflow:hidden;">
     <!-- Slides Container -->
     <div u="slides" style="cursor:move;position:relative;left:0px;top:0px;width:1300px;height:1000px;overflow:hidden;background:#030100;">
 		<div style="background-image:url(media/img/seattle.jpg);position:absolute;">
-			<div style="background:#f2ae81;width:1200px;height:700px;  position:absolute;top:70px;margin:40px;opacity:.9;">Under Construction</div>
+		
+			<div style="background:#f2ae81;width:1200px;height:700px;  position:absolute;top:70px;margin:40px;opacity:.9;">
+			<p style="display:block;margin:auto;margin-top:100px;text-align:Center;" >Massachusetts Obesity and Poverty Interactive Visualization</p>
+			<a href="obesity_analysis/obesity_analysis.html">
+			<img src="media/img/obesitythumb.jpg" style=" display:block;margin:auto;margin-top:90px;"></a>
+			
+			</div>
+			
 		</div>
 		<div style="background-image:url(media/img/mykanos.jpg);position:absolute;background-repeat: no-repeat;">
 			<div style="background:#f2D881;width:1200px;height:700px;position:absolute;top:70px;margin:40px;opacity:.9;">Under Construction</div>
+		</div>
+		<div style="background-image:url(media/img/sanfran.jpg);position:absolute;background-repeat: no-repeat;">
+			<div style="background:#008B8B;width:1200px;height:700px;  position:absolute;top:70px;margin:40px;opacity:.8;">Under Construction</div>
 		</div>
     </div>
 	        <!--#region Bullet Navigator Skin Begin -->
@@ -98,7 +114,7 @@ container img {position: fixed;}
             .jssorb10 .dn, .jssorb10 .dn:hover { background-position: -100px -10px; } 
         </style>
         <!-- bullet navigator container -->
-        <div u="navigator" class="jssorb10" style="bottom: 850px;right: 850px; ">
+        <div u="navigator" class="jssorb10" style="bottom: 890px;right: 850px; ">
             <!-- bullet navigator item prototype -->
             <div u="prototype"></div>
         </div>
@@ -119,7 +135,7 @@ container img {position: fixed;}
 </script>
 	
 	  <!-- Navigation -->
-      <div class="container "><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only" style="margin-top:30px;width:90%;"><i class="mdi-navigation-menu"></i></a></div>
+      <div class="container "><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full" style="margin-top:30px;width:90%;"><i class="mdi-navigation-menu"></i></a></div>
       <ul id="nav-mobile" class="side-nav fixed" style="background:#8da2c2">
 	  
 		 
@@ -145,16 +161,13 @@ container img {position: fixed;}
 		 <div class="row"></div>
 		  <div class="row"></div>
 		<div class="row"></div>
-		<li class="bold"><a href="obesity_analysis/obesity_analysis.html" class="waves-effect waves-teal">Obesity Analysis</a></li>
-		<li class="bold"><a href="pages/medleyrx.html" class="waves-effect waves-teal">Medley Rx</a></li>
+	
 		<li class="bold"><a  class="waves-effect waves-teal">About</a></li>
         <li class="bold"><a class="waves-effect waves-teal">Projects</a></li>
-		<li class="bold"><a  class="waves-effect waves-teal">Resume</a></li>
-		
-		<div  class="container" style="margin-top:20px;margin-left:30px;width:90%;">
-		<i class="bold"><i class="fa  fa-linkedin  fa-2x " title="LinkedIn" href="#https://www.linkedin.com/in/simonioffe"  ></i>
-		</div>
-		
+		<li class="bold"><a href="pages/resume.html" class="waves-effect waves-teal">Resume</a></li>
+			<li class="bold"><a href="obesity_analysis/obesity_analysis.html" class="waves-effect waves-teal">Obesity Analysis</a></li>
+		<li class="bold"><a href="pages/medleyrx.html" class="waves-effect waves-teal">Medley Rx</a></li>
+		<li class="bold" ><a href="https://www.linkedin.com/in/simonioffe"  class="waves-effect waves-teal"><i class="fa  fa-linkedin  fa-2x " title="LinkedIn" ></i></a></li>
         <div class="row"></div>
 		
 	
