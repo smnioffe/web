@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+
+    <title>Arcadia Environment Monitoring</title>
+	
+	<link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	<link href='//fonts.googleapis.com/css?family=Roboto' type="text/css" rel="stylesheet" media="all"/>
+	<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700' type="text/css" rel="stylesheet" media="all"/>
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,900italic,700italic,900,700,500italic,500,400italic,300italic,300,100italic,100' type="text/css" rel="stylesheet" media="all"/>
+    <link href='//fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' type="text/css" rel="stylesheet" media="all"/>
+    <link href='//fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900' type="text/css" rel="stylesheet" media="all"/>
+    <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+	<link href='//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' type="text/css" rel="stylesheet" media="all"/>
+
+
+	
+	
+    <style>
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            font: 10px sans-serif;
+            background-color: #000000;
+			-moz-transform: scale(0.9, 0.9); /* Moz-browsers */
+			zoom: 0.9; /* Other non-webkit browsers */
+			zoom: 90%; /* Webkit browsers */
+
+        }
+
+        .svg {
+
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        .tile {
+            shape-rendering: crispEdges;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        .d3-tip {
+            line-height: 1;
+            font-weight: bold;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border-radius: 2px;
+        }
+
+        /* Creates a small triangle extender for the tooltip */
+        .d3-tip:after {
+            box-sizing: border-box;
+            display: inline;
+            font-size: 10px;
+            width: 100%;
+            line-height: 1;
+            color: rgba(0, 0, 0, 0.8);
+            content: "\25BC";
+            position: absolute;
+            text-align: center;
+        }
+
+        /* Style northward tooltips differently */
+        .d3-tip.n:after {
+            margin: -1px 0 0 0;
+            top: 100%;
+            left: 0;
+        }
+
+        span {
+            font-family: 'Roboto', sans-serif;
+            font-size: 12px;
+        }
+
+        strong {
+            color: #FBB917;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            font-size: 12px;
+            shadow: 2px 2px #FFFFFF;
+        }
+
+
+        p4 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+
+
+        }
+
+        a{font-family: 'Roboto'}
+
+    </style>
+</head>
+<body onload="navBar(1)">
+
+
+
+
+  <div class="navbar-fixed">
+    <nav class="grey darken-1">
+      <div class="nav-wrapper">
+	   <a id="updatetime" style="font-size:16px; color:#B7F6F6;" class="brand-logo right">Logo</</a>
+        <ul class="left hide-on-med-and-down">
+          <li onclick="navBar(1)" id="Nightly Jobs" class="active"><a>Nightly Jobs</a></li>
+		  <li onclick="navBar(2)" id="Deploy Versions"><a>Deploy Versions</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <!-- <p4 class="left-align" id="updatetime" style="top:80px; left:900px; color:#B7F6F6; position: absolute; margin-top: 0px;"<svg></svg></p4> -->
+  
+</body>
+
+<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+<script src="//cdn.rawgit.com/novus/nvd3/v1.8.1/build/nv.d3.js"></script>
+<script src="js/colorbrewer.v1.min.js"></script>
+<script src="js/d3.tip.v0.6.3.js"></script>
+<script src="js/deployChart.js"></script>
+<script src="js/navBar.js"></script>
+<script src="js/nightlyjobChart.js"></script>
