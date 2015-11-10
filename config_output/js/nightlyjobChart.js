@@ -58,7 +58,7 @@ function nj(selectVar){
 			d.database_name=d.database_name;
 			
 
-            if (d.ENV=="ONPOINT"){d.ENV="ONPT"}
+            if (d.CLIENT=="ONPOINT"){d.CLIENT="ONPT"}
 
             if ( d.most_recent==1 && d.type == "last step"
                 && d.step !== d.last_job_step && d.status=="Success"
