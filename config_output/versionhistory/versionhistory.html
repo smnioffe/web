@@ -316,7 +316,14 @@ yAxis2.append("text")
       .attr("x", width+2)
          .attr("y", 27)
       .attr("text-anchor", "end")
-      .text("Date");			
+      .text("Date");	
+
+  // Add a 2nd top x-axis with label.
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + 95 + ")")
+      .call(d3.svg.axis().scale(x).ticks(d3.time.months).tickFormat(formatDate).orient("top"));
+	  
 		  
 		  
   // // Add a legend for the color values.
