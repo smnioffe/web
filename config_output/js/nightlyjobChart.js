@@ -28,7 +28,7 @@ var materializeColors = {
 
 
 function nj(selectVar){
-    d3.csv("data/reportOutput.csv", function(error, clients) {
+    d3.csv("data/report_output.csv", function(error, clients) {
         if (error) throw error;
 
 		var laststepArr=[]

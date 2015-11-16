@@ -1,3 +1,8 @@
+DECLARE @timestamp DATETIME
+SET @timestamp=GETDATE() 
+/*declare current date once to avoid changes in miliseconds during insert.
+ Is needed for upstream sproc selects on update_timestamp. */
+
 IF OBJECT_ID('tempdb..#base') IS NOT NULL
     DROP TABLE #base    
     
@@ -64,8 +69,15 @@ into #ranked_subversion from (
    on a.core=b.core
    
    
-    select a.database_name,a.config_value,a.modify_timestamp,case when b.modify_timestamp is not null then CONVERT(date,b.modify_timestamp) else CONVERT(date,GETDATE()) end as end_date
-    ,n_rank
+    select
+    a.database_name
+   ,a.config_value
+   ,a.modify_timestamp
+   ,case when b.modify_timestamp is not null then CONVERT(date,b.modify_timestamp) else CONVERT(date,GETDATE()) end as end_date
+   ,n_rank
+   ,case when a.database_name like '%QA' then 'QA' else right(a.database_name,3) end ENV
+   ,SUBSTRING(a.database_name,0, CHARINDEX('_',a.database_name)) as CLIENT
+   ,@timestamp as [update_timestamp]
      from #ranked a
    left join #ranked b
    on a.database_name=b.database_name
