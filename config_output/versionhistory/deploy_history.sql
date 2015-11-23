@@ -77,6 +77,7 @@ into #ranked_subversion from (
    ,n_rank
    ,case when a.database_name like '%QA' then 'QA' else right(a.database_name,3) end ENV
    ,SUBSTRING(a.database_name,0, CHARINDEX('_',a.database_name)) as CLIENT
+   ,@timestamp as [insert_timestamp]
    ,@timestamp as [update_timestamp]
      from #ranked a
    left join #ranked b
