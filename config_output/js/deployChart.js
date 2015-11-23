@@ -236,12 +236,13 @@ zAxisCore.append("text")
 		return ydomain.indexOf(d.CLIENT)*130+65-8+"px";
 		})	
 	   .style("fill",materializeColors.white)// function(d){return colorScale(d.coreMajor)})
-.style("font-size","12px")
+.style("font-size","14px")
 //.style("font-weight","bold")
 .style("font-family","Roboto")
 .style("text-anchor", "left")
- .text(function(d) {
-	 return d.coreMinor;
+ .text(function(d) { if(d.coreMinor.substring(0,2)=="rc"){
+	 return d.coreMinor;}
+	 else { return d.coreMinor.substring(2);}
   });
   
   

@@ -1,27 +1,5 @@
 
-var materializeColors = {
-    teal: "#009688"
-    , pink: "#e91e63"
-    , orange: "#ff9800"
-    , blue: "#2196f3"
-    , dblue: "#2B3856"
-    , lblue: "#B7F6F6"
-    , yellow: "#FBB917"
-    , yellow2: "#FBB917"
-    , lyellow: "#FFFF80"
-    , purple: "#9c27b0"
-    , platinum: "#E5E4E2"
-    , bluegrey: "#98AFC7"
-    , red: "#C11B17"
-    , red2: "#F32900"
-    , lred: "#E77471"
-    , dred: "#800517"
-    , lgreen: "#04FB75"
-    , green: "#007A00"
-    , white: "#FFFFFF"
-    , dgrey: "#595959"
-    , lgrey: "#D9D9D9"
-};
+
 
 
 
