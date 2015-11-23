@@ -183,7 +183,7 @@ var x = d3.time.scale().range([0, width]),
       .attr("y", 15)
       .attr("dy", ".35em")
 	
-      .text("Place mouse over indivudal bars to get the exact deployment dates.")
+      .text("Place mouse over indivudal bars to get the exact deployment dates.");
 	  
 	  	  svg.append("text")
       .attr("class", "alt-label")
@@ -191,7 +191,7 @@ var x = d3.time.scale().range([0, width]),
       .attr("x", 10)
       .attr("y", 32)
       .attr("dy", ".35em")
-      .text("Place mouse over legend to see minor releases and to see which deploys correspond with which version.")
+      .text("Place mouse over legend to see minor releases and to see which deploys correspond with which version.");
 		
 
    var distinctCoreVersions = d3.set(

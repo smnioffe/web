@@ -67,13 +67,13 @@ var svg = d3.select("body").append("svg").attr("class", "deploy")
 	
   var distinctCoreVersions = d3.set(
     clients.filter(function(d){ return d.config_item == "coreRevision"; }).map(function(d){ return d.coreMajor; })	
-        .filter(function(d){  return (typeof d !== "undefined") ? d !== null : false })
+     .filter(function(d){  return (typeof d !== "undefined") ? d !== null : false })
     ).values();
 
-		var updateTS = d3.max(clients, function(d) {return d.updated_timestamp.substring(0, 19);}) ;
 		
-		d3.select("#updatetime").text("Data Updated: "+updateTS);
-	
+		
+
+
 var distinctCoreVersions = d3.set(
     clients.filter(function(d){ return d.config_item == "coreRevision"; }).map(function(d){ return d.config_value.substring(0, 4); })	
        // .filter(function(d){  return (typeof d !== "undefined") ? d !== null : false })

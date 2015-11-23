@@ -3,6 +3,7 @@
 <head>
 
     <title>Arcadia Environment Monitoring</title>
+	 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 	
 	<link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link href='//fonts.googleapis.com/css?family=Roboto' type="text/css" rel="stylesheet" media="all"/>
@@ -85,6 +86,8 @@
             position: absolute;
             text-align: center;
         }
+		
+
 
         /* Style northward tooltips differently */
         .d3-tip.n:after {
@@ -97,6 +100,7 @@
             font-family: 'Roboto', sans-serif;
             font-size: 12px;
         }
+		
 
         strong {
             color: #FBB917;
@@ -115,6 +119,19 @@
         }
 
         a{font-family: 'Roboto'}
+		
+		
+		timeValue {
+            font-family: 'Roboto', sans-serif;
+            font-size: 15px;
+			color: #D9D9D9;
+        }
+		
+		timeLabel {
+            font-family: 'Roboto', sans-serif;
+            font-size: 15px;
+			color: #B7F6F6;
+        }		
 
     </style>
 </head>
@@ -125,9 +142,9 @@
   <div class="navbar-fixed">
     <nav class="grey darken-1">
       <div class="nav-wrapper">
-	   <a id="updatetime" style="font-size:16px; color:#B7F6F6;" class="brand-logo right">Logo</</a>
+	   <a id="updatetime"  class="brand-logo right">Logo</</a>
         <ul class="left hide-on-med-and-down">
-          <li onclick="navBar('nj')" id="Nightly Job" class="active"><a>Nightly Job Status</a></li>
+          <li onclick="navBar('nj')" id="Nightly Jobs" class="active"><a>Nightly Job Status</a></li>
 		  <li onclick="navBar('deploy')" id="Deploy Versions"><a>Versions Deployed</a></li>
 		  <li onclick="navBar('vhistory')" id="Version History"><a>Version History</a></li> 
         </ul>
@@ -164,6 +181,10 @@ var materializeColors = {
     , dgrey: "#595959"
     , lgrey: "#D9D9D9"
 };
+
+
+
+
 </script>
 
 <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -176,3 +197,4 @@ var materializeColors = {
 <script src="js/navBar.js"></script>
 <script src="js/nightlyjobChart.js"></script>
 <script src="js/versionHistory.js"></script>
+<script src="js/timeStamp.js"></script>

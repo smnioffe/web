@@ -78,9 +78,6 @@ function nj(selectVar){
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 		
-		var updateTS = d3.max(clients, function(d) {return d.updated_timestamp.substring(0, 19);}) ;
-		
-				d3.select("#updatetime").text("Data Updated: "+updateTS);
 
         var yAxis = svg.selectAll(".tile")
             .data(distinctClients).enter();
