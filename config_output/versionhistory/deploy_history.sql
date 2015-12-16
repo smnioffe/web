@@ -68,7 +68,21 @@ into #ranked_subversion from (
    group by core ) b
    on a.core=b.core
    
+  
+  delete from dbo.deploy_history
    
+   insert into dbo.deploy_history
+   (
+   [database_name]
+   ,[config_value]
+   ,[modify_timestamp]
+   ,[end_date]
+   ,[n_rank]
+   ,[ENV]
+   ,[CLIENT]  
+   ,[insert_timestamp]
+   ,[update_timestamp]
+   ) 
     select
     a.database_name
    ,a.config_value
@@ -79,6 +93,7 @@ into #ranked_subversion from (
    ,SUBSTRING(a.database_name,0, CHARINDEX('_',a.database_name)) as CLIENT
    ,@timestamp as [insert_timestamp]
    ,@timestamp as [update_timestamp]
+  -- into dbo.report_output_test
      from #ranked a
    left join #ranked b
    on a.database_name=b.database_name
@@ -89,5 +104,3 @@ into #ranked_subversion from (
 
 
    
-   --rOW_NUMBER() over (partition by left(config_value,4) ORDER BY config_value) AS row 
-

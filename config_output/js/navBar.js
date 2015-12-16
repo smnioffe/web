@@ -1,3 +1,15 @@
+if (window.location.hash == "#nj") {
+    navBar('nj');
+}
+
+if (window.location.hash == "#deploy") {
+    navBar('deploy');
+}
+
+if (window.location.hash == "#vhistory") {
+    navBar('vhistory');
+}
+
 function navBar(Selection)
 {
 	if 	(Selection=='deploy')
