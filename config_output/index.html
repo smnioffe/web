@@ -135,7 +135,7 @@
 
     </style>
 </head>
-<body onload="navBar('nj')">
+<body><!-- onload="navBar('nj')">-->
 
 
 
@@ -146,7 +146,7 @@
         <ul class="left hide-on-med-and-down">
           <li onclick="navBar('nj')" id="Nightly Jobs" class="active"><a>Nightly Job Status</a></li>
 		  <li onclick="navBar('deploy')" id="Deploy Versions"><a>Versions Deployed</a></li>
-		  <li onclick="navBar('vhistory')" id="Version History"><a>Version History</a></li> 
+		  <li onclick="navBar('vhistory')" id="Version History" ><a>Version History</a></li> 
         </ul>
       </div>
     </nav>
@@ -193,8 +193,11 @@ var materializeColors = {
 <script src="//cdn.rawgit.com/novus/nvd3/v1.8.1/build/nv.d3.js"></script>
 <script src="js/colorbrewer.v1.min.js"></script>
 <script src="js/d3.tip.v0.6.3.js"></script>
+
 <script src="js/deployChart.js"></script>
-<script src="js/navBar.js"></script>
+<script src="js/timeStamp.js"></script>
 <script src="js/nightlyjobChart.js"></script>
 <script src="js/versionHistory.js"></script>
-<script src="js/timeStamp.js"></script>
+<script src="js/navBar.js"></script>
+
+<script src="js/hashListener.js"></script>

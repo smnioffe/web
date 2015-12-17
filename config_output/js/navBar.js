@@ -1,14 +1,3 @@
-if (window.location.hash == "#nj") {
-    navBar('nj');
-}
-
-if (window.location.hash == "#deploy") {
-    navBar('deploy');
-}
-
-if (window.location.hash == "#vhistory") {
-    navBar('vhistory');
-}
 
 function navBar(Selection)
 {
@@ -50,25 +39,27 @@ else if (Selection=='nj')
 else if (Selection=='vhistory')
 {
  if (document.getElementById("Version History").className !== 'active'){
-		versionHistory(1)
+		versionHistory(1);
 		
-		 }
-		
+		 };
+		 
 	$(".deploy").hide()
 	$(".njchart").hide()
 	$(".vhistory").attr("display");
-	
+		 
 		document.body.style.backgroundColor = "#333333";
 	
 		document.getElementById("Nightly Jobs").className = '';
 		document.getElementById("Deploy Versions").className = '';
-		document.getElementById("Version History").className = 'active';
+		document.getElementById("Version History").className = 'active';		 
+		
+
+	
+
 	
 }
 
 
-
-
-
-
 };
+
+

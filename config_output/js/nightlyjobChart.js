@@ -61,12 +61,28 @@ function nj(selectVar){
         ).values();
 
 
-        var xdomain=['DEV','QA','UAT','PRD'];
+       
+		
+		
+		 var middle = Math.ceil(distinctClients.length / 2);
+
+        var leftDistinctClients= distinctClients.slice( 0, middle );
+        var rightDistinctClients= distinctClients.slice( middle );
+		
+		
+		
+		
+
+function draw(distinctClients){
+
+clientsFil=clients.filter(function(d){ return distinctClients.indexOf(d.CLIENT) > -1; })
+
+
+
+		 var xdomain=['DEV','QA','UAT','PRD'];
         var ydomain= distinctClients.sort(d3.ascending);
 
-
-
-        var max = d3.max(clients, function(d) {return ydomain.indexOf(d.CLIENT)*160+75;} );
+        var max = d3.max(clientsFil, function(d) {return ydomain.indexOf(d.CLIENT)*160+75;} );
 
         var margin = {top: 100, right: 100, bottom: 10, left: 100},
             width = 960 - margin.left - margin.right,
@@ -86,11 +102,11 @@ function nj(selectVar){
             .data(xdomain).enter();
 
         var zAxis = svg.selectAll(".tile")
-            .data(clients.filter(function(d){ return d.type == "last step"  || d.type == "previous run" || d.type == "failed"; }))
+            .data(clientsFil.filter(function(d){ return d.type == "last step"  || d.type == "previous run" || d.type == "failed"; }))
             .enter();
 
         var zAxisErr = svg.selectAll(".tile")
-            .data(clients.filter(function(d){ return d.type == "failed step"}))
+            .data(clientsFil.filter(function(d){ return d.type == "failed step"}))
             .enter();
 
         var tip = d3.tip()
@@ -187,7 +203,7 @@ function nj(selectVar){
         var circle2=
             svg.append('g').selectAll(".tile")
 			//.attr("class", 'svg')
-                .data(clients.filter(function(d){ return d.type == "last step" || d.type == "previous run" || d.type == "failed"; }))
+                .data(clientsFil.filter(function(d){ return d.type == "last step" || d.type == "previous run" || d.type == "failed"; }))
 
                 .enter().append("circle")
                 .attr("class", "innercircle")
@@ -214,7 +230,7 @@ function nj(selectVar){
 
         var pi = Math.PI;
 
-        clients.filter(function(d){ return d.orig_table == "nightly job"; }).forEach(function(d,i) {
+        clientsFil.filter(function(d){ return d.orig_table == "nightly job"; }).forEach(function(d,i) {
             d.x = xdomain.indexOf(d.ENV)*175+75+75;
 
 
@@ -253,22 +269,22 @@ function nj(selectVar){
             .outerRadius(68.5)	
 		
 		// var Arcjobs = d3.set(
-        // clients.filter(function(d){ return d.orig_table == "nightly job"; })
+        // clientsFil.filter(function(d){ return d.orig_table == "nightly job"; })
         // .map()
             // //.filter(function(d){  return (typeof d !== "undefined") ? d !== null : false })
         // ).values();	
 		// var laststepArr=[]
 		// var stepArr=[]
 		// var dbArr=[]
-		// clients.filter(function(d){ return d.orig_table == "nightly job"; }).forEach(function(d,i) {
+		// clientsFil.filter(function(d){ return d.orig_table == "nightly job"; }).forEach(function(d,i) {
 			
-		// laststepVar=clients.map(function (d) {if (isNaN(d.last_job_step)){return 0} else 
+		// laststepVar=clientsFil.map(function (d) {if (isNaN(d.last_job_step)){return 0} else 
 					// return d.last_job_step;})
 					
-		// stepVar=clients.map(function (d) {if (isNaN(d.step)){return 0} else 
+		// stepVar=clientsFil.map(function (d) {if (isNaN(d.step)){return 0} else 
 					// return d.step;})
 					
-		// dbVar=clients.map(function (d) {if (isNaN(d.database_name)){return 0} else 
+		// dbVar=clientsFil.map(function (d) {if (isNaN(d.database_name)){return 0} else 
 					// return d.database_name;})	
 		
 		// laststepArr.push(laststepVar);
@@ -285,7 +301,7 @@ function nj(selectVar){
 // console.log(start +' '+end +' '+ dbArr[k]+' '+i+' '+k) 
         var innerArc=
             svg.append('g').selectAll(".tile")
-                .data(clients.filter(function(d){ return d.type == "last step" || d.type == "previous run" || d.type == "failed"; }))
+                .data(clientsFil.filter(function(d){ return d.type == "last step" || d.type == "previous run" || d.type == "failed"; }))
 				//.data(dbArr)
                 .enter().append("path")
 				.attr("class", 'svg')
@@ -312,7 +328,7 @@ function nj(selectVar){
 
         var innerArcPiece=
             svg.append('g').selectAll(".tile")
-                .data(clients.filter(function(d){ return( d.type == "last step" || d.type == "previous run" || d.type == "failed")&& d.inprog==1; }))
+                .data(clientsFil.filter(function(d){ return( d.type == "last step" || d.type == "previous run" || d.type == "failed")&& d.inprog==1; }))
                 .enter().append("path")
 				.attr("class", 'svg')
                 .attr("d",
@@ -335,7 +351,7 @@ function nj(selectVar){
 
         var outerArc=
             svg.append('g').selectAll(".tile")
-                .data(clients.filter(function(d){ return d.type == "last step" || d.type == "previous run" || d.type == "failed"; }))
+                .data(clientsFil.filter(function(d){ return d.type == "last step" || d.type == "previous run" || d.type == "failed"; }))
                 .enter().append("path")
                 .attr("d",
                 arc2.endAngle( function(d){return d.k})
@@ -351,7 +367,7 @@ function nj(selectVar){
 				
 		        var outerArcPiece=
             svg.append('g').selectAll(".tile")
-                .data(clients.filter(function(d){ return( d.type == "last step" || d.type == "previous run" || d.type == "failed")&& d.inprog==1; }))
+                .data(clientsFil.filter(function(d){ return( d.type == "last step" || d.type == "previous run" || d.type == "failed")&& d.inprog==1; }))
                 .enter().append("path")
 				.attr("class", 'svg')
                 .attr("d",
@@ -495,7 +511,25 @@ function nj(selectVar){
         }
 
 		
+	}
 	
+	console.log($(window).width())
+	if($(window).width()>1700 && $(".njchart").length!==1&& $(".njchart").length!==2){
+	draw(leftDistinctClients);
+	draw(rightDistinctClients);}
+	else if ($(".njchart").length!==1&& $(".njchart").length!==2){
+	draw(distinctClients)}
+
+	
+
+// $(window).resize(function() {
+
+// alert('window was resized!');
+
+// });
+
+
+
 
 
     });
