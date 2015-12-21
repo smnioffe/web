@@ -24,9 +24,7 @@ StartDate= parseDate(StartDate);
 d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), function(error, buckets) {
   if (error) throw error;
 
-  //csv = csv.filter(function(d){return d.orig_table=='version history';});
-  
-  // Coerce the CSV data to the appropriate types.
+ 
   buckets=buckets.filter(function(d){return d.orig_table=='version history';});
   
   buckets.forEach(function(d) {
@@ -44,15 +42,13 @@ d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), functi
     d.database_name= d.database_name;
 	d.n_rank=-d.n_rank*-1;
 	d.coreMajor=d.config_value.substring(0, 4); 
-    //d.config_value = d.config_value;
 	d.client=d.database_name.substr(0,d.database_name.indexOf('_'));
 	d.envS=d.database_name.substr(d.database_name.length-4,d.database_name.length);
 	d.env=d.envS.substr(d.envS.indexOf('_')+1,d.envS.length);
 	if(parseDate(d.modify_timestamp)<StartDate)
 	{d.date=StartDate;} else	
 	{d.date = parseDate(d.modify_timestamp);}
-	//d.modify_timestamp=d.modify_timestamp;
-	
+ 
 	if(d.env=="PRD"){d.envR="zPRD"}else{d.envR=d.env}//For ordering
 	
 	d.database_name_sort= d.database_name.substr(0,d.database_name.length-4)+"_"+d.envR;
@@ -68,24 +64,7 @@ d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), functi
     return d3.ascending(a.client, b.client) || d3.ascending(a.envR, b.envR);
   });
   
-  
-  // sort(function(a, b) {
-			// //return a.win > b.win?-1:1;
-			// return d3.ascending(a.envR, b.envR);
-		   	// })
-		// .sort(function(a, b) {
-	 		// //return a.wkr > b.wkr?1:-1;
-			// return d3.ascending(a.client, b.client);
-		   	// })
 
-  
-  
-  
-  // sort(function(d) {
-   // d3.ascending(parseFloat(d.client), parseFloat(d.envR)) ||
-     // d3.ascending(d.client, d.envR);
-// })
-//  buckets2.sort(function(d){ return d3.descending(d.client, d.envR); })
 
 
    var distinctDB = d3.set(
