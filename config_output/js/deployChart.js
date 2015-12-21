@@ -1,6 +1,6 @@
 function deployChart(){
 
-d3.csv("data/report_output.csv", function(error, clients) {
+d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), function(error, clients) {
   if (error) throw error;
   
   
@@ -84,14 +84,16 @@ var numberCoreVersions	= distinctCoreVersions.length
 // var numberCoreVersions = function(distinctCoreVersions){
 // if(distinctCoreVersions.length > 12) {return 12} else {return distinctCoreVersions.length};};
 	
-var colorScale = d3.scale.ordinal()
-.range(colorbrewer.Pastel1[numberCoreVersions])
-.domain([0,numberCoreVersions]);
+// var colorScale = d3.scale.ordinal()
+// .range(colorbrewer.Pastel1[numberCoreVersions])
+// .domain([0,numberCoreVersions]);
    // var colorScale = d3.scale.pow(2)             
        // .range([materializeColors.dblue, materializeColors.green ])  
        // .domain(d3.extent(clients.filter(function(d){ return d.config_item == "coreRevision"; }), function(d){return d.rank})); 
 
-
+var colorScale = d3.scale.ordinal()
+.range(colorbrewer.Set1[numberCoreVersions+1])
+.domain([0,numberCoreVersions]);
   
   var yAxis = svg.selectAll(".tile")
   .data(distinctClients).enter();

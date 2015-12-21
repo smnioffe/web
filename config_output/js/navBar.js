@@ -8,15 +8,16 @@ function navBar(Selection)
 		}
 	$(".njchart").hide()
 	$(".vhistory").attr("display","none");
-	//$(".vhistory").hide
+	$(".njdurationchart").hide()
 	$(".deploy").show()
 	
 	
 		document.body.style.backgroundColor = "#333333";
 	
 		document.getElementById("Nightly Jobs").className = '';
-		document.getElementById("Deploy Versions").className = 'active';
 		document.getElementById("Version History").className = '';
+		document.getElementById("Job Run Time").className = '';
+		document.getElementById("Deploy Versions").className = 'active';
 	}	
 else if (Selection=='nj')
 {
@@ -25,15 +26,17 @@ else if (Selection=='nj')
 		}
 	$(".deploy").hide()
 	$(".vhistory").attr("display","none");
-	//$(".vhistory").hide
+	$(".njdurationchart").hide()
 	$(".njchart").show()
 	
 	
 		document.body.style.backgroundColor = "#000000";
 	
-		document.getElementById("Nightly Jobs").className = 'active';
+
 		document.getElementById("Deploy Versions").className = '';
+		document.getElementById("Job Run Time").className = '';
 		document.getElementById("Version History").className = '';
+		document.getElementById("Nightly Jobs").className = 'active';
 	
 }
 else if (Selection=='vhistory')
@@ -45,18 +48,37 @@ else if (Selection=='vhistory')
 		 
 	$(".deploy").hide()
 	$(".njchart").hide()
+	$(".njdurationchart").hide()
 	$(".vhistory").attr("display");
 		 
 		document.body.style.backgroundColor = "#333333";
 	
 		document.getElementById("Nightly Jobs").className = '';
 		document.getElementById("Deploy Versions").className = '';
+		document.getElementById("Job Run Time").className = '';
 		document.getElementById("Version History").className = 'active';		 
 		
+}
 
+else if (Selection=='njduration')
+{
+	if ($(".njdurationchart").length!==1){
+		njduration(1)
+		}
+		
+	$(".njchart").hide()
+	$(".deploy").hide()
+	$(".vhistory").attr("display","none");
+	$(".njdurationchart").show()
+		 
+		 
+		document.body.style.backgroundColor = "#000000";
 	
-
-	
+		document.getElementById("Nightly Jobs").className = '';
+		document.getElementById("Deploy Versions").className = '';
+		document.getElementById("Version History").className = '';
+		document.getElementById("Job Run Time").className = 'active';		 
+		
 }
 
 

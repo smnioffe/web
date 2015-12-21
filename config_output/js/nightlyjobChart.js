@@ -6,7 +6,7 @@
 
 
 function nj(selectVar){
-    d3.csv("data/report_output.csv", function(error, clients) {
+    d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), function(error, clients) {
         if (error) throw error;
 
 		var laststepArr=[]
@@ -513,7 +513,7 @@ clientsFil=clients.filter(function(d){ return distinctClients.indexOf(d.CLIENT) 
 		
 	}
 	
-	console.log($(window).width())
+
 	if($(window).width()>1700 && $(".njchart").length!==1&& $(".njchart").length!==2){
 	draw(leftDistinctClients);
 	draw(rightDistinctClients);}

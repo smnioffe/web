@@ -21,7 +21,7 @@ StartDate= parseDate(StartDate);
 
 
 
-d3.csv("data/report_output.csv", function(error, buckets) {
+d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), function(error, buckets) {
   if (error) throw error;
 
   //csv = csv.filter(function(d){return d.orig_table=='version history';});
@@ -207,9 +207,9 @@ var x = d3.time.scale().range([0, width]),
 
 var numberCoreVersions	= distinctCoreVersions.length
 
-var colorScale = d3.scale.ordinal()
-.range(colorbrewer.Set1[numberCoreVersions+1])
-.domain([0,numberCoreVersions]);
+ var colorScale = d3.scale.ordinal()
+ .range(colorbrewer.Set1[numberCoreVersions+1])
+ .domain([0,numberCoreVersions]);
 
 
  function formatTitle(str)

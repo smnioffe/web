@@ -5,6 +5,7 @@
     <title>Arcadia Environment Monitoring</title>
 	 <link rel="shortcut icon" type="image/x-icon" href="/monitoring_framework/favicon.ico" />
 	
+
 	<link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link href='//fonts.googleapis.com/css?family=Roboto' type="text/css" rel="stylesheet" media="all"/>
 	<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700' type="text/css" rel="stylesheet" media="all"/>
@@ -62,7 +63,8 @@
             shape-rendering: crispEdges;
         }
 		
-		
+
+
 	
 
         .d3-tip {
@@ -132,6 +134,12 @@
             font-size: 15px;
 			color: #B7F6F6;
         }		
+		
+		
+				@font-face {
+    font-family:"digital-7";
+    src: url("font/digital-7.ttf") 
+	}
 
     </style>
 </head>
@@ -142,16 +150,29 @@
   <div class="navbar-fixed">
     <nav class="grey darken-1">
       <div class="nav-wrapper">
-	   <a id="updatetime"  class="brand-logo right">Logo</</a>
+
+	   <a id="logo"  class="right"><img src="img/arclogo.png" style="width:150px;height:63px;"></</a>
+	   	   
         <ul class="left hide-on-med-and-down">
-          <li onclick="navBar('nj')" id="Nightly Jobs" class="active"><a>Nightly Job Status</a></li>
+          <li onclick="navBar('nj')" id="Nightly Jobs" class="active">Nightly Job Statuses<a></a></li>
+		  <li onclick="navBar('njduration')" id="Job Run Time" ><a>Job Run Time</a></li> 
 		  <li onclick="navBar('deploy')" id="Deploy Versions"><a>Versions Deployed</a></li>
 		  <li onclick="navBar('vhistory')" id="Version History" ><a>Version History</a></li> 
         </ul>
+		<ul id="slide-out" class="side-nav" >
+          <li onclick="navBar('nj')" id="Nightly Jobs side"><a>Nightly Job Statuses</a></li>
+		  <li onclick="navBar('njduration')" id="Job Run Time side" ><a>Job Run Time</a></li> 
+		  <li onclick="navBar('deploy')" id="Deploy Versions side"><a>Versions Deployed</a></li>
+		  <li onclick="navBar('vhistory')" id="Version History side" ><a>Version History</a></li> 
+      </ul>
+	   <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
       </div>
     </nav>
   </div>
-
+  
+<div  align="right">
+<a id="updatetime"></</a>
+</div>
   <!-- <p4 class="left-align" id="updatetime" style="top:80px; left:900px; color:#B7F6F6; position: absolute; margin-top: 0px;"<svg></svg></p4> -->
  <!-- <div id ="content" style="position:absolute; width: 100%; height: 100%;"> </div> -->
   
@@ -185,6 +206,7 @@ var materializeColors = {
 
 
 
+
 </script>
 
 <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -194,10 +216,16 @@ var materializeColors = {
 <script src="js/colorbrewer.v1.min.js"></script>
 <script src="js/d3.tip.v0.6.3.js"></script>
 
+<script>
+
+  $(".button-collapse").sideNav();
+
+</script>
+<!--<script src="js/coreColors.js"></script>-->
 <script src="js/deployChart.js"></script>
 <script src="js/timeStamp.js"></script>
 <script src="js/nightlyjobChart.js"></script>
 <script src="js/versionHistory.js"></script>
 <script src="js/navBar.js"></script>
-
+<script src="js/nightlyjobDuration.js"></script>
 <script src="js/hashListener.js"></script>
