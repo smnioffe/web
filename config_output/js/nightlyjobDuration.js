@@ -6,7 +6,7 @@
 
 
 function njduration(selectVar){
-    d3.csv("data/output2.csv" + '?' + Math.floor(Math.random() * 1000), function(error, clients) {
+    d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), function(error, clients) {
         if (error) throw error;
 
 		var laststepArr=[]
