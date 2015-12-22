@@ -462,10 +462,10 @@ function zeroPad(num, places) {
 	}
 	
 
-	if($(window).width()>1700 && $(".njchartduration").length!==1&& $(".njchartduration").length!==2){
+	if($(window).width()>1700 && $(".njdurationchart").length!==1&& $(".njdurationchart").length!==2){
 	drawrun_hours(leftDistinctClients,1);
 	drawrun_hours(rightDistinctClients,2);}
-	else if ($(".njchartduration").length!==1&& $(".njchartduration").length!==2){
+	else if ($(".njdurationchart").length!==1&& $(".njdurationchart").length!==2){
 	drawrun_hours(distinctClients,1)}
 
 	
