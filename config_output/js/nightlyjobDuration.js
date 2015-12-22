@@ -6,7 +6,7 @@
 
 
 function njduration(selectVar){
-    d3.csv("data/output.csv" + '?' + Math.floor(Math.random() * 1000), function(error, clients) {
+    d3.csv("data/output2.csv" + '?' + Math.floor(Math.random() * 1000), function(error, clients) {
         if (error) throw error;
 
 		var laststepArr=[]
@@ -23,36 +23,37 @@ function njduration(selectVar){
 		.forEach(function(d,i) {
 			//d.name	start_time	end_date	job_complete	run_days	run_hours	run_minutes	last_step_name	last_step_id	last_step_date	ENV	CLIENT	entry_timestamp	updated_timestamp
 
-            d.ENV = d.ENV;
-            d.CLIENT = d.CLIENT;
-            d.name = d.name;
-			d.durationClean=d.run_hours;
-			d.run_date=d.run_days;
-            d.run_hours= -d.run_hours*-1;
-			d.run_days=-d.run_days*-1;
-			d.run_hours=-d.run_hours*-1;
+            d.ENV = d.env;
+            d.CLIENT = d.client;
+            d.name = d.database_name;
+			d.durationClean=d.value1;
+			//d.run_date=d.value2;
+            //d.run_hours= -d.value3*-1;
+			d.run_days=-d.value2*-1;
+			d.run_hours=-d.value3*-1;
+			d.run_minutes=-d.value4*-1;
             //d.run_duration= d.run_duration;
 
           // d.type=d.type;
-            d.step_name=d.last_step_name;
-            d.last_step_id=d.last_step_id;
-            //d.run_date=d.start_time;
+            d.step_name=d.type;
+            d.last_step_id=d.value5;
+            d.last_step_name=d.type;
             //d.step=parseInt(d.value2.substring(0, 3));
-            d.last_job_step=-d.value5*-1;
+           // d.last_job_step=-d.value5*-1;
 			d.updated_timestamp=d.updated_timestamp;
 			//d.database_name=d.database_name;
 			
+			d.run_date=d.value3;
+			d.orderRun=-d.value4*-1;
+			d.duration=-d.value2*-1;
 			
-			d.orderRun=-d.job_complete*-1;
-			d.duration=-d.run_minutes*-1;
-			
-			d.status=d.last_step_name;
+			d.status=d.type;
 			
 			
 
             if (d.CLIENT=="ONPOINT"){d.CLIENT="ONPT"}
 
-            d.job_complete=d.job_complete
+            d.job_complete=d.value1;
 			
 			
 			// if (d.type=="job duration history") 
@@ -67,18 +68,18 @@ function njduration(selectVar){
 
         })
 
-		clientsHis=clients.filter(function(d){ return d.type == "job duration history"; })
+		clientsHis=clients.filter(function(d){ return d.orig_table == "job duration history"; })
 		
 		//clientsHis.sort(function(a,b) {return d3.descending(b.orderRun-a.orderRun);});
 
 		
-		clients=clients.filter(function(d){ return d.type == "job duration"; })
+		clients=clients.filter(function(d){ return d.orig_table == "job duration"; })
 		
 		
 
 
         var distinctClients = d3.set(
-            clients.filter(function(d){ return d.type == "job duration"; })
+            clients.filter(function(d){ return d.orig_table == "job duration"; })
                 .map(function(d){ return d.CLIENT; })
             //.filter(function(d){  return (typeof d !== "undefined") ? d !== null : false })
         ).values();
@@ -96,7 +97,7 @@ function njduration(selectVar){
 		
 		
 
-function drawrun_hours(distinctClients){
+function drawrun_hours(distinctClients,countVar){
 
 clientsFil=clients.filter(function(d){ return distinctClients.indexOf(d.CLIENT) > -1; })
 
@@ -113,9 +114,14 @@ clientsHisFil=clientsHis.filter(function(d){ return distinctClients.indexOf(d.CL
 
         var max = d3.max(clientsFil, function(d) {return ydomain.indexOf(d.CLIENT)*160+75;} );
 
-        var margin = {top: 100, right: 100, bottom: 10, left: 100},
-            width = 960 - margin.left - margin.right,
-            height = max + 300 - margin.top - margin.bottom;
+		if (countVar==2){
+        var margin = {top: 0, right: 100, bottom: 5, left: 100};
+		// var height = max + 400 - margin.top - margin.bottom;
+		}
+		else {	var margin = {top: 100, right: 100, bottom: 10, left: 100};
+		}
+        var width = 960 - margin.left - margin.right;
+        var height = max + 300 - margin.top - margin.bottom;
 
         var svg = d3.select("body").append("svg").attr("class","njdurationchart")
             .attr("width", width + margin.left + margin.right)
@@ -309,9 +315,9 @@ function zeroPad(num, places) {
 					if (d.run_hours > 12){return materializeColors.yellow2} else
 					{return materializeColors.lgreen} });
 
-	var barHeight=30
+	var barHeight=28
 	
-	var y2 = d3.scale.linear()
+	var y2 = d3.scale.pow(.15)
     .range([barHeight,0]);			
 				
 
@@ -325,12 +331,12 @@ function zeroPad(num, places) {
       .attr("width", "9px")
       .attr("y",function(d) {
 	   y2.domain([d3.max(clientsHisFil.filter(function(k){ return k.name == d.name;}), function(d) { return d.duration; }),0]);
-	  return ydomain.indexOf(d.CLIENT)*160+150-y2(d.duration)-barHeight;
+	  return ydomain.indexOf(d.CLIENT)*160+150-y2(d.duration)-barHeight-5;
 	  
 	  })
       .attr("height", function(d) { 
 	   y2.domain([d3.max(clientsHisFil.filter(function(k){ return k.name == d.name;}), function(d) { return d.duration; }),0]);
-	  return y2(d.duration); 
+	  return y2(d.duration)+5; 
 	  
 	  })
 	  .style("fill",function(d){
@@ -457,10 +463,10 @@ function zeroPad(num, places) {
 	
 
 	if($(window).width()>1700 && $(".njchartduration").length!==1&& $(".njchartduration").length!==2){
-	drawrun_hours(leftDistinctClients);
-	drawrun_hours(rightDistinctClients);}
+	drawrun_hours(leftDistinctClients,1);
+	drawrun_hours(rightDistinctClients,2);}
 	else if ($(".njchartduration").length!==1&& $(".njchartduration").length!==2){
-	drawrun_hours(distinctClients)}
+	drawrun_hours(distinctClients,1)}
 
 	
 
