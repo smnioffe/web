@@ -176,7 +176,7 @@ var x = d3.time.scale().range([0, width]),
    var distinctCoreVersions = d3.set(
     buckets.map(function(d){ return d.coreMajor; })	
     ).values().sort(d3.ascending);
-	
+
 	
 	   var yAxis = svg.selectAll(".tile")
   .data(ydomain).enter();

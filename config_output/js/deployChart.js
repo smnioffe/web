@@ -77,7 +77,9 @@ var svg = d3.select("body").append("svg").attr("class", "deploy")
 var distinctCoreVersions = d3.set(
     clients.filter(function(d){ return d.config_item == "coreRevision"; }).map(function(d){ return d.config_value.substring(0, 4); })	
        // .filter(function(d){  return (typeof d !== "undefined") ? d !== null : false })
-    ).values();
+    ).values().sort(d3.ascending);
+	
+
 
 var numberCoreVersions	= distinctCoreVersions.length
 //console.log(distinctCoreVersions.length)
@@ -90,10 +92,10 @@ var numberCoreVersions	= distinctCoreVersions.length
    // var colorScale = d3.scale.pow(2)             
        // .range([materializeColors.dblue, materializeColors.green ])  
        // .domain(d3.extent(clients.filter(function(d){ return d.config_item == "coreRevision"; }), function(d){return d.rank})); 
-
+//console.log(numberCoreVersions)
 var colorScale = d3.scale.ordinal()
 .range(colorbrewer.Set1[numberCoreVersions+1])
-.domain([0,numberCoreVersions]);
+ .domain([0,numberCoreVersions]);
   
   var yAxis = svg.selectAll(".tile")
   .data(distinctClients).enter();

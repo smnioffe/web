@@ -15,7 +15,7 @@ function njduration(selectVar){
 		var xArr=[]
 		var yArr=[]		
 
-		
+
 
 	//var thisName	
         // Coerce the CSV data to the appropriate types.
@@ -337,6 +337,7 @@ function zeroPad(num, places) {
 	   if(d.duration>240000)  {return materializeColors.red2;}
 	   else if (d.duration>120000) {return materializeColors.yellow2;}
 	  else {return materializeColors.lgreen;}})
+	  .style("opacity",.75)
             .on('mouseover', synchronizedMouseOverHis)
             .on("mouseout", synchronizedMouseOutHis);
 
