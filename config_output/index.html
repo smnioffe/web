@@ -3,7 +3,7 @@
 <head>
 
     <title>Arcadia Environment Monitoring</title>
-	 <link rel="shortcut icon" type="image/x-icon" href="/monitoring_framework/favicon.ico" />
+	 <link rel="shortcut icon" type="image/x-icon" href="assets/monitoring_framework/favicon.ico" />
 	
 
 	<link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -14,7 +14,7 @@
     <link href='//fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900' type="text/css" rel="stylesheet" media="all"/>
     <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
 	<link href='//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' type="text/css" rel="stylesheet" media="all"/>
-
+	<link href="css/jquery.qtip.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 	
 	
@@ -151,10 +151,14 @@
     <nav class="grey darken-1">
       <div class="nav-wrapper">
 
-	   <a id="logo"  class="right"><img src="img/arclogo.png" style="width:150px;height:63px;"></</a>
-	   	   
+	   <a id="logo"  class="right"><img src="img/arclogo.png" style="width:150px;height:63px;"></a>
+	   <a   class="right" href="#helptip" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+	   <a  id="helper" class="right"  href="#test" title=""><i class="fa fa-question-circle fa-lg" style="color:#D9D9D9;"></i></a>
+
+
+
         <ul class="left hide-on-med-and-down">
-          <li onclick="navBar('nj')" id="Nightly Jobs" class="active">Nightly Job Statuses<a></a></li>
+          <li onclick="navBar('nj')" id="Nightly Jobs" class="active"><a>Nightly Job Statuses</a></li>
 		  <li onclick="navBar('njduration')" id="Job Run Time" ><a>Job Run Time</a></li> 
 		  <li onclick="navBar('deploy')" id="Deploy Versions"><a>Versions Deployed</a></li>
 		  <li onclick="navBar('vhistory')" id="Version History" ><a>Version History</a></li> 
@@ -170,12 +174,17 @@
     </nav>
   </div>
   
+  
+	   <div id="tooltext" style="display: none;"> <p><b>v1.3</b> Updated:<i> 12/25</i><br></p><p> Includes new Job Run Time Dashboard.</p><p>Fixed issue with nightly jobs<br> not displaying when ran for over a day<p>
+	   <p><a href="mailto:simon.ioffe@arcadiasolutions.com?Subject=Monitoring%20dashboard" target="_top" >Reports bugs or suggestions</a></p>
+	   </div>
+  
 <div  align="right">
 <a id="updatetime"></</a>
 </div>
   <!-- <p4 class="left-align" id="updatetime" style="top:80px; left:900px; color:#B7F6F6; position: absolute; margin-top: 0px;"<svg></svg></p4> -->
  <!-- <div id ="content" style="position:absolute; width: 100%; height: 100%;"> </div> -->
-  
+
 </body>
 
 <script>
@@ -214,11 +223,34 @@ var materializeColors = {
 <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
 <script src="//cdn.rawgit.com/novus/nvd3/v1.8.1/build/nv.d3.js"></script>
 <script src="js/colorbrewer.v1.min.js"></script>
+<script src="js/jquery.qtip.js"></script>
 <script src="js/d3.tip.v0.6.3.js"></script>
 
 <script>
 
   $(".button-collapse").sideNav();
+  
+  
+  // Create the tooltips only when document ready
+$(document).ready(function () {
+    
+    // This will automatically grab the 'title' attribute and replace
+    // the regular browser tooltips for all <a> elements with a title attribute!
+    $('a[title]').qtip({
+    content: {
+        text: $("#tooltext"),
+        title: 'About'
+    }
+	,style: { 
+       classes: 'qtip-dark' 
+   }
+     ,hide: {
+          fixed: true,
+          delay: 500
+     }
+	});
+    
+});
 
 </script>
 <!--<script src="js/coreColors.js"></script>-->
