@@ -1,16 +1,35 @@
+declare @server_name nvarchar(max)
+set @server_name='[qdwsqlqa03]'
+
+DECLARE @dbNameSQL NVARCHAR(MAX)
+
 IF (Object_ID('tempdb..#db_name') IS NOT NULL)
     DROP TABLE #db_name;
 
-SELECT name, ROW_NUMBER() OVER(ORDER BY name DESC) AS rownum
-into #db_name --select * from #db_name
- FROM sys.databases
-where name like '%warehouse%'
-and name not like '%arcas%'
-and name not like '%hotfix%'
-and name not like '%upgrade%'
+SET @dbNameSQL='SELECT name, ROW_NUMBER() OVER(ORDER BY name DESC) AS rownum
+into #db_name
+ FROM @server_name+''sys.databases''
+where name like ''%warehouse%''
+and name not like ''%arcas%''
+and name not like ''%hotfix%''
+and name not like ''%upgrade%''
+and name not like ''%dummy%''
+
+IF (Object_ID('tempdb..#config') IS NOT NULL)
+    DROP TABLE #config;
+    
+create table #config (
+	[config_id] [int],
+	[config_item] [varchar](50),
+	[config_description] [varchar](255),
+	[config_value] [varchar](max),
+	[modify_timestamp] [datetime],
+	[database_name] [varchar](max),
+	[update_timestamp] [datetime]
+) 
 
 
-DECLARE @reprocessSQL NVARCHAR(MAX)
+DECLARE @configSQL NVARCHAR(MAX)
 DECLARE @y int
 SET @y = 1         
 
@@ -19,17 +38,25 @@ SET @y = 1
 
 
 		
-	 SELECT @reprocessSQL =
-	 'SELECT distinct cast('+name + ' as varchar(36)) as [database_name],[config_id] ,[config_item],[config_description],[config_value],[update_timestamp] as [modify_timestamp],getdate() as [update_timestamp] FROM '+ name + '.[dbo].[config] with (nolock)'
+	 SELECT @configSQL =
+	 
+	 'INSERT INTO #config
+	  SELECT distinct 
+	  [config_id]
+	 ,[config_item]
+	 ,[config_description]
+	 ,[config_value]
+	 ,[update_timestamp] as [modify_timestamp]
+	 ,cast('''+name + ''' as varchar(36)) as [database_name]
+	 ,getdate() as [update_timestamp]
+	 FROM @server_name.'+ name + '.[dbo].[config] with (nolock)'
 	 FROM #db_name
 	 WHERE rownum=@y
 	 
-
-	 PRINT @reprocessSQL
 	 
       BEGIN TRY
-      PRINT @reprocessSQL	
-	 EXECUTE sp_executesql @reprocessSQL
+      PRINT @configSQL	
+	 EXECUTE sp_executesql @configSQL
 	 END TRY
 	 BEGIN CATCH
 	 END CATCH
@@ -39,5 +66,5 @@ SET @y = 1
 		END
 
 				
-
+SELECT * FROM #config
 			
