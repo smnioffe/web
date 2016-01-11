@@ -53,11 +53,14 @@ d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), functi
   // y.domain(ydomain);
   
   
-  var max = d3.max(clients, function(d) {return ydomain.indexOf(d.CLIENT)*160+75;} );
+ // var max = d3.max(clients, function(d) {return ydomain.indexOf(d.CLIENT)*160+75;} );
+  
+  var max=ydomain.length*160 ;
+  
 
  var margin = {top: 100, right: 100, bottom: 10, left: 100},
     width = 960 - margin.left - margin.right,
-    height = max + 300 - margin.top - margin.bottom;
+    height = max + 200 - margin.top - margin.bottom;
 
 var svg = d3.select("body").append("svg").attr("class", "deploy")
     .attr("width", width + margin.left + margin.right)
@@ -95,7 +98,7 @@ var numberCoreVersions	= distinctCoreVersions.length
 //console.log(numberCoreVersions)
 var colorScale = d3.scale.ordinal()
 .range(colorbrewer.Set1[numberCoreVersions+1])
- .domain([0,numberCoreVersions]);
+ .domain(distinctCoreVersions);
   
   var yAxis = svg.selectAll(".tile")
   .data(distinctClients).enter();
@@ -117,11 +120,11 @@ var colorScale = d3.scale.ordinal()
                     .attr("class", 'd3-dp-line')
                     .attr("x1", -25)
                     .attr("y1", function(d) {
-		return distinctClients.indexOf(d)*130+75+77+"px";
+		return distinctClients.indexOf(d)*110+50+77+"px";
 		})
                     .attr("x2", 800)
                     .attr("y2", function(d) {
-		return distinctClients.indexOf(d)*130+75+77+"px";
+		return distinctClients.indexOf(d)*110+50+77+"px";
 		})
                     .style("stroke-dasharray", ("3, 3"))
                     .style("stroke-opacity", 0.6)	
@@ -137,7 +140,7 @@ xAxis.append("rect")
 		.attr("rx",15)
 		.attr("ry",15)
       .attr("width", "155px")
-      .attr("height", max-170)
+      .attr("height", -max*-1-740)
 	  .style("opacity",.9)
 	  .style("fill", "#404040");
 
@@ -147,7 +150,7 @@ yAxis.append("text")
 		.attr("x", -15
 		)
 		.attr("y",function(d) {
-		return distinctClients.indexOf(d)*130+75+10+"px";
+		return distinctClients.indexOf(d)*110+50+25+"px";
 		})
 .style("fill",materializeColors.white)
 .style("font-size","16px")
@@ -159,7 +162,7 @@ yAxis.append("text")
 
 xAxis.append("text")
 		.attr("x", function(d) { 
-		return xdomain.indexOf(d)*175+65+75+"px";}
+		return xdomain.indexOf(d)*175+73+62+"px";}
 		)
 		.attr("y",-15)
 .style("fill",materializeColors.white)
@@ -181,12 +184,12 @@ xAxis.append("text")
 		return xdomain.indexOf(d.ENV)*175+75+11+"px";
 		})
 		.attr("y",function(d) { 
-		return ydomain.indexOf(d.CLIENT)*130+35+"px";
+		return ydomain.indexOf(d.CLIENT)*110+40+"px";
 		})
 		.attr("rx",10)
 		.attr("ry",10)
 	  .attr("width", "126px")
-	  .attr("height", "96px")
+	  .attr("height", "70px")
 	  .style("stroke-width",2)
 	  .style("fill",function(d){return colorScale(d.coreMajor)})
 	  .style("opacity",.5)
@@ -202,12 +205,12 @@ xAxis.append("text")
 		return xdomain.indexOf(d.ENV)*175+75+5.5+"px";
 		})
 		.attr("y",function(d) { 
-		return ydomain.indexOf(d.CLIENT)*130+30+"px";
+		return ydomain.indexOf(d.CLIENT)*110+35+"px";
 		})
 		.attr("rx",15)
 		.attr("ry",15)
 	  .attr("width", "137px")
-	  .attr("height", "107px")
+	  .attr("height", "81px")
 	  .style("stroke-width",3.5)
 	  .style("fill","none")
 	   .style("stroke", function(d){return colorScale(d.coreMajor)});			
@@ -220,7 +223,7 @@ zAxisCore.append("text")
 		return xdomain.indexOf(d.ENV)*175+75+75-30.5+"px";
 		})
 		.attr("y",function(d) { 
-		return ydomain.indexOf(d.CLIENT)*130+65-8+"px";
+		return ydomain.indexOf(d.CLIENT)*110+70-8+"px";
 		})	
 	   .style("fill",materializeColors.white)// function(d){return colorScale(d.coreMajor)})
 .style("font-size","24px")
@@ -237,7 +240,7 @@ zAxisCore.append("text")
 		{return xdomain.indexOf(d.ENV)*175+75+75-8+"px";}
 		})
 		.attr("y",function(d) { 
-		return ydomain.indexOf(d.CLIENT)*130+65-8+"px";
+		return ydomain.indexOf(d.CLIENT)*110+70-8+"px";
 		})	
 	   .style("fill",materializeColors.white)// function(d){return colorScale(d.coreMajor)})
 .style("font-size","14px")
@@ -257,7 +260,7 @@ zAxisCore.append("text")
 		return xdomain.indexOf(d.ENV)*175+75+75+"px";
 		})
 		.attr("y",function(d) { 
-		return ydomain.indexOf(d.CLIENT)*130+105+"px";
+		return ydomain.indexOf(d.CLIENT)*110+83+"px";
 		})	
 .style("fill",materializeColors.lgrey)
 .style("font-family","Roboto")
@@ -274,7 +277,7 @@ zAxisCore.append("text")
 		return xdomain.indexOf(d.ENV)*175+75+75+"px";
 		})
 		.attr("y",function(d) { 
-		return ydomain.indexOf(d.CLIENT)*130+120+"px";
+		return ydomain.indexOf(d.CLIENT)*110+103+"px";
 		})	
 .style("font-family","Roboto")		
 .style("fill",materializeColors.lgrey)

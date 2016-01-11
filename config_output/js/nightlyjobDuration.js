@@ -85,9 +85,8 @@ function njduration(selectVar){
         ).values();
 
 
-       //console.log(clients.CLIENT)
 		
-		
+		distinctClients.sort(d3.ascending);
 		
 		 var middle = Math.ceil(distinctClients.length / 2);
 
@@ -114,14 +113,9 @@ clientsHisFil=clientsHis.filter(function(d){ return distinctClients.indexOf(d.CL
 
         var max = d3.max(clientsFil, function(d) {return ydomain.indexOf(d.CLIENT)*160+75;} );
 
-		if (countVar==2){
-        var margin = {top: 0, right: 100, bottom: 5, left: 100};
-		// var height = max + 400 - margin.top - margin.bottom;
-		}
-		else {	var margin = {top: 100, right: 100, bottom: 10, left: 100};
-		}
-        var width = 960 - margin.left - margin.right;
-        var height = max + 300 - margin.top - margin.bottom;
+      var margin = {top: 100, right: 100, bottom: 10, left: 100},
+            width = 960 - margin.left - margin.right,
+            height = max + 300 - margin.top - margin.bottom;
 
         var svg = d3.select("body").append("svg").attr("class","njdurationchart")
             .attr("width", width + margin.left + margin.right)
@@ -317,7 +311,7 @@ function zeroPad(num, places) {
 
 	var barHeight=28
 	
-	var y2 = d3.scale.pow(.15)
+	var y2 = d3.scale.linear()//pow(.15)
     .range([barHeight,0]);			
 				
 
@@ -461,8 +455,8 @@ function zeroPad(num, places) {
 		
 	}
 	
-
-	if($(window).width()>1700 && $(".njdurationchart").length!==1&& $(".njdurationchart").length!==2){
+	if($(".toggle-button").is( '.toggle-button-selected' ) && $(".njdurationchart").length!==1&& $(".njdurationchart").length!==2){
+	//if($(window).width()>1700 && $(".njdurationchart").length!==1&& $(".njdurationchart").length!==2){
 	drawrun_hours(leftDistinctClients,1);
 	drawrun_hours(rightDistinctClients,2);}
 	else if ($(".njdurationchart").length!==1&& $(".njdurationchart").length!==2){

@@ -159,7 +159,7 @@ var x = d3.time.scale().range([0, width]),
       .attr("class", "alt-label")
 	  .attr("textAlign", "center")
       .attr("x", 10)
-      .attr("y", 15)
+      .attr("y", 10)
       .attr("dy", ".35em")
 	
       .text("Place mouse over indivudal bars to get the exact deployment dates.");
@@ -168,9 +168,17 @@ var x = d3.time.scale().range([0, width]),
       .attr("class", "alt-label")
 	  .attr("textAlign", "center")
       .attr("x", 10)
-      .attr("y", 32)
+      .attr("y", 27)
       .attr("dy", ".35em")
       .text("Place mouse over legend to see minor releases and to see which deploys correspond with which version.");
+	  
+	  	  	  svg.append("text")
+      .attr("class", "alt-label")
+	  .attr("textAlign", "center")
+      .attr("x", 10)
+      .attr("y", 47)
+      .attr("dy", ".35em")
+      .text("Click the version in the legend to be taken to that versions release notes on Github.");
 		
 
    var distinctCoreVersions = d3.set(
@@ -188,7 +196,7 @@ var numberCoreVersions	= distinctCoreVersions.length
 
  var colorScale = d3.scale.ordinal()
  .range(colorbrewer.Set1[numberCoreVersions+1])
- .domain([0,numberCoreVersions]);
+ .domain(distinctCoreVersions);
 
 
  function formatTitle(str)
@@ -267,9 +275,12 @@ svg.append("g")
       .attr("class", "legend")
       .attr("transform", function(d, i) { return "translate(" + (width-100 +i * 40) + "," + (20) + ")"; });
 
-  legend.append("rect")
+  legend.append("svg:a")
+  .attr("xlink:href", function(d){return "https://github.com/arcadia/qdw/wiki/"+d.substr(1)+".0-Release-Notes";})
+      .append("svg:rect")
       .attr("width", 20)
       .attr("height", 20)
+
 	  .attr("id", function(d, i){ var mCoreid = 'core'+i; return mCoreid; })
       .style("fill",  function(d,i) { return colorScale(d)});	  
 
@@ -390,15 +401,21 @@ function update(minorVersions,coreVar,sortedLabel) {
 	  } else {return d3.rgb(colorScale(coreVar)).brighter(d*.2)};
 		  });
 	
-
+console.log(minorVersions,coreVar,sortedLabel)
 	  
   selection.enter()
-    .append("rect").attr("class", "bar")
+.append("svg:a")
+.attr("xlink:href", function(d){
+k=d.slice(0, d.indexOf("_"));
+if (k.indexOf("rc") > -1)
+{k=k.substr(0, k.indexOf('-')); }
+
+return "https://github.com/arcadia/qdw/wiki/"+k.substr(1)+"-Release-Notes";})
+.append("svg:rect").attr("class", "bar")
   .attr("y",function(d, i) { return 100 + i * 35 ;})
   .attr("x",width+100)
 	    .attr("width", 20)
       .attr("height", 20)  
-	  //.style("position","fixed")
       .style("fill",function(k){ d=k.substr(k.indexOf("_") + 1);
 		  if (d<0){  
 		  return d3.rgb(colorScale(coreVar)).darker(d*-.6);

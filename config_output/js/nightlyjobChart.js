@@ -61,7 +61,7 @@ function nj(selectVar){
         ).values();
 
 
-       
+       distinctClients.sort(d3.ascending);
 		
 		
 		 var middle = Math.ceil(distinctClients.length / 2);
@@ -514,7 +514,7 @@ clientsFil=clients.filter(function(d){ return distinctClients.indexOf(d.CLIENT) 
 	}
 	
 
-	if($(window).width()>1700 && $(".njchart").length!==1&& $(".njchart").length!==2){
+	if($(".toggle-button").is( '.toggle-button-selected' ) && $(".njchart").length!==1&& $(".njchart").length!==2){
 	draw(leftDistinctClients);
 	draw(rightDistinctClients);}
 	else if ($(".njchart").length!==1&& $(".njchart").length!==2){

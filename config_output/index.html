@@ -133,14 +133,24 @@
             font-family: 'Roboto', sans-serif;
             font-size: 15px;
 			color: #B7F6F6;
-        }		
+        }
+
+		wsText {
+            font-family: 'Roboto', sans-serif;
+            font-size: 12px;
+			color:white;
+        }			
 		
 		
 				@font-face {
     font-family:"digital-7";
     src: url("assets/monitoring_framework/font/digital-7.ttf") 
 	}
-
+	
+.toggle-button { background-color: #989898 ; margin: 5px 0; border-radius: 20px; border: 2px solid #D0D0D0;top:12px; height: 24px; cursor: pointer; width: 50px; position: relative; display: inline-block; user-select: none; -webkit-user-select: none; -ms-user-select: none; -moz-user-select: none; }
+.toggle-button button { cursor: pointer; outline: 0; display:block; position: absolute; left: 0; top: 0; border-radius: 100%; width: 30px; height: 30px; background-color: #D8D8D8; float: left; margin: -3px 0 0 -3px; border: 2px solid #D0D0D0; transition: left 0.3s; }
+.toggle-button-selected { background-color: #80acac; border: 2px solid #7DA652; }
+.toggle-button-selected button { left: 26px; top: 0; margin: 0; border: none; width: 24px; height: 24px; box-shadow: 0 0 4px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body><!-- onload="navBar('nj')">-->
@@ -152,16 +162,29 @@
       <div class="nav-wrapper">
 
 	   <a id="logo"  class="right"><img type="image" src="assets/monitoring_framework/img/arclogo.png" style="width:150px;height:63px;"></a>
-	   <a   class="right" href="#helptip" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
-	   <a  id="helper" class="right"  href="#test" title=""><i class="fa fa-question-circle fa-lg" style="color:#D9D9D9; font-size:15px "></i></a>
+	   <a   class="right" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+	   <a  id="helper" class="right"   title=""><i class="fa fa-question-circle fa-lg" style="color:#D9D9D9; font-size:24px "></i></a>
+	   <a   class="right"  >&nbsp&nbsp</a>
+	   <a id="about"  style="font-size:12px " class="right">About</a>
+	   <a   class="right" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+   
+   
+   <ul id="toggleDiv" class="right">
+   <wsText>Widecreen</wsText>
 
-
+    </ul>
+	<a   class="right"  >&nbsp&nbsp&nbsp</a>
+	 <ul id="toggleDiv" class="right">
+	   <a class="toggle-button" >
+   <button></button>	</a>
+   
+  </ul>
 
         <ul class="left hide-on-med-and-down">
-          <li onclick="navBar('nj')" id="Nightly Jobs" class="active"><a>Nightly Job Statuses</a></li>
-		  <li onclick="navBar('njduration')" id="Job Run Time" ><a>Job Run Time</a></li> 
-		  <li onclick="navBar('deploy')" id="Deploy Versions"><a>Versions Deployed</a></li>
-		  <li onclick="navBar('vhistory')" id="Version History" ><a>Version History</a></li> 
+          <li onclick="navBar('nj')" id="Nightly Jobs" class="active"><a id="Nightly Jobs Text">Nightly Job Statuses</a></li>
+		  <li onclick="navBar('njduration')" id="Job Run Time" ><a id="Job Run Time Text">Job Run Time</a></li> 
+		  <li onclick="navBar('deploy')" id="Deploy Versions"><a id="Deploy Versions Text">Versions Deployed</a></li>
+		  <li onclick="navBar('vhistory')" id="Version History" ><a id="Version History Text">Version History</a></li> 
         </ul>
 		<ul id="slide-out" class="side-nav" >
           <li onclick="navBar('nj')" id="Nightly Jobs side"><a>Nightly Job Statuses</a></li>
@@ -175,15 +198,20 @@
   </div>
   
   
-	   <div id="tooltext" style="display: none;"> <p><b>v1.3</b> Updated:<i> 12/25</i><br></p><p> Includes new Job Run Time Dashboard.</p><p>Fixed issue with nightly jobs<br> not displaying when ran for over a day<p>
+	   <div id="tooltext" style="display: none;">
+	   <img type="image" id="help_image" src="assets/monitoring_framework/img/job_time_leg.png" style="width:180px;height:96px;">
+	   <hr>
+	   <p><b>v1.4</b> Updated:<i> 1/10</i><br></p><p> Added legends and widescreen toggle to nightly job views</p><p>Added missing clients for version views<br><i><b>Note:</b> these will not yet have as long a deploy history.</i><br><p>Added Github release notes links to Version History</p>
 	   <p><a href="mailto:simon.ioffe@arcadiasolutions.com?Subject=Monitoring%20Dashboard" target="_top" >Reports bugs or suggestions</a></p>
 	   </div>
-  
+
+
 <div  align="right">
 <a id="updatetime"></</a>
 </div>
-  <!-- <p4 class="left-align" id="updatetime" style="top:80px; left:900px; color:#B7F6F6; position: absolute; margin-top: 0px;"<svg></svg></p4> -->
- <!-- <div id ="content" style="position:absolute; width: 100%; height: 100%;"> </div> -->
+
+
+
 
 </body>
 
@@ -253,11 +281,11 @@ $(document).ready(function () {
 });
 
 </script>
-<!--<script src="js/coreColors.js"></script>-->
 <script src="js/deployChart.js"></script>
 <script src="js/timeStamp.js"></script>
 <script src="js/nightlyjobChart.js"></script>
 <script src="js/versionHistory.js"></script>
-<script src="js/navBar.js"></script>
+<script src="js/toggleWS.js"></script>
 <script src="js/nightlyjobDuration.js"></script>
+<script src="js/navBar.js"></script>
 <script src="js/hashListener.js"></script>
