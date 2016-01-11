@@ -36,7 +36,6 @@ else if (Selection=='nj')
 	$(".vhistory").attr("display","none");
 	$(".njdurationchart").hide()
 	
-	console.log($(".njchart").length)
 
 	nj(1); 
 	$(".njchart").show()
