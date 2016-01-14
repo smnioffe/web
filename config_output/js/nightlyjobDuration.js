@@ -333,10 +333,11 @@ function zeroPad(num, places) {
 	  return y2(d.duration)+5; 
 	  
 	  })
-	  .style("fill",function(d){
-	   if(d.duration>240000)  {return materializeColors.red2;}
-	   else if (d.duration>120000) {return materializeColors.yellow2;}
-	  else {return materializeColors.lgreen;}})
+	  .style("fill","#B7F6F6")//materializeColors.lblue)
+	  // .style("fill",function(d){
+	   // if(d.duration>240000)  {return materializeColors.red2;}
+	   // else if (d.duration>120000) {return materializeColors.yellow2;}
+	  // else {return materializeColors.lgreen;}})
 	  .style("opacity",.75)
             .on('mouseover', synchronizedMouseOverHis)
             .on("mouseout", synchronizedMouseOutHis);

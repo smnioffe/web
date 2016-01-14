@@ -199,9 +199,11 @@
   
   
 	   <div id="tooltext" style="display: none;">
+	   <div id="help_image">
 	   <img type="image" src="assets/monitoring_framework/img/job_time_leg.png" style="width:180px;height:96px;">
+	   </div>
 	   <hr>
-	   <p><b>v1.4</b> Updated:<i> 1/10</i><br></p><p> Added legends and widescreen toggle to nightly job views</p><p>Added missing clients for version views<br><i><b>Note:</b> these will not yet have as long a deploy history.</i><br><p>Added Github release notes links to Version History</p>
+	   <p><b>v1.4</b> Updated:<i> 1/11</i><br></p><p> Added legends and widescreen toggle to nightly job views</p><p>Added missing clients for version views<br><i><b>Note:</b> these will not yet have as long a deploy history.</i><br><p>Added Github release notes links to Version History</p>
 	   <p><a href="mailto:simon.ioffe@arcadiasolutions.com?Subject=Monitoring%20Dashboard" target="_top" >Reports bugs or suggestions</a></p>
 	   </div>
 
@@ -281,11 +283,21 @@ $(document).ready(function () {
 });
 
 </script>
-<script src="js/deployChart.js"></script>
 <script src="js/timeStamp.js"></script>
+<script src="js/deployChart.js"></script>
 <script src="js/nightlyjobChart.js"></script>
 <script src="js/versionHistory.js"></script>
 <script src="js/toggleWS.js"></script>
 <script src="js/nightlyjobDuration.js"></script>
 <script src="js/navBar.js"></script>
 <script src="js/hashListener.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72406614-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
