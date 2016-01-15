@@ -11,4 +11,9 @@ $(document).on('click', '.toggle-button', function() {
 	njduration(1); 
 	}
 	
+			if ( document.getElementById("Latest Backup").className == 'active'	) {
+	$(".backupchart").remove();
+	backup(1); 
+	}
+	
 });

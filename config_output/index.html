@@ -184,13 +184,15 @@
           <li onclick="navBar('nj')" id="Nightly Jobs" class="active"><a id="Nightly Jobs Text">Nightly Job Statuses</a></li>
 		  <li onclick="navBar('njduration')" id="Job Run Time" ><a id="Job Run Time Text">Job Run Time</a></li> 
 		  <li onclick="navBar('deploy')" id="Deploy Versions"><a id="Deploy Versions Text">Versions Deployed</a></li>
-		  <li onclick="navBar('vhistory')" id="Version History" ><a id="Version History Text">Version History</a></li> 
+		  <li onclick="navBar('vhistory')" id="Version History" ><a id="Version History Text">Version History</a></li>
+		  <li onclick="navBar('backup')" id="Latest Backup" ><a id="Latest Backup Text">Latest Backup</a></li> 		  
         </ul>
 		<ul id="slide-out" class="side-nav" >
           <li onclick="navBar('nj')" id="Nightly Jobs side"><a>Nightly Job Statuses</a></li>
 		  <li onclick="navBar('njduration')" id="Job Run Time side" ><a>Job Run Time</a></li> 
 		  <li onclick="navBar('deploy')" id="Deploy Versions side"><a>Versions Deployed</a></li>
-		  <li onclick="navBar('vhistory')" id="Version History side" ><a>Version History</a></li> 
+		  <li onclick="navBar('vhistory')" id="Version History side" ><a>Version History</a></li>
+		  <li onclick="navBar('backup')" id="Latest Backup side" ><a>Latest Backup</a></li> 		  
       </ul>
 	   <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
       </div>
@@ -199,11 +201,11 @@
   
   
 	   <div id="tooltext" style="display: none;">
-	   <div id="help_image">
-	   <img type="image" src="assets/monitoring_framework/img/job_time_leg.png" style="width:180px;height:96px;">
+	   <div>
+	   <img id="help_image" type="image" src="assets/monitoring_framework/img/job_time_leg.png" style="width:180px;height:96px;">
 	   </div>
 	   <hr>
-	   <p><b>v1.4</b> Updated:<i> 1/11</i><br></p><p> Added legends and widescreen toggle to nightly job views</p><p>Added missing clients for version views<br><i><b>Note:</b> these will not yet have as long a deploy history.</i><br><p>Added Github release notes links to Version History</p>
+	   <p><b>v1.5</b> Updated:<i> 1/14</i><br></p><p> Added latest backup for each client</p><p> Added legends and widescreen toggle to nightly job views</p><p>Added missing clients for version views<br><i><b>Note:</b> these will not yet have as long a deploy history.</i><br><p>Added Github release notes links to Version History</p>
 	   <p><a href="mailto:simon.ioffe@arcadiasolutions.com?Subject=Monitoring%20Dashboard" target="_top" >Reports bugs or suggestions</a></p>
 	   </div>
 
@@ -287,8 +289,10 @@ $(document).ready(function () {
 <script src="js/deployChart.js"></script>
 <script src="js/nightlyjobChart.js"></script>
 <script src="js/versionHistory.js"></script>
-<script src="js/toggleWS.js"></script>
 <script src="js/nightlyjobDuration.js"></script>
+<script src="js/backupStat.js"></script>
+<script src="js/toggleWS.js"></script>
+
 <script src="js/navBar.js"></script>
 <script src="js/hashListener.js"></script>
 <script>

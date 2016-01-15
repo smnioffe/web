@@ -9,6 +9,7 @@ function navBar(Selection)
 	$(".njchart").hide()
 	$(".vhistory").attr("display","none");
 	$(".njdurationchart").hide()
+	$(".backupchart").hide()
 	$(".deploy").show()
 	
 	$('[id^="toggleDiv"]').css('display','none');
@@ -20,10 +21,12 @@ function navBar(Selection)
 		document.getElementById("Nightly Jobs").className = '';
 		document.getElementById("Version History").className = '';
 		document.getElementById("Job Run Time").className = '';
+		document.getElementById("Latest Backup").className = '';
 		document.getElementById("Deploy Versions").className = 'active';
 		
 		document.getElementById("Deploy Versions Text").style.color = "#B7F6F6"
-		document.getElementById("Job Run Time Text").style.color = "#FFFFFF"	
+		document.getElementById("Job Run Time Text").style.color = "#FFFFFF"
+		document.getElementById("Latest Backup Text").className = "#FFFFFF"		
 		document.getElementById("Nightly Jobs Text").style.color = "#FFFFFF"
 		document.getElementById("Version History Text").style.color = "#FFFFFF"
 	}	
@@ -35,6 +38,7 @@ else if (Selection=='nj')
 	$(".deploy").hide()
 	$(".vhistory").attr("display","none");
 	$(".njdurationchart").hide()
+	$(".backupchart").hide()
 	
 
 	nj(1); 
@@ -53,10 +57,12 @@ else if (Selection=='nj')
 		document.getElementById("Deploy Versions").className = '';
 		document.getElementById("Job Run Time").className = '';
 		document.getElementById("Version History").className = '';
+		document.getElementById("Latest Backup").className = '';
 		document.getElementById("Nightly Jobs").className = 'active';
 		
 		document.getElementById("Deploy Versions Text").style.color = "#FFFFFF"
 		document.getElementById("Job Run Time Text").style.color = "#FFFFFF"
+		document.getElementById("Latest Backup Text").className = "#FFFFFF"
 		document.getElementById("Nightly Jobs Text").style.color = "#B7F6F6"
 		document.getElementById("Version History Text").style.color = "#FFFFFF"
 }
@@ -70,6 +76,7 @@ else if (Selection=='vhistory')
 	$(".deploy").hide()
 	$(".njchart").hide()
 	$(".njdurationchart").hide()
+	$(".backupchart").hide()
 	$(".vhistory").attr("display");
 	
 
@@ -84,11 +91,13 @@ else if (Selection=='vhistory')
 		document.getElementById("Nightly Jobs").className = '';
 		document.getElementById("Deploy Versions").className = '';
 		document.getElementById("Job Run Time").className = '';
+		document.getElementById("Latest Backup").className = '';
 		document.getElementById("Version History").className = 'active';		 
 
 		document.getElementById("Deploy Versions Text").style.color = "#FFFFFF"
 		document.getElementById("Job Run Time Text").style.color = "#FFFFFF"
 		document.getElementById("Nightly Jobs Text").style.color = "#FFFFFF"
+		document.getElementById("Latest Backup Text").className = "#FFFFFF"
 		document.getElementById("Version History Text").style.color = "#B7F6F6"
 }
 
@@ -100,6 +109,8 @@ else if (Selection=='njduration')
 		
 	$(".njchart").hide()
 	$(".deploy").hide()
+	$(".njdurationchart").hide()
+	$(".backupchart").hide()
 	$(".vhistory").attr("display","none");
 	
 	
@@ -108,7 +119,7 @@ else if (Selection=='njduration')
 	
 	$('[id^="toggleDiv"]').css('display','');
 		 
-		$("#help_image").attr("style","width:180px;height:96px;"); 
+		$("#help_image").attr("style","width:180px;height:128px;"); 
 		$("#help_image").attr("src","assets/monitoring_framework/img/job_time_leg.png"); 
 		 
 		document.body.style.backgroundColor = "#000000";
@@ -116,12 +127,51 @@ else if (Selection=='njduration')
 		document.getElementById("Nightly Jobs").className = '';
 		document.getElementById("Deploy Versions").className = '';
 		document.getElementById("Version History").className = '';
+		document.getElementById("Latest Backup").className = '';
 		document.getElementById("Job Run Time").className = 'active';	
 
 		document.getElementById("Deploy Versions Text").style.color = "#FFFFFF"
 		document.getElementById("Job Run Time Text").style.color = "#B7F6F6"	
 		document.getElementById("Nightly Jobs Text").style.color = "#FFFFFF"
+		document.getElementById("Latest Backup Text").className = "#FFFFFF"
 		document.getElementById("Version History Text").style.color = "#FFFFFF"
+		
+}
+
+else if (Selection=='backup')
+{
+	//if ($(".njdurationchart").length!==1){
+		$(".njdurationchart").remove();
+		//}
+		
+	$(".njchart").hide()
+	$(".deploy").hide()
+	$(".njdurationchart").hide()
+	$(".vhistory").attr("display","none");
+	$(".backupchart").show();
+	
+	
+	backup(1); 
+	$(".backupchart").show();
+	
+		$('[id^="toggleDiv"]').css('display','');
+		 
+		$("#help_image").attr("style","width:0px;height:0px;");
+		 
+		document.body.style.backgroundColor = "#333333";
+	
+		document.getElementById("Nightly Jobs").className = '';
+		document.getElementById("Deploy Versions").className = '';
+		document.getElementById("Version History").className = '';
+		document.getElementById("Job Run Time").className = '';	
+		document.getElementById("Latest Backup").className = 'active';
+		
+
+		document.getElementById("Deploy Versions Text").style.color = "#FFFFFF"
+		document.getElementById("Job Run Time Text").style.color = "#FFFFFF"	
+		document.getElementById("Nightly Jobs Text").style.color = "#FFFFFF"
+		document.getElementById("Version History Text").style.color = "#FFFFFF"
+		document.getElementById("Latest Backup Text").className = "#B7F6F6"
 		
 }
 

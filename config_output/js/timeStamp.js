@@ -1,4 +1,4 @@
-d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000, function(error, csvData) {
+d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), function(error, csvData) {
   if (error) throw error;
   
   

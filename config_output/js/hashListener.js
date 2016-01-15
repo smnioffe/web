@@ -16,6 +16,10 @@ else if (window.location.hash == '#njDuration'||window.location.hash == '#njdura
 
 document.getElementById("Job Run Time").click();
 }
+else if (window.location.hash == '#backup') {
+
+document.getElementById("Latest Backup").click();
+}
 else
 {
 navBar('nj')
