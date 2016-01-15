@@ -141,7 +141,7 @@ else if (Selection=='njduration')
 else if (Selection=='backup')
 {
 	//if ($(".njdurationchart").length!==1){
-		$(".njdurationchart").remove();
+		$(".backupchart").remove();
 		//}
 		
 	$(".njchart").hide()
@@ -156,7 +156,8 @@ else if (Selection=='backup')
 	
 		$('[id^="toggleDiv"]').css('display','');
 		 
-		$("#help_image").attr("style","width:0px;height:0px;");
+		$("#help_image").attr("style","width:180px;height:85px;"); 
+		$("#help_image").attr("src","assets/monitoring_framework/img/backup_leg.png"); 
 		 
 		document.body.style.backgroundColor = "#333333";
 	
