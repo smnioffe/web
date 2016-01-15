@@ -26,7 +26,7 @@ function navBar(Selection)
 		
 		document.getElementById("Deploy Versions Text").style.color = "#B7F6F6"
 		document.getElementById("Job Run Time Text").style.color = "#FFFFFF"
-		document.getElementById("Latest Backup Text").className = "#FFFFFF"		
+		document.getElementById("Latest Backup Text").style.color = "#FFFFFF"		
 		document.getElementById("Nightly Jobs Text").style.color = "#FFFFFF"
 		document.getElementById("Version History Text").style.color = "#FFFFFF"
 	}	
@@ -62,7 +62,7 @@ else if (Selection=='nj')
 		
 		document.getElementById("Deploy Versions Text").style.color = "#FFFFFF"
 		document.getElementById("Job Run Time Text").style.color = "#FFFFFF"
-		document.getElementById("Latest Backup Text").className = "#FFFFFF"
+		document.getElementById("Latest Backup Text").style.color = "#FFFFFF"
 		document.getElementById("Nightly Jobs Text").style.color = "#B7F6F6"
 		document.getElementById("Version History Text").style.color = "#FFFFFF"
 }
@@ -97,7 +97,7 @@ else if (Selection=='vhistory')
 		document.getElementById("Deploy Versions Text").style.color = "#FFFFFF"
 		document.getElementById("Job Run Time Text").style.color = "#FFFFFF"
 		document.getElementById("Nightly Jobs Text").style.color = "#FFFFFF"
-		document.getElementById("Latest Backup Text").className = "#FFFFFF"
+		document.getElementById("Latest Backup Text").style.color = "#FFFFFF"
 		document.getElementById("Version History Text").style.color = "#B7F6F6"
 }
 
@@ -133,7 +133,7 @@ else if (Selection=='njduration')
 		document.getElementById("Deploy Versions Text").style.color = "#FFFFFF"
 		document.getElementById("Job Run Time Text").style.color = "#B7F6F6"	
 		document.getElementById("Nightly Jobs Text").style.color = "#FFFFFF"
-		document.getElementById("Latest Backup Text").className = "#FFFFFF"
+		document.getElementById("Latest Backup Text").style.color = "#FFFFFF"
 		document.getElementById("Version History Text").style.color = "#FFFFFF"
 		
 }
@@ -172,7 +172,7 @@ else if (Selection=='backup')
 		document.getElementById("Job Run Time Text").style.color = "#FFFFFF"	
 		document.getElementById("Nightly Jobs Text").style.color = "#FFFFFF"
 		document.getElementById("Version History Text").style.color = "#FFFFFF"
-		document.getElementById("Latest Backup Text").className = "#B7F6F6"
+		document.getElementById("Latest Backup Text").style.color = "#B7F6F6"
 		
 }
 
