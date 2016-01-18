@@ -6,14 +6,19 @@ $(document).on('click', '.toggle-button', function() {
 	nj(1); 
 	}
 
-		if ( document.getElementById("Job Run Time").className == 'active'	) {
+	if ( document.getElementById("Job Run Time").className == 'active'	) {
 	$(".njdurationchart").remove();
 	njduration(1); 
 	}
 	
-			if ( document.getElementById("Latest Backup").className == 'active'	) {
+	if ( document.getElementById("Latest Backup").className == 'active'	) {
 	$(".backupchart").remove();
 	backup(1); 
+	}
+	
+	if ( document.getElementById("Deploy Versions").className == 'active'	) {
+	$(".deploy").remove();
+	deployChart(); 
 	}
 	
 });

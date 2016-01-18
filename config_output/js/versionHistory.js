@@ -1,9 +1,33 @@
 
+var parseDate = d3.time.format("%Y-%m-%d").parse,
+    formatDate = d3.time.format("%b %Y");
+	var MaxEndDate
+	
+d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), function(error, buckets) {
+  if (error) throw error;
+  
+  	
+
+	
+buckets=buckets.filter(function(d){return d.orig_table=='version history';});
+  
+  buckets.forEach(function(d) {
+
+	d.end_date=d.date_value.substring(0, 10);
+	d.end_date = parseDate(d.end_date);
+   
+	
+  });
+  
+   MaxEndDate=d3.max(buckets, function(d) { return d.end_date; })
+  
+    });
+  
 
 function versionHistory(){
 	
-var parseDate = d3.time.format("%Y-%m-%d").parse,
-    formatDate = d3.time.format("%b %Y");
+// var parseDate = d3.time.format("%Y-%m-%d").parse,
+    // formatDate = d3.time.format("%b %Y");
 
 
 
@@ -13,7 +37,7 @@ var xStep = 864e5;
 	
 var versionArr=[];
 	
-var StartDate= "2015-08-15";
+var StartDate= "2015-10-15";
 StartDate= parseDate(StartDate);
 
 
@@ -45,9 +69,7 @@ d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), functi
 	d.client=d.database_name.substr(0,d.database_name.indexOf('_'));
 	d.envS=d.database_name.substr(d.database_name.length-4,d.database_name.length);
 	d.env=d.envS.substr(d.envS.indexOf('_')+1,d.envS.length);
-	if(parseDate(d.modify_timestamp)<StartDate)
-	{d.date=StartDate;} else	
-	{d.date = parseDate(d.modify_timestamp);}
+
  
 	if(d.env=="PRD"){d.envR="zPRD"}else{d.envR=d.env}//For ordering
 	
@@ -58,6 +80,8 @@ d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), functi
 	
   });
   //var buckets2=buckets
+  
+
 
   
   buckets.sort(function(a, b) {
@@ -124,66 +148,63 @@ d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), functi
 	
 	
 	
-
-	var max=ydomain.length*20 + 140;
-	
-	
-	
-	
-	var margin = {top: 20, right: 200, bottom: 30, left: 50},
-    width = 1100 - margin.left - margin.right,
-    height = max - margin.top - margin.bottom;
-
-
-var x = d3.time.scale().range([0, width]),
-    y = d3.scale.ordinal().range([height, 0]);
-  //  z = d3.scale.ordinal().range(["white", "steelblue"]);	
-
- //x.domain([parseDate(StartDate),d3.max(buckets, function(d) { return d.date; })]);
-  // Compute the scale domains.
-  x.domain([StartDate,d3.max(buckets, function(d) { return d.end_date; })]);
-  y.domain(distinctDB);
- // z.domain([0, d3.max(buckets, function(d) { return d.config_value; })]);	
-		
-	var svg = d3.select("body").append("svg").attr("class", "vhistory")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");	
 	
 	
 
-	
-	
-	  svg.append("text")
-      .attr("class", "alt-label")
-	  .attr("textAlign", "center")
-      .attr("x", 10)
-      .attr("y", 10)
-      .attr("dy", ".35em")
-	
-      .text("Place mouse over indivudal bars to get the exact deployment dates.");
 	  
-	  	  svg.append("text")
-      .attr("class", "alt-label")
-	  .attr("textAlign", "center")
-      .attr("x", 10)
-      .attr("y", 27)
-      .attr("dy", ".35em")
-      .text("Place mouse over legend to see minor releases and to see which deploys correspond with which version.");
-	  
-	  	  	  svg.append("text")
-      .attr("class", "alt-label")
-	  .attr("textAlign", "center")
-      .attr("x", 10)
-      .attr("y", 47)
-      .attr("dy", ".35em")
-      .text("Click the version in the legend to be taken to that versions release notes on Github.");
-		
-
+	
+	
    var distinctCoreVersions = d3.set(
     buckets.map(function(d){ return d.coreMajor; })	
     ).values().sort(d3.ascending);
+
+ var numberCoreVersions	= distinctCoreVersions.length	
+	
+	 var colorScale = d3.scale.ordinal()
+ .range(colorbrewer.Set1[numberCoreVersions+1])
+ .domain(distinctCoreVersions);
+ 
+var	EndDate=d3.max(buckets, function(d) { return d.end_date; })
+
+
+// if (MaxEndDate==undefined)
+// {
+ // MaxEndDate=EndDate;
+// }
+	
+  function drawVChart (distinctCoreVersions,colorScale,numberCoreVersions,buckets,distinctDB,StartDate,EndDate){ 	
+	
+		var max=ydomain.length*20 + 140;
+
+
+  	var margin = {top: 20, right: 100, bottom: 30, left: 50},
+    width = 1100 - margin.left - margin.right,
+    height = max - margin.top - margin.bottom;
+
+var x = d3.time.scale().range([0, width]),
+    y = d3.scale.ordinal().range([height, 0]);
+		
+
+	  
+	  x.domain([StartDate,EndDate]);
+  y.domain(distinctDB);  
+
+		
+
+
+
+	
+
+
+
+		var svg = d3.select("body").append("svg").attr("class", "vhistory")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+	.style("position", "relative")
+	 .attr("z-index", 999)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");	
+
 
 	
 	   var yAxis = svg.selectAll(".tile")
@@ -192,11 +213,8 @@ var x = d3.time.scale().range([0, width]),
   	   var yAxis2 = svg.selectAll(".tile")
   .data(buckets).enter();
 
-var numberCoreVersions	= distinctCoreVersions.length
 
- var colorScale = d3.scale.ordinal()
- .range(colorbrewer.Set1[numberCoreVersions+1])
- .domain(distinctCoreVersions);
+
 
 
  function formatTitle(str)
@@ -210,7 +228,7 @@ var clientMem
 
 yAxis2.append("text")
 		.attr("x", width+15)
-	   .attr("y",function(d) {return ydomain.indexOf(d.database_name)*20+80+13+"px";})
+	   .attr("y",function(d) {return ydomain.indexOf(d.database_name)*20+50+13+"px";})
 .style("fill", materializeColors.lgrey)
 .style("font-size","10px")
 .style("font-family","Roboto")
@@ -225,17 +243,26 @@ yAxis2.append("text")
             });
 
         svg.call(tip);	
-	 
-   
+
+function convStartDate(d)	{if(parseDate(d.modify_timestamp)<StartDate)
+	{return StartDate;} else	
+	{return parseDate(d.modify_timestamp);}}
+
+
+function convEndDate(d)	{if(d.end_date>EndDate)
+	{return EndDate;} else	
+	{return d.end_date;}}		
+ 
+
   svg.selectAll(".tile")
       .data(buckets)
     .enter().append("rect")
       .attr("class", "tile")
-      .attr("x", function(d) { return x(d.date); })
+      .attr("x", function(d) { return x(convStartDate(d)); })
 	   .attr("y",function(d) {    
-                return ydomain.indexOf(d.database_name)*20+80+"px";})
+                return ydomain.indexOf(d.database_name)*20+50+"px";})
       //.attr("y", function(d) { return y(d.database_name + 5); })
-      .attr("width", function(d) { if (x(d.end_date)-x(d.date)-1 < 0) {return 0} else  {return x(d.end_date)-x(d.date)-1; }})
+      .attr("width", function(d) {if (x(convEndDate(d))-x(convStartDate(d))-1 < 0) {return 0} else  {return x(convEndDate(d))-x(convStartDate(d))-1; }})
       .attr("height",  18)
       .style("fill",function(d){
 		  if (d.n_rank<0){  
@@ -245,58 +272,289 @@ yAxis2.append("text")
 		   .on("mouseover", synchronizedMouseOver)
             .on("mouseout", synchronizedMouseOut) ;
 			
+
+			
   // Add an x-axis with label.
 svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("transform", "translate(0," + 1520 + ")")
 	  .style("fill", materializeColors.lgrey)
-      .call(d3.svg.axis().scale(x).ticks(d3.time.months).tickFormat(formatDate).orient("bottom"))
+      .call(d3.svg.axis().scale(x).ticks(d3.time.months).tickFormat(formatDate).orient("bottom"))  
     .append("text")
       .attr("class", "label")
       .attr("x", width+2)
          .attr("y", 27)
       .attr("text-anchor", "end")
 	  .style("fill", materializeColors.lgrey)
+	   .style("font-size","12px")
+      .style("font-family","Roboto")
       .text("Date");	
+	  
 
   // Add a 2nd top x-axis with label.
   svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + 95 + ")")
+      .attr("transform", "translate(0," + 65 + ")")
 	  .style("fill", materializeColors.lgrey)
       .call(d3.svg.axis().scale(x).ticks(d3.time.months).tickFormat(formatDate).orient("top"));
+	  	   
+		   
+			  		   svg.selectAll(".x.axis")
+  .selectAll("text").style("font-size","12px")
+      .style("font-family","Roboto Condensed");	   
 	  
+	  	  	     function synchronizedMouseOver(d) {
+            tip.show(d);
+				d3.select(this).transition(200)
+               .style(
+			   "fill-opacity",.6);
+        }
+
+        function synchronizedMouseOut(d) {
+            tip.hide(d)
+			d3.select(this).transition(200)
+               .style(
+			   "fill-opacity",1);
+        }	
+	  
+	  
+	}
+
+drawVChart (distinctCoreVersions,colorScale,numberCoreVersions,buckets,distinctDB,StartDate,EndDate)	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  	
+		var svg2 = d3.select("#sideDivVH").append("svg").attr("class", "vhistorySide")
+		.style("position", "fixed")
+     //.attr("x", 1000)
+	    // .attr("left", '100px')
+    // .attr("y", 1000)
+	 .attr("z-index", 1)
+    .attr("width", 900)
+    .attr("height",1000);
+	  //.append("g")
+	    //.attr("transform", "translate(" + 1100 + "," + 20 + ")");	
+		
+		
+		
+  svg2.append('g')//.selectAll(".tile")
+			//.attr("class", 'svg')
+                //.data(clientsFil.filter(function(d){ return d.type == "last step" || d.type == "previous run" || d.type == "failed"; }))
+
+                //.enter()
+				.append("circle")
+                .attr("class", "innercircle")
+                .attr("cx",223)
+                .attr("cy",580)
+                .attr("r", "108px")
+                .style("stroke-width",0)
+				.style("opacity",.04)
+                .style("fill",materializeColors.lgrey)
+                .style("font-family","Roboto")		
+
+
+var leftBt = svg2.append("text").attr("class", 'svg')
+             .attr("x",150)
+			.attr("y", 600)
+            .style("fill",materializeColors.lgrey)
+            .style("font-size","58px")
+			.style("opacity",.5)
+            .style("text-anchor", "middle")
+            .attr('font-family', 'FontAwesome')
+            .text(function(d) { return '\uf190' });
+
+			
+			
+var rightBt = svg2.append("text").attr("class", 'svg')
+             .attr("x",300)
+			.attr("y", 600)
+            .style("fill",materializeColors.lgrey)
+            .style("font-size","58px")
+			.style("opacity",.5)			
+            .style("text-anchor", "middle")
+            .attr('font-family', 'FontAwesome')
+            .text(function(d) { return '\uf18e' });			
+
+
+var inBt = svg2.append("text").attr("class", 'svg')
+             .attr("x",222.5)
+			.attr("y", 530)
+            .style("fill",materializeColors.lgrey)
+            .style("font-size","58px")
+			.style("opacity",.5)
+            .style("text-anchor", "middle")
+            .attr('font-family', 'FontAwesome')
+            .text(function(d) { return '\uf00e' });	
+
+
+var outBt = svg2.append("text").attr("class", 'svg')
+             .attr("x",222.5)
+			.attr("y", 670)
+            .style("fill",materializeColors.lgrey)
+            .style("font-size","58px")
+			.style("opacity",.5)
+            .style("text-anchor", "middle")
+            .attr('font-family', 'FontAwesome')
+            .text(function(d) { return '\uf010' });	
+
+
+var StartDateHis=StartDate
+var EndDateHis=EndDate
+
+leftBt.on("click", function() {
+StartDate=StartDateHis.setMonth(StartDateHis.getMonth() - 1);
+EndDate=EndDateHis.setMonth(EndDateHis.getMonth() - 1);
+$(".vhistory").remove();
+drawVChart(distinctCoreVersions,colorScale,numberCoreVersions,buckets,distinctDB,StartDate,EndDate)
+});	
+
+rightBt.on("click", function(d) {
+if (MaxEndDate>EndDate){
+StartDate=StartDateHis.setMonth(StartDateHis.getMonth() + 1);
+EndDate=EndDateHis.setMonth(EndDateHis.getMonth() + 1);
+$(".vhistory").remove();
+drawVChart(distinctCoreVersions,colorScale,numberCoreVersions,buckets,distinctDB,StartDate,EndDate)
+}
+});	
+
+
+outBt.on("click", function(d) {
+StartDate=StartDateHis.setMonth(StartDateHis.getMonth() - 1);
+if (MaxEndDate>EndDate){
+EndDate=EndDateHis.setMonth(EndDateHis.getMonth() + 1);
+}
+$(".vhistory").remove();
+drawVChart(distinctCoreVersions,colorScale,numberCoreVersions,buckets,distinctDB,StartDate,EndDate)
+
+});	
+
+
+inBt.on("click", function(d) {
+
+if (
+StartDateHis.getYear()*1+StartDateHis.getMonth()/12+1/12<EndDateHis.getYear()*1+EndDateHis.getMonth()/12){
+StartDate=StartDateHis.setMonth(StartDateHis.getMonth() + 1);
+//EndDate=EndDateHis.setMonth(EndDateHis.getMonth() + 1);
+$(".vhistory").remove();
+drawVChart(distinctCoreVersions,colorScale,numberCoreVersions,buckets,distinctDB,StartDate,EndDate)
+}
+});	
+	
+	  svg2.append("text")
+      .attr("class", "alt-label")
+	  .attr("textAlign", "center")
+      .attr("x", 10)
+      .attr("y", 10)
+      .attr("dy", ".35em")
+	
+      .text("Place mouse over indivudal bars to get the exact deployment dates.");
+	  
+	  	  svg2.append("text")
+      .attr("class", "alt-label")
+	  .attr("textAlign", "center")
+      .attr("x", 10)
+      .attr("y", 27)
+      .attr("dy", ".35em")
+      .text("Place mouse over legend to see minor releases and to see which deploys correspond with which version.");
+	  
+	  	  	  svg2.append("text")
+      .attr("class", "alt-label")
+	  .attr("textAlign", "center")
+      .attr("x", 10)
+      .attr("y", 47)
+      .attr("dy", ".35em")
+      .text("Click the version in the legend to be taken to that versions release notes on Github.");
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+ 
+   // svg.selectAll(".tile")
+      // .data(buckets)
+    // .enter().append("rect")
+      // .attr("class", "tile")
+      // .attr("x", function(d) { return x(d.date); })
+	   // .attr("y",function(d) {    
+                // return ydomain.indexOf(d.database_name)*20+50+"px";})
+      // //.attr("y", function(d) { return y(d.database_name + 5); })
+      // .attr("width", function(d) { if (x(d.end_date)-x(d.date)-1 < 0) {return 0} else  {return x(d.end_date)-x(d.date)-1; }})
+      // .attr("height",  18)
+      // .style("fill",function(d){
+		  // if (d.n_rank<0){  
+		  // return d3.rgb(colorScale(d.coreMajor)).darker(d.n_rank*-.6);
+	  // } else {return d3.rgb(colorScale(d.coreMajor)).brighter(d.n_rank*.2)};
+		  // });
+		   	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+
 		  
 		  
   // // Add a legend for the color values.
-  var legend = svg.selectAll(".legend")
+  var legend = svg2.selectAll(".legend")
       .data(distinctCoreVersions)
     .enter().append("g")
       .attr("class", "legend")
-      .attr("transform", function(d, i) { return "translate(" + (width-100 +i * 40) + "," + (20) + ")"; });
+      .attr("transform", function(d, i) { return "translate(" + (5 +i * 50) + "," + (120) + ")"; });
 
   legend.append("svg:a")
   .attr("xlink:href", function(d){return "https://github.com/arcadia/qdw/wiki/"+d.substr(1)+".0-Release-Notes";})
       .append("svg:rect")
-      .attr("width", 20)
-      .attr("height", 20)
+      .attr("width", 30)
+      .attr("height", 30)
 
 	  .attr("id", function(d, i){ var mCoreid = 'core'+i; return mCoreid; })
       .style("fill",  function(d,i) { return colorScale(d)});	  
 
   legend.append("text")
-      .attr("x", 0)
-      .attr("y", 26)
+      .attr("x", 5)
+      .attr("y", 38)
       .attr("dy", ".35em")
+	  .style("font-size","13px")
+	  .style("font-family","Roboto Condensed")
 	  .style("fill", materializeColors.lgrey)
+
       .text(String);
 
-  svg.append("text")
+  svg2.append("text")
       .attr("class", "label")
 	  .attr("textAlign", "center")
-      .attr("x", width-100 + 40)
-      .attr("y", 10)
+      .attr("x",  10)
+      .attr("y", 105)
       .attr("dy", ".35em")
+	     .style("font-size","13px")
+	  .style("font-family","Roboto")
+	.style("font-weight","bold")
 	  .style("fill", materializeColors.lgrey)
       .text("Major Versions");
 	  
@@ -318,15 +576,18 @@ svg.append("g")
 });
 
 
-		svg.append("text")
+		svg2.append("text")
       .attr("class", "minorVersionTitle")
 	  .attr("textAlign", "center")
-	  .attr("y", 80 )
-      .attr("x",width+100)
+	  
+	  .attr("y", 200 )
+      .attr("x",5)
       .attr("dy", ".35em")
 	  .style("fill", materializeColors.lgrey)
 	  .style("opacity",0)
-	  .style("font-weight","bold")
+	   .style("font-size","13px")
+	  .style("font-family","Roboto")
+	.style("font-weight","bold")
       .text("Minor Versions");
 
 
@@ -376,6 +637,7 @@ minorVersions.forEach(function(key) {
 	  
 	  update(minorVersions,coreVar,result);	  
 	  updateText(minorVersions,coreVar,result);	
+	  updateLink(minorVersions,coreVar,result);	
 	  
 	}  
 
@@ -388,65 +650,49 @@ function update(minorVersions,coreVar,sortedLabel) {
 	
 	
   var selection = //d3//.select("#chart")
-   svg.selectAll(".bar").data(sortedLabel)//.transition()
+   svg2.selectAll(".bar")//.transition()
+   //.attr("class","graph-scroll-fixed")
+   .data(sortedLabel)
   .attr("y",function(k, i) {  d=k.substr(k.indexOf("_") + 1); 
-	  return 100 + i * 35 ;})
-  .attr("x",width+100)
+	  return 220+ i * 35 ;})
+  .attr("x",5)
 	    .attr("width", 20)
       .attr("height", 20)  
-	  //.style("fixed",true)
+	  //.style("position", "fixed")
+	 // .attr("id","sticker")
       .style("fill",function(k){ d=k.substr(k.indexOf("_") + 1);
 		  if (d<0){  
 		  return d3.rgb(colorScale(coreVar)).darker(d*-.6);
 	  } else {return d3.rgb(colorScale(coreVar)).brighter(d*.2)};
 		  });
 	
-console.log(minorVersions,coreVar,sortedLabel)
+
 	  
   selection.enter()
 .append("svg:a")
-.attr("xlink:href", function(d){
-k=d.slice(0, d.indexOf("_"));
-if (k.indexOf("rc") > -1)
-{k=k.substr(0, k.indexOf('-')); }
-
-return "https://github.com/arcadia/qdw/wiki/"+k.substr(1)+"-Release-Notes";})
-.append("svg:rect").attr("class", "bar")
-  .attr("y",function(d, i) { return 100 + i * 35 ;})
-  .attr("x",width+100)
+.append("svg:rect").attr("class", "bar")//.attr("id","sticker")
+  .attr("y",function(d, i) { return 220 + i * 35 ;})
+  .attr("x",5)
 	    .attr("width", 20)
       .attr("height", 20)  
-      .style("fill",function(k){ d=k.substr(k.indexOf("_") + 1);
+	 // .style("position", "fixed")
+      .style("fill",function(k){d=k.substr(k.indexOf("_") + 1);
 		  if (d<0){  
 		  return d3.rgb(colorScale(coreVar)).darker(d*-.6);
 	  } else {return d3.rgb(colorScale(coreVar)).brighter(d*.2)};
-		  }).on('mouseover', synchronizedMouseOverSubLeg)
-        .on('mouseout', synchronizedMouseOutSubLeg);
+		  });
+		   // .on('mouseover', synchronizedMouseOverSubLeg)
+        // .on('mouseout', synchronizedMouseOutSubLeg);
 		
-
-		  
+		
+		
+	  
 		  	  
 		  
 		   selection.exit().remove();	
 		   
 
 
-
-selection.on('mouseout', synchronizedMouseOutSubLeg)
-		 .on('mouseover', synchronizedMouseOverSubLeg);	
-
-	
-
-	function synchronizedMouseOverSubLeg(d) {	  
-	  
-	  d3.selectAll(".tile").filter(function(k) { 
-	  return k.config_value!== d.substr(0, d.indexOf('_'));  }).transition(200)         
-		.style("fill-opacity",.4);}
-		
-			function synchronizedMouseOutSubLeg(d) {	  
-	  
-	  d3.selectAll(".tile").transition(200)         
-		.style("fill-opacity",1);}	
 
 		
 
@@ -458,25 +704,29 @@ d3.selectAll(".tile").style.position = 'absolute';
 
 function updateText(minorVersions,coreVar,sortedLabel) {
 	
-	 var sublegend2 = svg.selectAll(".sublegend")
+	 var sublegend2 = svg2.selectAll(".sublegend")
       .data(sortedLabel)
     
     // .attr("class", "sublegend")
- .attr("y",function(d, i) { return 112.5 + i * 35 ;})
-  .attr("x",width+122)
+ .attr("y",function(d, i) { return 233 + i * 35 ;})
+  .attr("x",28)
 	 .attr("textAlign", "center")
 //attr("dy", ".35em")
 	 // .attr("transform", "rotate(-45)" )
+	 .style("font-size","11.5px")
+	 .style("font-family","Roboto Condensed")
 	 .style("fill", materializeColors.lgrey)
       .text(function(d){return d.slice(0, d.indexOf("_"));});
 
 
   sublegend2.enter().append("text").attr("class", "sublegend").attr("id", "sublegend")
-    .attr("y",function(d, i) { return 112.5 + i * 35 ;})
-  .attr("x",width+122)
+    .attr("y",function(d, i) { return 233 + i * 35 ;})
+  .attr("x",28)
 		  .attr("textAlign", "center")
       //.attr("dy", ".35em")
 	  //.attr("transform", "rotate(-45)" )
+	  .style("font-size","11px")
+	   .style("font-family","Roboto Condensed")
 	  .style("fill", materializeColors.lgrey)
       .text(function(d){return d.slice(0, d.indexOf("_"));});
 	  
@@ -500,7 +750,71 @@ function updateText(minorVersions,coreVar,sortedLabel) {
 	
 	  
 };	
+
+function updateLink(minorVersions,coreVar,sortedLabel) {
+
+		  var selection3 = //d3//.select("#chart")
+   svg2.selectAll(".node")//.transition()
+   .attr("xlink:href", '')
+   .data(sortedLabel)
+	  .attr("y",function(d, i) { return 220 + i * 35 ;})
+  .attr("x",5)
+	    .attr("width", 20)
+      .attr("height", 20);
 	
+
+
+	  
+  selection3.enter()
+.append("svg:a")
+.attr("xlink:href", function(d){
+k=d.slice(0, d.indexOf("_"));
+if (k.indexOf("rc") > -1)
+{k=k.substr(0, k.indexOf('-')); }
+
+return "https://github.com/arcadia/qdw/wiki/"+k.substr(1)+"-Release-Notes";})
+.append("svg:rect")
+	  .attr("y",function(d, i) { return 220 + i * 35 ;})
+  .attr("x",5)
+	    .attr("width", 60)
+      .attr("height", 20)
+	  .style("opacity",0)
+		 .on('mouseover', synchronizedMouseOverSubLeg)
+        .on('mouseout', synchronizedMouseOutSubLeg);
+		
+selection3.exit().remove();	
+
+
+
+
+
+selection3.on('mouseout', synchronizedMouseOutSubLeg)
+		 .on('mouseover', synchronizedMouseOverSubLeg);	
+
+	
+
+	function synchronizedMouseOverSubLeg(d) {	  
+	
+	
+	
+
+	  
+	  d3.selectAll(".tile").filter(function(k) { 
+	  return k.config_value!== d.substr(0, d.indexOf('_'));  }).transition(200)         
+		.style("fill-opacity",.4);
+		
+		}
+		
+			function synchronizedMouseOutSubLeg(d) {	
+
+	
+	  
+
+	  
+	  d3.selectAll(".tile").transition(200)         
+		.style("fill-opacity",1);}	
+	
+};	
 	
 
 	
@@ -520,22 +834,15 @@ function updateText(minorVersions,coreVar,sortedLabel) {
 	  
 	  
 	  
-	  	     function synchronizedMouseOver(d) {
-            tip.show(d);
-				d3.select(this).transition(200)
-               .style(
-			   "fill-opacity",.6);
-        }
-
-        function synchronizedMouseOut(d) {
-            tip.hide(d)
-			d3.select(this).transition(200)
-               .style(
-			   "fill-opacity",1);
-        }		
+	
 
 
 });
 
+
+
+
 }
+
+
 

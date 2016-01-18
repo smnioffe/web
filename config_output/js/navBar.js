@@ -3,16 +3,23 @@ function navBar(Selection)
 {
 	if 	(Selection=='deploy')
 {
-	if ($(".deploy").length!==1){
-		deployChart(1)
-		}
+	// if ($(".deploy").length!==1){
+		// deployChart(1)
+		// }
+		
+		$(".deploy").remove();
+		
 	$(".njchart").hide()
 	$(".vhistory").attr("display","none");
+	$(".vhistorySide").attr("display","none");
 	$(".njdurationchart").hide()
 	$(".backupchart").hide()
+	
+	
+	deployChart(1)
 	$(".deploy").show()
 	
-	$('[id^="toggleDiv"]').css('display','none');
+	$('[id^="toggleDiv"]').css('display','');
 	
 		$("#help_image").attr("style","width:0px;height:0px;");
 	
@@ -37,6 +44,7 @@ else if (Selection=='nj')
 	//	}
 	$(".deploy").hide()
 	$(".vhistory").attr("display","none");
+	$(".vhistorySide").attr("display","none");
 	$(".njdurationchart").hide()
 	$(".backupchart").hide()
 	
@@ -77,6 +85,7 @@ else if (Selection=='vhistory')
 	$(".njchart").hide()
 	$(".njdurationchart").hide()
 	$(".backupchart").hide()
+	$(".vhistorySide").attr("display");
 	$(".vhistory").attr("display");
 	
 
@@ -111,6 +120,7 @@ else if (Selection=='njduration')
 	$(".deploy").hide()
 	$(".njdurationchart").hide()
 	$(".backupchart").hide()
+	$(".vhistorySide").attr("display","none");
 	$(".vhistory").attr("display","none");
 	
 	
@@ -147,6 +157,7 @@ else if (Selection=='backup')
 	$(".njchart").hide()
 	$(".deploy").hide()
 	$(".njdurationchart").hide()
+	$(".vhistorySide").attr("display","none");
 	$(".vhistory").attr("display","none");
 	$(".backupchart").show();
 	
