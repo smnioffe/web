@@ -1,6 +1,7 @@
 d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), function(error, csvData) {
   if (error) throw error;
   
+  csvData=csvData.filter(function(d){return d.orig_table=='dbo.config';});
   
   csvData.forEach(function(d) {
   d.updated_timestamp=d.updated_timestamp;

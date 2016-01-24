@@ -164,7 +164,28 @@
 .toggle-button-selected { background-color: #80acac; border: 2px solid #7DA652; }
 .toggle-button-selected button { left: 26px; top: 0; margin: 0; border: none; width: 24px; height: 24px; box-shadow: 0 0 4px rgba(0,0,0,0.1); }
 
+#preloader  {
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-color: #000000;
+     z-index: 99;
+    height: 100%;
+ }
 
+#status  {
+     width: 200px;
+     height: 200px;
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     
+     background-repeat: no-repeat;
+     background-position: center;
+     margin: -100px 0 0 -100px;
+ }
 
     </style>
 </head>
@@ -230,8 +251,6 @@
 </div>
    
 	   
-	   
-	   
 
 
 <div style="top:140px; left:1200px; position: fixed; z-index: 1;" id="sideDivVH"></div>
@@ -239,6 +258,28 @@
 <div style="top:60px; left:575px; position: absolute; z-index: 1;" id="sideDivBA"></div>
 <div style="top:60px; left:900px; position: absolute; z-index: 1;" id="sideDivNJ"></div>
 <div style="top:60px; left:900px; position: absolute; z-index: 1;" id="sideDivND"></div>
+
+
+	   <div id="preloader">
+  <div id="status">
+  
+
+            
+    <div class="preloader-wrapper big active">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+
+  
+  </div>
+  <div>Loading</div>
+</div>
 
 </body>
 
@@ -283,7 +324,24 @@ var materializeColors = {
 
 <script>
 
+
+if ($(window).width()<1600)
+{$('.toggle-button').toggleClass('toggle-button-selected')}
+
   $(".button-collapse").sideNav();
+  
+  jQuery(window).load(function() {
+
+        // will first fade out the loading animation
+
+    jQuery("#status").fadeOut();
+
+        // will fade out the whole DIV that covers the website.
+
+    jQuery("#preloader").delay(100).fadeOut("slow");
+
+})
+
   
   
   // Create the tooltips only when document ready
