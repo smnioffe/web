@@ -66,7 +66,7 @@ function backup(selectVar){
 		
 		
 
-function drawrun_hours(distinctClients,countVar){
+function drawrun_hours(distinctClients,countVar,elementID){
 
 clientsFil=clients.filter(function(d){ return distinctClients.indexOf(d.CLIENT) > -1; })
 
@@ -84,7 +84,7 @@ clientsFil=clients.filter(function(d){ return distinctClients.indexOf(d.CLIENT) 
             width = 600 - margin.left - margin.right,
             height = max + 300 - margin.top - margin.bottom;
 
-        var svg = d3.select("body").append("svg").attr("class","backupchart")
+        var svg = d3.select(elementID).append("svg").attr("class","backupchart")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
@@ -321,10 +321,10 @@ function zeroPad(num, places) {
 	
 	if($(".toggle-button").is( '.toggle-button-selected' ) && $(".backupchart").length!==1&& $(".backupchart").length!==2){
 	//if($(window).width()>1700 && $(".backupchart").length!==1&& $(".backupchart").length!==2){
-	drawrun_hours(leftDistinctClients,1);
-	drawrun_hours(rightDistinctClients,2);}
+	drawrun_hours(leftDistinctClients,1,"body");
+	drawrun_hours(rightDistinctClients,2,"#sideDivBA");}
 	else if ($(".backupchart").length!==1&& $(".backupchart").length!==2){
-	drawrun_hours(distinctClients,1)}
+	drawrun_hours(distinctClients,1,"body")}
 
 	
 

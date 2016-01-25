@@ -73,7 +73,7 @@ function nj(selectVar){
 		
 		
 
-function draw(distinctClients){
+function draw(distinctClients,elementID){
 
 clientsFil=clients.filter(function(d){ return distinctClients.indexOf(d.CLIENT) > -1; })
 
@@ -88,7 +88,7 @@ clientsFil=clients.filter(function(d){ return distinctClients.indexOf(d.CLIENT) 
             width = 960 - margin.left - margin.right,
             height = max + 300 - margin.top - margin.bottom;
 
-        var svg = d3.select("body").append("svg").attr("class","njchart")
+        var svg = d3.select(elementID).append("svg").attr("class","njchart")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
@@ -515,10 +515,10 @@ clientsFil=clients.filter(function(d){ return distinctClients.indexOf(d.CLIENT) 
 	
 
 	if($(".toggle-button").is( '.toggle-button-selected' ) && $(".njchart").length!==1&& $(".njchart").length!==2){
-	draw(leftDistinctClients);
-	draw(rightDistinctClients);}
+	draw(leftDistinctClients,"body");
+	draw(rightDistinctClients,"#sideDivNJ");}
 	else if ($(".njchart").length!==1&& $(".njchart").length!==2){
-	draw(distinctClients)}
+	draw(distinctClients,"body")}
 
 	
 

@@ -96,7 +96,7 @@ function njduration(selectVar){
 		
 		
 
-function drawrun_hours(distinctClients,countVar){
+function drawrun_hours(distinctClients,countVar,elementID){
 
 clientsFil=clients.filter(function(d){ return distinctClients.indexOf(d.CLIENT) > -1; })
 
@@ -117,7 +117,7 @@ clientsHisFil=clientsHis.filter(function(d){ return distinctClients.indexOf(d.CL
             width = 960 - margin.left - margin.right,
             height = max + 300 - margin.top - margin.bottom;
 
-        var svg = d3.select("body").append("svg").attr("class","njdurationchart")
+        var svg = d3.select(elementID).append("svg").attr("class","njdurationchart")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
@@ -459,10 +459,10 @@ function zeroPad(num, places) {
 	
 	if($(".toggle-button").is( '.toggle-button-selected' ) && $(".njdurationchart").length!==1&& $(".njdurationchart").length!==2){
 	//if($(window).width()>1700 && $(".njdurationchart").length!==1&& $(".njdurationchart").length!==2){
-	drawrun_hours(leftDistinctClients,1);
-	drawrun_hours(rightDistinctClients,2);}
+	drawrun_hours(leftDistinctClients,1,"body");
+	drawrun_hours(rightDistinctClients,2,"#sideDivND");}
 	else if ($(".njdurationchart").length!==1&& $(".njdurationchart").length!==2){
-	drawrun_hours(distinctClients,1)}
+	drawrun_hours(distinctClients,1,"body")}
 
 	
 

@@ -29,7 +29,19 @@
 			zoom: 90%; /* Webkit browsers */
 
         }
+		
+		@media screen and (max-width: 980px){ 
+	zoom: 0.5; /* Other non-webkit browsers */
+			zoom: 50%; /* Webkit browsers */
+			}
+		
+		.fixed {
+    position:fixed; 
+	 right: 0;
 
+	}
+
+	
         .svg {
 
         }
@@ -151,6 +163,30 @@
 .toggle-button button { cursor: pointer; outline: 0; display:block; position: absolute; left: 0; top: 0; border-radius: 100%; width: 30px; height: 30px; background-color: #D8D8D8; float: left; margin: -3px 0 0 -3px; border: 2px solid #D0D0D0; transition: left 0.3s; }
 .toggle-button-selected { background-color: #80acac; border: 2px solid #7DA652; }
 .toggle-button-selected button { left: 26px; top: 0; margin: 0; border: none; width: 24px; height: 24px; box-shadow: 0 0 4px rgba(0,0,0,0.1); }
+
+#preloader  {
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-color: #000000;
+     z-index: 99;
+    height: 100%;
+ }
+
+#status  {
+     width: 200px;
+     height: 200px;
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     
+     background-repeat: no-repeat;
+     background-position: center;
+     margin: -100px 0 0 -100px;
+ }
+
     </style>
 </head>
 <body><!-- onload="navBar('nj')">-->
@@ -200,22 +236,50 @@
   </div>
   
   
-	   <div id="tooltext" style="display: none;">
+	   <div class="tooltext" id="tooltext" style="display: none;">
 	   <div>
 	   <img id="help_image" type="image" src="assets/monitoring_framework/img/job_time_leg.png" style="width:180px;height:96px;">
 	   </div>
 	   <hr>
-	   <p><b>v1.5</b> Updated:<i> 1/14</i><br></p><p> Added latest backup for each client</p><p> Added legends and widescreen toggle to nightly job views</p><p>Added missing clients for version views<br><i><b>Note:</b> these will not yet have as long a deploy history.</i><br><p>Added Github release notes links to Version History</p>
+	   <p><b>v1.5</b> Updated:<i> 1/18</i><br></p><p> Added latest backup for each client</p><p> Added legends and widescreen toggle</p><p>Added missing clients for version views<br><i><b>Note:</b> these will not yet have as long a deploy history.</i><br><p>Added Github release notes links to Version History</p><p>Added zoom and scroll to Version History</p>
 	   <p><a href="mailto:simon.ioffe@arcadiasolutions.com?Subject=Monitoring%20Dashboard" target="_top" >Reports bugs or suggestions</a></p>
 	   </div>
 
 
-<div  align="right">
+	   <div class="fixed"  align="right">
 <a id="updatetime"></</a>
 </div>
+   
+	   
 
 
+<div style="top:140px; left:1200px; position: fixed; z-index: 1;" id="sideDivVH"></div>
+<div style="top:60px; left:900px; position: absolute; z-index: 1;" id="sideDivDC"></div>
+<div style="top:60px; left:575px; position: absolute; z-index: 1;" id="sideDivBA"></div>
+<div style="top:60px; left:900px; position: absolute; z-index: 1;" id="sideDivNJ"></div>
+<div style="top:60px; left:900px; position: absolute; z-index: 1;" id="sideDivND"></div>
 
+
+	   <div id="preloader">
+  <div id="status">
+  
+
+            
+    <div class="preloader-wrapper big active">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+
+  
+  </div>
+  <div>Loading</div>
+</div>
 
 </body>
 
@@ -250,7 +314,7 @@ var materializeColors = {
 
 </script>
 
-<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/jquery-2.1.1.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
 <script src="//cdn.rawgit.com/novus/nvd3/v1.8.1/build/nv.d3.js"></script>
@@ -260,7 +324,24 @@ var materializeColors = {
 
 <script>
 
+
+if ($(window).width()<1600)
+{$('.toggle-button').toggleClass('toggle-button-selected')}
+
   $(".button-collapse").sideNav();
+  
+  jQuery(window).load(function() {
+
+        // will first fade out the loading animation
+
+    jQuery("#status").fadeOut();
+
+        // will fade out the whole DIV that covers the website.
+
+    jQuery("#preloader").delay(100).fadeOut("slow");
+
+})
+
   
   
   // Create the tooltips only when document ready

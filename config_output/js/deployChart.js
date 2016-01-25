@@ -3,7 +3,8 @@ function deployChart(){
 d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), function(error, clients) {
   if (error) throw error;
   
-  
+  	
+clients=clients.filter(function(d){return d.orig_table=='dbo.config';});
 
 
   // Coerce the CSV data to the appropriate types.
@@ -43,9 +44,32 @@ d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), functi
     clients.filter(function(d){ return d.config_item == "coreRevision"; })
 	.map(function(d){ return d.CLIENT; })	
     .filter(function(d){  return (typeof d !== "undefined") ? d !== null : false })
-    ).values();
+    ).values().sort(d3.ascending);;
 	
 
+		 var middle = Math.ceil(distinctClients.length / 2);
+
+        var leftDistinctClients= distinctClients.slice( 0, middle );
+        var rightDistinctClients= distinctClients.slice( middle );
+		
+
+	
+  var distinctCoreVersions = d3.set(
+    clients.filter(function(d){ return d.config_item == "coreRevision"; }).map(function(d){ return d.coreMajor; })	
+     .filter(function(d){  return (typeof d !== "undefined") ? d !== null : false })
+    ).values().sort(d3.ascending);	
+	
+	var numberCoreVersions	= distinctCoreVersions.length
+	
+	var colorScale = d3.scale.ordinal()
+.range(colorbrewer.Set1[numberCoreVersions+1])
+ .domain(distinctCoreVersions);		
+		
+
+function draw(distinctClients,elementID){
+
+clientsFil=clients.filter(function(d){ return distinctClients.indexOf(d.CLIENT) > -1; })	
+	
   var xdomain=['DEV','QA','UAT','PRD'];
   var ydomain= distinctClients.sort(d3.ascending);
   //Compute the scale domains.
@@ -53,38 +77,32 @@ d3.csv("data/report_output.csv" + '?' + Math.floor(Math.random() * 1000), functi
   // y.domain(ydomain);
   
   
- // var max = d3.max(clients, function(d) {return ydomain.indexOf(d.CLIENT)*160+75;} );
+var max = d3.max(clients, function(d) {return ydomain.indexOf(d.CLIENT)*110+75;} );
   
-  var max=ydomain.length*160 ;
+ // var max=ydomain.length*160 ;
   
 
  var margin = {top: 100, right: 100, bottom: 10, left: 100},
     width = 960 - margin.left - margin.right,
     height = max + 200 - margin.top - margin.bottom;
 
-var svg = d3.select("body").append("svg").attr("class", "deploy")
+var svg = d3.select(elementID).append("svg").attr("class", "deploy")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
 	.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 	
-  var distinctCoreVersions = d3.set(
-    clients.filter(function(d){ return d.config_item == "coreRevision"; }).map(function(d){ return d.coreMajor; })	
-     .filter(function(d){  return (typeof d !== "undefined") ? d !== null : false })
-    ).values();
+
 
 		
 		
 
 
-var distinctCoreVersions = d3.set(
-    clients.filter(function(d){ return d.config_item == "coreRevision"; }).map(function(d){ return d.config_value.substring(0, 4); })	
-       // .filter(function(d){  return (typeof d !== "undefined") ? d !== null : false })
-    ).values().sort(d3.ascending);
+
 	
 
 
-var numberCoreVersions	= distinctCoreVersions.length
+
 //console.log(distinctCoreVersions.length)
 // var numberCoreVersions = function(distinctCoreVersions){
 // if(distinctCoreVersions.length > 12) {return 12} else {return distinctCoreVersions.length};};
@@ -107,12 +125,12 @@ var colorScale = d3.scale.ordinal()
   .data(xdomain).enter();
 				
   var zAxisCore = svg.selectAll(".tile")
-  .data(clients.filter(function(d){ return d.config_item == "coreRevision"; }))			
+  .data(clientsFil.filter(function(d){ return d.config_item == "coreRevision"; }))			
                 .enter();
 		
 		
   var zAxisClient = svg.selectAll(".tile")
-  .data(clients.filter(function(d){ return d.config_item == "ScmRevision" }))		
+  .data(clientsFil.filter(function(d){ return d.config_item == "ScmRevision" }))		
                 .enter();
 
 
@@ -140,7 +158,7 @@ xAxis.append("rect")
 		.attr("rx",15)
 		.attr("ry",15)
       .attr("width", "155px")
-      .attr("height", -max*-1-740)
+      .attr("height", max+100)
 	  .style("opacity",.9)
 	  .style("fill", "#404040");
 
@@ -176,7 +194,7 @@ xAxis.append("text")
 			
  var rect2= 
   svg.append('g').selectAll(".tile")
-       .data(clients.filter(function(d){ return d.config_item == "coreRevision"; }))
+       .data(clientsFil.filter(function(d){ return d.config_item == "coreRevision"; }))
 
       .enter().append("rect")
       .attr("class", "innerrrect")
@@ -198,7 +216,7 @@ xAxis.append("text")
 				
   
  var rect= svg.append('g').selectAll(".tile")
-       .data(clients.filter(function(d){ return d.config_item == "coreRevision"; }))
+       .data(clientsFil.filter(function(d){ return d.config_item == "coreRevision"; }))
     .enter().append("rect")
       .attr("class", "outerrect")
 		.attr("x",function(d) { 
@@ -290,7 +308,18 @@ zAxisCore.append("text")
 			  };
      
                 });	
+				};
+				
+	if($(".toggle-button").is( '.toggle-button-selected' ) && $(".deploy").length!==1&& $(".deploy").length!==2){
+	draw(leftDistinctClients,"body");
+	draw(rightDistinctClients,"#sideDivDC");
+	}
+	else if ($(".deploy").length!==1&& $(".deploy").length!==2){
+	draw(distinctClients,"body")
+	}
 })
 
 
 };
+
+
