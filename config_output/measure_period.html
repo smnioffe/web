@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+	<style>
+
+	
+	
+svg .textLabel{
+		  font-size:12px;
+		  }
+		  
+.containerMP {
+   margin-top:5%;
+	   margin-left:10%;
+	   margin-right:10%;
+
+}
+
+
+		  
+	</style>
+		<link href="css/jquery-ui.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="css/jquery-ui.structure.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="css/jquery-ui.theme.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href='//fonts.googleapis.com/css?family=Roboto' type="text/css" rel="stylesheet" media="all"/>
+		<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700' type="text/css" rel="stylesheet" media="all"/>
+		<link href='//fonts.googleapis.com/css?family=Roboto:400,900italic,700italic,900,700,500italic,500,400italic,300italic,300,100italic,100' type="text/css" rel="stylesheet" media="all"/>
+		<link href='//fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' type="text/css" rel="stylesheet" media="all"/>
+		<link href='//fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900' type="text/css" rel="stylesheet" media="all"/>
+		<link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+	
+
+
+
+
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/materialize.min.js"></script>
+<script src="js/d3.min.js"></script>
+
+ <script>
+    $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
+        
+  </script>
+
+  <div class="containerMP">
+<ul class="collapsible" data-collapsible="expandable">
+      <li>
+	  
+      <div class="collapsible-header  active">DEV</div>  
+
+
+      <div class="collapsible-body">
+	  <div>	<div id="devMP">
+	  </div>
+    </li>
+
+
+    <li>
+      <div class="collapsible-header">QA</div>
+      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+    </li>
+    <li>
+      <div class="collapsible-header">UAT</div>
+      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+    </li>
+	    <li>
+      <div class="collapsible-header">PROD</div>
+      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+    </li>
+</ul>
+</div>
+<script>
+
+var margin = {top: 10, right: 20, bottom: 20, left: 20},
+    width = 1000 - margin.left - margin.right,
+    height = 100 - margin.top - margin.bottom;
+	
+	
+
+	
+var svg = d3.select("#devMP").append("svg")
+    .attr("width", "99%")
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", 
+          "translate(" + margin.left + "," + margin.top + ")");
+
+var allMeasures=[];		  
+		  
+d3.csv("measure_period.csv", function(error, data) {
+    data.forEach(function(d) {
+        d.database_name = d.database_name;
+        d.measures = d.measures;
+		
+		if (d.database_name=="all"){
+		allMeasures.push(d.measures);};
+	
+    });
+
+	allMeasures = allMeasures.toString().split(";");
+ 
+	allMeasures.sort(d3.ascending);
+	  
+measureTitle=	    svg.selectAll(".textLabel")
+      .data(allMeasures)
+    .enter().append("text")
+	
+   .attr("text-anchor", "left")
+   .attr("textAlign", "center")
+ 
+   // .attr("y","50")
+   // .attr("x",function(d) {
+		// return allMeasures.indexOf(d)*90+20+"px";
+    // })
+	  // .attr("transform", "rotate(-65)")
+   .text(function(d){return d})
+   .attr("class","textLabel")
+   .attr("transform", function(d) {k=allMeasures.indexOf(d)*70+20; return "translate(" +k +",10) rotate(55)"});
+	  
+
+});
+</script>
+
+
+
+
+</body>
