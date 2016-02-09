@@ -528,9 +528,9 @@ function envLoop(envVar,client){
                 .attr("textAlign", "center")
             .text(function(d) {
                     if(d==' 1TOTAL MEASURES'){return 'TOTAL'} else {return d}})
-                 .attr("class", "textLabel")              
+                 .attr("class", "cliLabel")              
 				.attr("font-weight",function(d){if (d==' 1TOTAL MEASURES' ||d==" TOTAL"){return "bold"}})
-				.attr("font-size",function(d){if (d==' 1TOTAL MEASURES' ||d==" TOTAL"){return "18px"}else {return "10px"}})
+				.style("font-size",function(d){if (d==' 1TOTAL MEASURES' ||d==" TOTAL"){return "18px"}else {return "12px"}})
                 .attr("transform", function(d) {
 				if (d==' 1TOTAL MEASURES' ||d==" TOTAL"){k = combinedTitle.indexOf(d) * 30;}else{k = combinedTitle.indexOf(d) * 30+ 5;};
                     
