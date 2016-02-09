@@ -1,242 +1,37 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
+function mp(selectVar){
 
-<head>
- <link href="css/jquery-ui.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="css/jquery-ui.structure.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="css/jquery-ui.theme.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href='//fonts.googleapis.com/css?family=Roboto' type="text/css" rel="stylesheet" media="all" />
-	<link href="css/jquery.qtip.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700' type="text/css" rel="stylesheet" media="all" />
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,900italic,700italic,900,700,500italic,500,400italic,300italic,300,100italic,100' type="text/css" rel="stylesheet" media="all" />
-    <link href='//fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' type="text/css" rel="stylesheet" media="all" />
-    <link href='//fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900' type="text/css" rel="stylesheet" media="all" />
-    <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
-    <style>
+ // <link href="css/jquery-ui.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    // <link href="css/jquery-ui.structure.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    // <link href="css/jquery-ui.theme.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    // <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    // <link href='//fonts.googleapis.com/css?family=Roboto' type="text/css" rel="stylesheet" media="all" />
+	// <link href="css/jquery.qtip.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    // <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700' type="text/css" rel="stylesheet" media="all" />
+    // <link href='//fonts.googleapis.com/css?family=Roboto:400,900italic,700italic,900,700,500italic,500,400italic,300italic,300,100italic,100' type="text/css" rel="stylesheet" media="all" />
+    // <link href='//fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' type="text/css" rel="stylesheet" media="all" />
+    // <link href='//fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900' type="text/css" rel="stylesheet" media="all" />
+    // <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+    // <style>
 	
-	        body {
-            font-family: 'Roboto', sans-serif;
-            font: 10px sans-serif;
-            background-color: #e0e0e0;
+	        // body {
+            // font-family: 'Roboto', sans-serif;
+            // font: 10px sans-serif;
+            // background-color: #e0e0e0;
 
 
-}
-
-        svg .textLabel {
-            font-size: 12px;
-        }
-        
-        .containerMP {
-            margin-top: 5%;
-            margin-left: 100px;
-			width: 1150px;
-            
-        }
-		
-		 .d3-tip2 {
-            line-height: 1;
-            font-weight: bold;
-            padding: 12px;
-            background: rgba(0, 0, 0, 0.45);
-            color: #fff;
-            border-radius: 2px;
-        }
-
-        /* Creates a small triangle extender for the tooltip */
-        .d3-tip2:after {
-            box-sizing: border-box;
-            display: inline;
-            font-size: 10px;
-            width: 100%;
-            line-height: 1;
-            color: rgba(0, 0, 0, 0.45);
-            content: "\25BC";
-            position: absolute;
-            text-align: center;
-        }
-		
-
-
-        /* Style northward tooltips differently */
-        .d3-tip2.n:after {
-            margin: -1px 0 0 0;
-            top: 100%;
-            left: 0;
-        }
-
-        span {
-            font-family: 'Roboto', sans-serif;
-            font-size: 12px;
-        }
-		
-
-        strong2 {
-            color: #FBB917;
-            font-weight: bold;
-            font-family: 'Roboto', sans-serif;
-            font-size: 12px;
-            shadow: 2px 2px #FFFFFF;
-        }
-		
-
-
-
-		
-form{
-margin-top:7.5px;
-font-family: 'Roboto', sans-serif;
-}
-    </style>
-   
-</head>
-
-<body>
+// }
 
 
 
 
 
-    <script src="js/jquery-2.1.1.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/materialize.min.js"></script>
-    <script src="js/d3.min.js"></script>
-	<script src="js/d3.tip.v0.6.3.js"></script>
-
-    <script>
-        // $(document).ready(function() {
-
-            // $('.collapsible').collapsible({
-                // accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-            // });
-			  
-        // });
-		
 
 
-	
-		
-
-		
-    </script>
 
 
-	
-
-	 					
-    <div class="containerMP col s9 offset-s1 m10 offset-m1 l8 offset-l2">
-
-        <ul class="collapsible" data-collapsible="expandable">
-		
-		
-		
-		
-		<li>
-<div class="collapsible-header grey lighten-3">
-	 <div class="row">
-<div class="col s4 offset-s4" style="font-size:20px;font-family:Roboto Slab;text-align:left;">ENABLED MEASURES & PERIODS</div>
-
-<div id="MPlegend" class="col s8"> </div>
-<div class="col s2 " style="font-size:12px;font-family:Roboto Slab;text-align:right;">
-Filter By Client:
-</div>	
-<div class="col s2"> 
- 
-<form action="#">
- 
-
-   
-    <select name="clientDropDown" id="clientDropDown">
-      <option selected="selected">All</option>
-    </select>
- 
-    
- 
-</form>
- </div>
-</div>
-</div>
-</li>
-		
-		            <li id="PRDMPheaderLi">
-                <div id="PRDMPheaderHi"  class="collapsible-header active grey lighten-3" style="font-size:18px;font-family:Roboto Slab;">PROD</div>
-                <div  class="collapsible-body grey lighten-3">
-                    <div class="row">
-                        <div class="col s11 offset-s1"   id="PRDMP"> </div>
-                        <div class="col s1" id="PRDCLI"> </div>
-                        <div class="col s11" id="PRDCLILine"> </div>
-                    </div>
-                </div>
-            </li>
-			            <li id="UATMPheaderLi">
-                <div id="UATMPheaderDi" class="collapsible-header  grey lighten-3" style="font-size:18px;font-family:Roboto Slab;">UAT</div>
-                <div class="collapsible-body grey lighten-3">
-                    <div class="row">
-                        <div class="col s11 offset-s1" id="UATMP"> </div>
-                        <div class="col s1" id="UATCLI"> </div>
-                        <div class="col s11" id="UATCLILine"> </div>
-                    </div>
-                </div>
-            </li>
-			
-			         <li id="QAMPheaderLi">
-                <div id="QAMPheaderDi" class="collapsible-header  grey lighten-3" style="font-size:18px;font-family:Roboto Slab;">QA</div>
-                <div class="collapsible-body grey lighten-3">
-                    <div class="row">
-                        <div class="col s11 offset-s1" id="QAMP"> </div>
-                        <div class="col s1" id="QACLI"> </div>
-                        <div class="col s11" id="QACLILine"> </div>
-                    </div>
-                </div>
-            </li>
-			
-            <li id="DEVMPheaderLi">
-
-                <div id="DEVMPheaderDi" class="collapsible-header  grey lighten-3" style="font-size:18px;font-family:Roboto Slab;">DEV</div>
-
-
-                <div   class="collapsible-body  grey lighten-3">
-                    <div class="row">
-                        <div class="col s11 offset-s1" id="DEVMP"> </div>
-                        <div class="col s1" id="DEVCLI"> </div>
-                        <div class="col s11" id="DEVCLILine"> </div>
-                    </div>
-                </div>
-            </li>
-
-
-   
-
-
-        </ul>
-    </div>
-	 </div>
 	 
 
-    <script>
-        var materializeColors = {
-            teal: "#009688",
-            pink: "#e91e63",
-            orange: "#ff9800",
-            blue: "#2196f3",
-            dblue: "#2B3856",
-            lblue: "#B7F6F6",
-            yellow: "#FBB917",
-            yellow2: "#FBB917",
-            lyellow: "#FFFF80",
-            purple: "#9c27b0",
-            platinum: "#E5E4E2",
-            bluegrey: "#98AFC7",
-            red: "#C11B17",
-            red2: "#F32900",
-            lred: "#E77471",
-            dred: "#800517",
-            lgreen: "#04FB75",
-            green: "#007A00",
-            white: "#FFFFFF",
-            dgrey: "#595959",
-            lgrey: "#D9D9D9"
-        };
+
 		
 
 	
@@ -303,7 +98,7 @@ Filter By Client:
         var allMeasures = [];
         var allPeriods = [];
 
-        d3.csv("measure_period.csv", function(error, data) {
+        d3.csv("data/measure_period.csv", function(error, data) {
             data.forEach(function(d) {
                 d.database_name = d.database_name;
                 d.measures = d.measures;
@@ -385,7 +180,7 @@ Filter By Client:
 
 distinctClients.forEach(function(d) {				
 					 $(function() {
- $("#clientDropDown").append('<option value="'+d+'">'+d+'</option>');
+ $("#clientDropDown").append('<option class="MPdroptext" value="'+d+'">'+d+'</option>');
     $( "#clientDropDown" ).selectmenu();
  
   });	
@@ -396,6 +191,7 @@ distinctClients.forEach(function(d) {
      $( "#clientDropDown" ).selectmenu({
          change: function( event, ui ) {
              //console.log(ui);
+			 $(".MPTitleLabel").remove();
              var selected_value = ui.item.value;
 			 filterByClient(selected_value);
 
@@ -424,9 +220,9 @@ function envLoop(envVar,client){
 				
 
 	//console.log(distinctClients)
-	
 
-        var svg = d3.select("#"+envVar+"MP").append("svg").attr("class","measurePeriodChart")
+
+        var svg = d3.select("#"+envVar+"MP").append("svg").attr("class","MPTitleLabel")
             .attr("width", "99%")
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
@@ -741,12 +537,11 @@ function envLoop(envVar,client){
             Title = svg.selectAll(".textLabel")
                 .data(combinedTitle)
                 .enter().append("text")
-
             .attr("text-anchor", "left")
                 .attr("textAlign", "center")
             .text(function(d) {
                     if(d==' 1TOTAL MEASURES'){return 'TOTAL'} else {return d}})
-                .attr("class", "textLabel")
+                 .attr("class", "textLabel")              
 				.attr("font-weight",function(d){if (d==' 1TOTAL MEASURES' ||d==" TOTAL"){return "bold"}})
 				.attr("font-size",function(d){if (d==' 1TOTAL MEASURES' ||d==" TOTAL"){return "18px"}else {return "10px"}})
                 .attr("transform", function(d) {
@@ -824,9 +619,4 @@ populateEnviornments(client)
       });
 		
 
-    </script>
-
-
-
-
-</body>
+};

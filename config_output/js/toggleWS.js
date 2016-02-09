@@ -21,4 +21,6 @@ $(document).on('click', '.toggle-button', function() {
 	deployChart(); 
 	}
 	
+
+	
 });

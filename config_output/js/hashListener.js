@@ -20,6 +20,10 @@ else if (window.location.hash == '#backup') {
 
 document.getElementById("Latest Backup").click();
 }
+else if (window.location.hash == '#mp') {
+
+document.getElementById("Measure Periods").click();
+}
 else
 {
 navBar('nj')

@@ -1,387 +1,438 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <head>
-
-    <title>Arcadia Environment Monitoring</title>
-	 <link rel="shortcut icon" type="image/x-icon" href="assets/monitoring_framework/favicon.ico" />
+   <title>Arcadia Environment Monitoring</title>
+   <link rel="shortcut icon" type="image/x-icon" href="assets/monitoring_framework/favicon.ico" />
+   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+   <link href='//fonts.googleapis.com/css?family=Roboto' type="text/css" rel="stylesheet" media="all"/>
+   <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700' type="text/css" rel="stylesheet" media="all"/>
+   <link href='//fonts.googleapis.com/css?family=Roboto:400,900italic,700italic,900,700,500italic,500,400italic,300italic,300,100italic,100' type="text/css" rel="stylesheet" media="all"/>
+   <link href='//fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' type="text/css" rel="stylesheet" media="all"/>
+   <link href='//fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900' type="text/css" rel="stylesheet" media="all"/>
+   <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+   <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' type="text/css" rel="stylesheet" media="all"/>
+   <link href="css/jquery.qtip.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+   <link href="css/jquery-ui.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+   <link href="css/jquery-ui.structure.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+   <link href="css/jquery-ui.theme.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+   <style>
+      body {
+      font-family: 'Roboto', sans-serif;
+      font: 10px sans-serif;
+      background-color: #000000;
+      -moz-transform: scale(0.9, 0.9); /* Moz-browsers */
+      zoom: 0.9; /* Other non-webkit browsers */
+      zoom: 90%; /* Webkit browsers */
+      }
+      @media screen and (max-width: 980px){ 
+      zoom: 0.5; /* Other non-webkit browsers */
+      zoom: 50%; /* Webkit browsers */
+      }
+      .fixed {
+      position:fixed; 
+      right: 0;
+      }
+      .svg {
+      }
+      .label {
+      font-weight: bold;
+      }
+      .alt-label {
+      font-size:14px;
+      font-family:'Roboto Condensed', sans-serif;
+      fill: #D9D9D9;
+      opacity: .8;
+      }
+      .static-scroll {
+      position: fixed;
+      }
+      .tile {
+      shape-rendering: crispEdges;
+      font-family: 'Roboto', sans-serif;
+      }
+      .axis path,
+      .axis line {
+      fill: none;
+      stroke: #D9D9D9;
+      shape-rendering: crispEdges;
+      }
+      .d3-tip {
+      line-height: 1;
+      font-weight: bold;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border-radius: 2px;
+      }
+      /* Creates a small triangle extender for the tooltip */
+      .d3-tip:after {
+      box-sizing: border-box;
+      display: inline;
+      font-size: 10px;
+      width: 100%;
+      line-height: 1;
+      color: rgba(0, 0, 0, 0.8);
+      content: "\25BC";
+      position: absolute;
+      text-align: center;
+      }
+      /* Style northward tooltips differently */
+      .d3-tip.n:after {
+      margin: -1px 0 0 0;
+      top: 100%;
+      left: 0;
+      }
+      span {
+      font-family: 'Roboto', sans-serif;
+      font-size: 12px;
+      }
+      strong {
+      color: #FBB917;
+      font-weight: bold;
+      font-family: 'Roboto', sans-serif;
+      font-size: 12px;
+      shadow: 2px 2px #FFFFFF;
+      }
+      p4 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      }
+      a{font-family: 'Roboto'}
+      timeValue {
+      font-family: 'Roboto', sans-serif;
+      font-size: 15px;
+      color: #D9D9D9;
+      }
+      timeLabel {
+      font-family: 'Roboto', sans-serif;
+      font-size: 15px;
+      color: #B7F6F6;
+      }
+      wsText {
+      font-family: 'Roboto', sans-serif;
+      font-size: 12px;
+      color:white;
+      }
+      #preloader  {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #000000;
+      z-index: 99;
+      height: 100%;
+      }
+      #status  {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: -100px 0 0 -100px;
+      }
+      svg .textLabel {
+      font-size: 12px;
+      }
+      .containerMP {
+      margin-top: 5%;
+      margin-left: 100px;
+      width: 1150px;
+      }
+      .d3-tip2 {
+      line-height: 1;
+      font-weight: bold;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.45);
+      color: #fff;
+      border-radius: 2px;
+      }
+      /* Creates a small triangle extender for the tooltip */
+      .d3-tip2:after {
+      box-sizing: border-box;
+      display: inline;
+      font-size: 10px;
+      width: 100%;
+      line-height: 1;
+      color: rgba(0, 0, 0, 0.45);
+      content: "\25BC";
+      position: absolute;
+      text-align: center;
+      }
+      /* Style northward tooltips differently */
+      .d3-tip2.n:after {
+      margin: -1px 0 0 0;
+      top: 100%;
+      left: 0;
+      }
+      strong2 {
+      color: #FBB917;
+      font-weight: bold;
+      font-family: 'Roboto', sans-serif;
+      font-size: 12px;
+      shadow: 2px 2px #FFFFFF;
+      }
+      form{
+      margin-top:7.5px;
+      font-family: 'Roboto', sans-serif;
+      }	  
+      @font-face {
+      font-family:"digital-7";
+      src: url("assets/monitoring_framework/font/digital-7.ttf") 
+      }
 	
+      .toggle-button { background-color: #989898 ; margin: 5px 0; border-radius: 20px; border: 2px solid #D0D0D0;top:12px; height: 24px; cursor: pointer; width: 50px; position: relative; display: inline-block; user-select: none; -webkit-user-select: none; -ms-user-select: none; -moz-user-select: none; }
+      .toggle-button button { cursor: pointer; outline: 0; display:block; position: absolute; left: 0; top: 0; border-radius: 100%; width: 30px; height: 30px; background-color: #D8D8D8; float: left; margin: -3px 0 0 -3px; border: 2px solid #D0D0D0; transition: left 0.3s; }
+      .toggle-button-selected { background-color: #80acac; border: 2px solid #7DA652; }
+      .toggle-button-selected button { left: 26px; top: 0; margin: 0; border: none; width: 24px; height: 24px; box-shadow: 0 0 4px rgba(0,0,0,0.1); }
 
-	<link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	<link href='//fonts.googleapis.com/css?family=Roboto' type="text/css" rel="stylesheet" media="all"/>
-	<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700' type="text/css" rel="stylesheet" media="all"/>
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,900italic,700italic,900,700,500italic,500,400italic,300italic,300,100italic,100' type="text/css" rel="stylesheet" media="all"/>
-    <link href='//fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' type="text/css" rel="stylesheet" media="all"/>
-    <link href='//fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900' type="text/css" rel="stylesheet" media="all"/>
-    <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
-	<link href='//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' type="text/css" rel="stylesheet" media="all"/>
-	<link href="css/jquery.qtip.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-
-	
-	
-    <style>
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            font: 10px sans-serif;
-            background-color: #000000;
-			-moz-transform: scale(0.9, 0.9); /* Moz-browsers */
-			zoom: 0.9; /* Other non-webkit browsers */
-			zoom: 90%; /* Webkit browsers */
-
-        }
-		
-		@media screen and (max-width: 980px){ 
-	zoom: 0.5; /* Other non-webkit browsers */
-			zoom: 50%; /* Webkit browsers */
-			}
-		
-		.fixed {
-    position:fixed; 
-	 right: 0;
-
-	}
-
-	
-        .svg {
-
-        }
-
-        .label {
-            font-weight: bold;
-        }
-		
-		.alt-label {
-		  font-size:14px;
-		  font-family:'Roboto Condensed', sans-serif;
-	      fill: #D9D9D9;
-		  opacity: .8;
-		  
-		
-		}
-		
-		.static-scroll {
-		 position: fixed;
-		}
-
-        .tile {
-            shape-rendering: crispEdges;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .axis path,
-        .axis line {
-            fill: none;
-            stroke: #D9D9D9;
-            shape-rendering: crispEdges;
-        }
-		
-
-
-	
-
-        .d3-tip {
-            line-height: 1;
-            font-weight: bold;
-            padding: 12px;
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            border-radius: 2px;
-        }
-
-        /* Creates a small triangle extender for the tooltip */
-        .d3-tip:after {
-            box-sizing: border-box;
-            display: inline;
-            font-size: 10px;
-            width: 100%;
-            line-height: 1;
-            color: rgba(0, 0, 0, 0.8);
-            content: "\25BC";
-            position: absolute;
-            text-align: center;
-        }
-		
-
-
-        /* Style northward tooltips differently */
-        .d3-tip.n:after {
-            margin: -1px 0 0 0;
-            top: 100%;
-            left: 0;
-        }
-
-        span {
-            font-family: 'Roboto', sans-serif;
-            font-size: 12px;
-        }
-		
-
-        strong {
-            color: #FBB917;
-            font-weight: bold;
-            font-family: 'Roboto', sans-serif;
-            font-size: 12px;
-            shadow: 2px 2px #FFFFFF;
-        }
-
-
-        p4 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 16px;
-
-
-        }
-
-        a{font-family: 'Roboto'}
-		
-		
-		timeValue {
-            font-family: 'Roboto', sans-serif;
-            font-size: 15px;
-			color: #D9D9D9;
-        }
-		
-		timeLabel {
-            font-family: 'Roboto', sans-serif;
-            font-size: 15px;
-			color: #B7F6F6;
-        }
-
-		wsText {
-            font-family: 'Roboto', sans-serif;
-            font-size: 12px;
-			color:white;
-        }			
-		
-		
-				@font-face {
-    font-family:"digital-7";
-    src: url("assets/monitoring_framework/font/digital-7.ttf") 
-	}
-	
-.toggle-button { background-color: #989898 ; margin: 5px 0; border-radius: 20px; border: 2px solid #D0D0D0;top:12px; height: 24px; cursor: pointer; width: 50px; position: relative; display: inline-block; user-select: none; -webkit-user-select: none; -ms-user-select: none; -moz-user-select: none; }
-.toggle-button button { cursor: pointer; outline: 0; display:block; position: absolute; left: 0; top: 0; border-radius: 100%; width: 30px; height: 30px; background-color: #D8D8D8; float: left; margin: -3px 0 0 -3px; border: 2px solid #D0D0D0; transition: left 0.3s; }
-.toggle-button-selected { background-color: #80acac; border: 2px solid #7DA652; }
-.toggle-button-selected button { left: 26px; top: 0; margin: 0; border: none; width: 24px; height: 24px; box-shadow: 0 0 4px rgba(0,0,0,0.1); }
-
-#preloader  {
-     position: absolute;
-     top: 0;
-     left: 0;
-     right: 0;
-     bottom: 0;
-     background-color: #000000;
-     z-index: 99;
-    height: 100%;
- }
-
-#status  {
-     width: 200px;
-     height: 200px;
-     position: absolute;
-     left: 50%;
-     top: 50%;
-     
-     background-repeat: no-repeat;
-     background-position: center;
-     margin: -100px 0 0 -100px;
- }
-
-    </style>
+	  
+   </style>
 </head>
-<body><!-- onload="navBar('nj')">-->
-
-
-
-  <div class="navbar-fixed">
-    <nav class="grey darken-1">
-      <div class="nav-wrapper">
-
-	   <a id="logo"  class="right"><img type="image" src="assets/monitoring_framework/img/arclogo.png" style="width:150px;height:63px;"></a>
-	   <a   class="right" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
-	   <a  id="helper" class="right"   title=""><i class="fa fa-question-circle fa-lg" style="color:#D9D9D9; font-size:24px "></i></a>
-	   <a   class="right"  >&nbsp&nbsp</a>
-	   <a id="about"  style="font-size:12px " class="right">About</a>
-	   <a   class="right" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
-   
-   
-   <ul id="toggleDiv" class="right hide-on-med-and-down">
-   <wsText>Widecreen</wsText>
-
-    </ul>
-	<a   class="right hide-on-med-and-down"  >&nbsp&nbsp&nbsp</a>
-	 <ul id="toggleDiv" class="right hide-on-med-and-down">
-	   <a class="toggle-button" >
-   <button></button>	</a>
-   
-  </ul>
-
-        <ul class="left hide-on-med-and-down">
-          <li onclick="navBar('nj')" id="Nightly Jobs" class="active"><a id="Nightly Jobs Text">Nightly Job Statuses</a></li>
-		  <li onclick="navBar('njduration')" id="Job Run Time" ><a id="Job Run Time Text">Job Run Time</a></li> 
-		  <li onclick="navBar('deploy')" id="Deploy Versions"><a id="Deploy Versions Text">Versions Deployed</a></li>
-		  <li onclick="navBar('vhistory')" id="Version History" ><a id="Version History Text">Version History</a></li>
-		  <li onclick="navBar('backup')" id="Latest Backup" ><a id="Latest Backup Text">Latest Backup</a></li> 		  
-        </ul>
-		<ul id="slide-out" class="side-nav" >
-          <li onclick="navBar('nj')" id="Nightly Jobs side"><a>Nightly Job Statuses</a></li>
-		  <li onclick="navBar('njduration')" id="Job Run Time side" ><a>Job Run Time</a></li> 
-		  <li onclick="navBar('deploy')" id="Deploy Versions side"><a>Versions Deployed</a></li>
-		  <li onclick="navBar('vhistory')" id="Version History side" ><a>Version History</a></li>
-		  <li onclick="navBar('backup')" id="Latest Backup side" ><a>Latest Backup</a></li> 		  
-      </ul>
-	   <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-      </div>
-    </nav>
-  </div>
-  
-  
-	   <div class="tooltext" id="tooltext" style="display: none;">
-	   <div>
-	   <img id="help_image" type="image" src="assets/monitoring_framework/img/job_time_leg.png" style="width:180px;height:96px;">
-	   </div>
-	   <hr>
-	   <p><b>v1.5</b> Updated:<i> 1/18</i><br></p><p> Added latest backup for each client</p><p> Added legends and widescreen toggle</p><p>Added missing clients for version views<br><i><b>Note:</b> these will not yet have as long a deploy history.</i><br><p>Added Github release notes links to Version History</p><p>Added zoom and scroll to Version History</p>
-	   <p><a href="mailto:simon.ioffe@arcadiasolutions.com?Subject=Monitoring%20Dashboard" target="_top" >Reports bugs or suggestions</a></p>
-	   </div>
-
-
-	   <div class="fixed"  align="right">
-<a id="updatetime"></</a>
-</div>
-   
-	   
-
-
-<div style="top:140px; left:1200px; position: fixed; z-index: 1;" id="sideDivVH"></div>
-<div style="top:60px; left:900px; position: absolute; z-index: 1;" id="sideDivDC"></div>
-<div style="top:60px; left:575px; position: absolute; z-index: 1;" id="sideDivBA"></div>
-<div style="top:60px; left:900px; position: absolute; z-index: 1;" id="sideDivNJ"></div>
-<div style="top:60px; left:900px; position: absolute; z-index: 1;" id="sideDivND"></div>
-
-
-	   <div id="preloader">
-  <div id="status">
-  
-
+<body>
+   <!-- onload="navBar('nj')">-->
+   <div class="navbar-fixed">
+      <nav class="grey darken-1">
+         <div class="nav-wrapper">
+		 
+            <a id="logo"  class="right"><img type="image" src="assets/monitoring_framework/img/arclogo.png" style="width:150px;height:63px;"></a>
+            <a   class="right" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+            <a  id="helper" class="right"  title=""><i class="fa fa-question-circle fa-lg" style="color:#D9D9D9; font-size:24px; vertical-align:top;"></i></a>
+            <a   class="right"  >&nbsp&nbsp&nbsp</a>
+            <a id="about"  style="font-size:12px; " class="right">About/Legend:</a>
+            <a   class="right" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
             
-    <div class="preloader-wrapper big active">
-    <div class="spinner-layer spinner-blue-only">
-      <div class="circle-clipper left">
-        <div class="circle"></div>
-      </div><div class="gap-patch">
-        <div class="circle"></div>
-      </div><div class="circle-clipper right">
-        <div class="circle"></div>
+			<ul id="toggleDiv" class="right hide-on-med-and-down">
+               <wsText>Widecreen</wsText>
+            </ul>
+            <a   class="right hide-on-med-and-down"  >&nbsp&nbsp&nbsp</a>
+            <ul id="toggleDiv" class="right hide-on-med-and-down">
+               <a class="toggle-button" >
+               <button></button>	</a>
+            </ul>
+            <ul class="left hide-on-med-and-down">
+               <li onclick="navBar('nj')" id="Nightly Jobs" class="active"><a id="Nightly Jobs Text">Nightly Job Statuses</a></li>
+               <li onclick="navBar('njduration')" id="Job Run Time" ><a id="Job Run Time Text">Job Run Time</a></li>
+               <li onclick="navBar('deploy')" id="Deploy Versions"><a id="Deploy Versions Text">Versions Deployed</a></li>
+               <li onclick="navBar('vhistory')" id="Version History" ><a id="Version History Text">Version History</a></li>
+               <li onclick="navBar('measureperiod')" id="Measure Periods" ><a id="Measure Periods Text">Measures & Periods</a></li>			   
+               <li onclick="navBar('backup')" id="Latest Backup" ><a id="Latest Backup Text">Latest Backup</a></li>
+            </ul>
+            <ul id="slide-out" class="side-nav" >
+               <li onclick="navBar('nj')" id="Nightly Jobs side"><a>Nightly Job Statuses</a></li>
+               <li onclick="navBar('njduration')" id="Job Run Time side" ><a>Job Run Time</a></li>
+               <li onclick="navBar('deploy')" id="Deploy Versions side"><a>Versions Deployed</a></li>
+               <li onclick="navBar('vhistory')" id="Version History side" ><a>Version History</a></li>
+               <li onclick="navBar('measureperiod')" id="Measure Periods side" ><a>Measures & Periods</a></li>
+               <li onclick="navBar('backup')" id="Latest Backup side" ><a>Latest Backup</a></li>
+            </ul>
+            <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+         </div>
+      </nav>
+   </div>
+   <div class="tooltext" id="tooltext" style="display: none;">
+      <div>
+         <img id="help_image" type="image" src="assets/monitoring_framework/img/job_time_leg.png" style="width:180px;height:96px;">
       </div>
-    </div>
-
-  
-  </div>
-  <div>Loading</div>
-</div>
-
+      <hr>
+      <p><b>v1.6</b> Updated:<i> 2/8</i><br></p>
+      <p> Added enabled Measures and Periods</p>
+      <p> Added legends and widescreen toggle</p>
+      <p>Added missing clients for version views<br><i><b>Note:</b> these will not yet have as long a deploy history.</i><br>
+      <p>Added Github release notes links to Version History</p>
+      <p>Added zoom and scroll to Version History</p>
+      <p><a href="mailto:simon.ioffe@arcadiasolutions.com?Subject=Monitoring%20Dashboard" target="_top" >Reports bugs or suggestions</a></p>
+   </div>
+   <div class="fixed"  align="right">
+      <a id="updatetime"></</a>
+   </div>
+   <div style="top:140px; left:1200px; position: fixed; z-index: 1;" id="sideDivVH"></div>
+   <div style="top:60px; left:900px; position: absolute; z-index: 1;" id="sideDivDC"></div>
+   <div style="top:60px; left:575px; position: absolute; z-index: 1;" id="sideDivBA"></div>
+   <div style="top:60px; left:900px; position: absolute; z-index: 1;" id="sideDivNJ"></div>
+   <div style="top:60px; left:900px; position: absolute; z-index: 1;" id="sideDivND"></div>
+   <div id="preloader">
+      <div id="status">
+         <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+               <div class="circle-clipper left">
+                  <div class="circle"></div>
+               </div>
+               <div class="gap-patch">
+                  <div class="circle"></div>
+               </div>
+               <div class="circle-clipper right">
+                  <div class="circle"></div>
+               </div>
+            </div>
+         </div>
+         <div>Loading</div>
+      </div>
+	</div>
+	
+      <!-- Measure Period --> 
+      <div class="containerMP col s9 offset-s1 m10 offset-m1 l8 offset-l2" id="MeasurePeriodDiv" style="display: none;">
+         <ul class="collapsible" data-collapsible="expandable">
+            <li>
+               <div class="collapsible-header grey lighten-3">
+                  <div class="row">
+                     <div class="col s4 offset-s4" style="font-size:20px;font-family:Roboto Slab;text-align:left;">ENABLED MEASURES & PERIODS</div>
+                     <div id="MPlegend" class="col s8"> </div>
+                     <div class="col s2 " style="font-size:12px;font-family:Roboto Slab;text-align:right;">
+                        Filter By Client:
+                     </div>
+                     <div class="col s2">
+                        <form action="#">
+                           <select name="clientDropDown" id="clientDropDown">
+                              <option selected="selected">All</option>
+                           </select>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </li>
+            <li id="PRDMPheaderLi">
+               <div id="PRDMPheaderHi"  class="collapsible-header active grey lighten-3" style="font-size:18px;font-family:Roboto Slab;">PROD</div>
+               <div  class="collapsible-body grey lighten-3">
+                  <div class="row">
+                     <div class="col s11 offset-s1"   id="PRDMP"> </div>
+                     <div class="col s1" id="PRDCLI"> </div>
+                     <div class="col s11" id="PRDCLILine"> </div>
+                  </div>
+               </div>
+            </li>
+            <li id="UATMPheaderLi">
+               <div id="UATMPheaderDi" class="collapsible-header  grey lighten-3" style="font-size:18px;font-family:Roboto Slab;">UAT</div>
+               <div class="collapsible-body grey lighten-3">
+                  <div class="row">
+                     <div class="col s11 offset-s1" id="UATMP"> </div>
+                     <div class="col s1" id="UATCLI"> </div>
+                     <div class="col s11" id="UATCLILine"> </div>
+                  </div>
+               </div>
+            </li>
+            <li id="QAMPheaderLi">
+               <div id="QAMPheaderDi" class="collapsible-header  grey lighten-3" style="font-size:18px;font-family:Roboto Slab;">QA</div>
+               <div class="collapsible-body grey lighten-3">
+                  <div class="row">
+                     <div class="col s11 offset-s1" id="QAMP"> </div>
+                     <div class="col s1" id="QACLI"> </div>
+                     <div class="col s11" id="QACLILine"> </div>
+                  </div>
+               </div>
+            </li>
+            <li id="DEVMPheaderLi">
+               <div id="DEVMPheaderDi" class="collapsible-header  grey lighten-3" style="font-size:18px;font-family:Roboto Slab;">DEV</div>
+               <div   class="collapsible-body  grey lighten-3">
+                  <div class="row">
+                     <div class="col s11 offset-s1" id="DEVMP"> </div>
+                     <div class="col s1" id="DEVCLI"> </div>
+                     <div class="col s11" id="DEVCLILine"> </div>
+                  </div>
+               </div>
+            </li>
+         </ul>
+      </div>
+   </div>
 </body>
-
 <script>
-var materializeColors = {
-    teal: "#009688"
-    , pink: "#e91e63"
-    , orange: "#ff9800"
-    , blue: "#2196f3"
-    , dblue: "#2B3856"
-    , lblue: "#B7F6F6"
-    , yellow: "#FBB917"
-    , yellow2: "#FBB917"
-    , lyellow: "#FFFF80"
-    , purple: "#9c27b0"
-    , platinum: "#E5E4E2"
-    , bluegrey: "#98AFC7"
-    , red: "#C11B17"
-    , red2: "#F32900"
-    , lred: "#E77471"
-    , dred: "#800517"
-    , lgreen: "#04FB75"
-    , green: "#007A00"
-    , white: "#FFFFFF"
-    , dgrey: "#595959"
-    , lgrey: "#D9D9D9"
-};
-
-
-
-
-
+   var materializeColors = {
+       teal: "#009688"
+       , pink: "#e91e63"
+       , orange: "#ff9800"
+       , blue: "#2196f3"
+       , dblue: "#2B3856"
+       , lblue: "#B7F6F6"
+       , yellow: "#FBB917"
+       , yellow2: "#FBB917"
+       , lyellow: "#FFFF80"
+       , purple: "#9c27b0"
+       , platinum: "#E5E4E2"
+       , bluegrey: "#98AFC7"
+       , red: "#C11B17"
+       , red2: "#F32900"
+       , lred: "#E77471"
+       , dred: "#800517"
+       , lgreen: "#04FB75"
+       , green: "#007A00"
+       , white: "#FFFFFF"
+       , dgrey: "#595959"
+       , lgrey: "#D9D9D9"
+   };
+   
+   
+   
+   
+   
 </script>
-
 <script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 <script src="js/d3.min.js"></script>
 <script src="js/materialize.min.js"></script>
 <script src="js/colorbrewer.v1.min.js"></script>
 <script src="js/jquery.qtip.js"></script>
 <script src="js/d3.tip.v0.6.3.js"></script>
-
 <script>
-
-
-if ($(window).width()<1600)
-{$('.toggle-button').toggleClass('toggle-button-selected')}
-
-  $(".button-collapse").sideNav();
-  
-  jQuery(window).load(function() {
-
-        // will first fade out the loading animation
-
-    jQuery("#status").fadeOut();
-
-        // will fade out the whole DIV that covers the website.
-
-    jQuery("#preloader").delay(100).fadeOut("slow");
-
-})
-
-  
-  
-  // Create the tooltips only when document ready
-$(document).ready(function () {
-    
-    // This will automatically grab the 'title' attribute and replace
-    // the regular browser tooltips for all <a> elements with a title attribute!
-    $('a[title]').qtip({
-    content: {
-        text: $("#tooltext"),
-        title: 'About'
-    }
-	,style: { 
-       classes: 'qtip-dark' 
-   }
-     ,hide: {
-          fixed: true,
-          delay: 500
-     }
-	});
-    
-});
-
+   if ($(window).width()<1600)
+   {$('.toggle-button').toggleClass('toggle-button-selected')}
+   
+     $(".button-collapse").sideNav();
+     
+     jQuery(window).load(function() {
+   
+           // will first fade out the loading animation
+   
+       jQuery("#status").fadeOut();
+   
+           // will fade out the whole DIV that covers the website.
+   
+       jQuery("#preloader").delay(100).fadeOut("slow");
+   
+   })
+   
+     
+     
+     // Create the tooltips only when document ready
+   $(document).ready(function () {
+       
+       // This will automatically grab the 'title' attribute and replace
+       // the regular browser tooltips for all <a> elements with a title attribute!
+       $('a[title]').qtip({
+       content: {
+           text: $("#tooltext"),
+           title: 'About'
+       }
+   	,style: { 
+          classes: 'qtip-dark' 
+      }
+        ,hide: {
+             fixed: true,
+             delay: 500
+        }
+   	});
+       
+   });
+   
 </script>
 <script src="js/timeStamp.js"></script>
 <script src="js/deployChart.js"></script>
 <script src="js/nightlyjobChart.js"></script>
 <script src="js/versionHistory.js"></script>
 <script src="js/nightlyjobDuration.js"></script>
+<script src="js/measurePeriod.js"></script>
 <script src="js/backupStat.js"></script>
 <script src="js/toggleWS.js"></script>
-
 <script src="js/navBar.js"></script>
 <script src="js/hashListener.js"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-72406614-1', 'auto');
-  ga('send', 'pageview');
-
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+   
+   ga('create', 'UA-72406614-1', 'auto');
+   ga('send', 'pageview');
+   
 </script>
