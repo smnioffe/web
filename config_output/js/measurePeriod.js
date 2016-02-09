@@ -192,6 +192,14 @@ distinctClients.forEach(function(d) {
          change: function( event, ui ) {
              //console.log(ui);
 			 $(".MPTitleLabel").remove();
+			 $("#DEVMPheaderLi").removeClass("active");				
+			 $("#DEVMPheaderDi").removeClass("active");
+			 $("#QAMPheaderLi").removeClass("active");				
+			 $("#QAMPheaderDi").removeClass("active");
+			 $("#UATMPheaderLi").removeClass("active");				
+			 $("#UATMPheaderDi").removeClass("active");
+			 $("#PRDMPheaderLi").removeClass("active");				
+			 $("#PRDMPheaderDi").removeClass("active");			 
              var selected_value = ui.item.value;
 			 filterByClient(selected_value);
 
@@ -552,8 +560,8 @@ function envLoop(envVar,client){
 
 				
 		
-$("#"+envVar+"MPheaderLi").removeClass("active");				
-$("#"+envVar+"MPheaderDi").removeClass("active");				
+// $("#"+envVar+"MPheaderLi").removeClass("active");				
+// $("#"+envVar+"MPheaderDi").removeClass("active");				
 if((distinctClients.length>0 && client!=='All'))
  {
 //console.log(envVar)
