@@ -184,10 +184,11 @@
       }
 	
       .toggle-button { background-color: #989898 ; margin: 5px 0; border-radius: 20px; border: 2px solid #D0D0D0;top:12px; height: 24px; cursor: pointer; width: 50px; position: relative; display: inline-block; user-select: none; -webkit-user-select: none; -ms-user-select: none; -moz-user-select: none; }
-      .toggle-button button { cursor: pointer; outline: 0; display:block; position: absolute; left: 0; top: 0; border-radius: 100%; width: 30px; height: 30px; background-color: #D8D8D8; float: left; margin: -3px 0 0 -3px; border: 2px solid #D0D0D0; transition: left 0.3s; }
-      .toggle-button-selected { background-color: #80acac; border: 2px solid #7DA652; }
-      .toggle-button-selected button { left: 26px; top: 0; margin: 0; border: none; width: 24px; height: 24px; box-shadow: 0 0 4px rgba(0,0,0,0.1); }
+      .toggle-button button { cursor: pointer; outline: 0; display:block; position: absolute; left: 0; top: -1px; border-radius: 100%; width: 30px; height: 30px; background-color: #D8D8D8; float: left; margin: -3px 0 0 -3px; border: 2px solid #D0D0D0; transition: left 0.3s; }
+      .toggle-button-selected { background-color: #80acac; border: 2px solid #d3e2e2; }
+      .toggle-button-selected button { left: 26px; top: -1px; margin: 0; border: none; width: 24px; height: 24px; box-shadow: 0 0 4px rgba(0,0,0,0.1); }
 
+	  .header_nav { cursor: pointer; cursor: hand; }
 	  
    </style>
 </head>
@@ -212,7 +213,7 @@
                <a class="toggle-button" >
                <button></button>	</a>
             </ul>
-            <ul class="left hide-on-med-and-down">
+            <ul id="header_nav" class="left hide-on-med-and-down">
                <li onclick="navBar('nj')" id="Nightly Jobs" class="active"><a id="Nightly Jobs Text">Nightly Job Status</a></li>
                <li onclick="navBar('njduration')" id="Job Run Time" ><a id="Job Run Time Text">Job Run Time</a></li>
                <li onclick="navBar('deploy')" id="Deploy Versions"><a id="Deploy Versions Text">Versions Deployed</a></li>
@@ -268,8 +269,9 @@
                </div>
             </div>
          </div>
-         <div>Loading</div>
+         <div style="text-align:left;font-size:20px;">Loading...</div>
       </div>
+	  
 	</div>
 	
       <!-- Measure Period --> 

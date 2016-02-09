@@ -367,6 +367,7 @@ var leftBt = svg2.append("text").attr("class", 'svg')
 			.style("opacity",.5)
             .style("text-anchor", "middle")
             .attr('font-family', 'FontAwesome')
+			.style("cursor","pointer")
             .text(function(d) { return '\uf190' });
 
 			
@@ -379,6 +380,7 @@ var rightBt = svg2.append("text").attr("class", 'svg')
 			.style("opacity",.5)			
             .style("text-anchor", "middle")
             .attr('font-family', 'FontAwesome')
+			.style("cursor","pointer")
             .text(function(d) { return '\uf18e' });			
 
 
@@ -390,6 +392,7 @@ var inBt = svg2.append("text").attr("class", 'svg')
 			.style("opacity",.5)
             .style("text-anchor", "middle")
             .attr('font-family', 'FontAwesome')
+			.style("cursor","pointer")
             .text(function(d) { return '\uf00e' });	
 
 
@@ -401,6 +404,7 @@ var outBt = svg2.append("text").attr("class", 'svg')
 			.style("opacity",.5)
             .style("text-anchor", "middle")
             .attr('font-family', 'FontAwesome')
+			.style("cursor","pointer")
             .text(function(d) { return '\uf010' });	
 
 
@@ -472,53 +476,6 @@ drawVChart(distinctCoreVersions,colorScale,numberCoreVersions,buckets,distinctDB
       .text("Click the version in the legend to be taken to that versions release notes on Github.");
 	  
 	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
- 
-   // svg.selectAll(".tile")
-      // .data(buckets)
-    // .enter().append("rect")
-      // .attr("class", "tile")
-      // .attr("x", function(d) { return x(d.date); })
-	   // .attr("y",function(d) {    
-                // return ydomain.indexOf(d.database_name)*20+50+"px";})
-      // //.attr("y", function(d) { return y(d.database_name + 5); })
-      // .attr("width", function(d) { if (x(d.end_date)-x(d.date)-1 < 0) {return 0} else  {return x(d.end_date)-x(d.date)-1; }})
-      // .attr("height",  18)
-      // .style("fill",function(d){
-		  // if (d.n_rank<0){  
-		  // return d3.rgb(colorScale(d.coreMajor)).darker(d.n_rank*-.6);
-	  // } else {return d3.rgb(colorScale(d.coreMajor)).brighter(d.n_rank*.2)};
-		  // });
-		   	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-
-		  
 		  
   // // Add a legend for the color values.
   var legend = svg2.selectAll(".legend")

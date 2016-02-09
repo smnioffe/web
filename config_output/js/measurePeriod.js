@@ -1,26 +1,5 @@
 function mp(selectVar){
 
- // <link href="css/jquery-ui.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    // <link href="css/jquery-ui.structure.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    // <link href="css/jquery-ui.theme.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    // <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    // <link href='//fonts.googleapis.com/css?family=Roboto' type="text/css" rel="stylesheet" media="all" />
-	// <link href="css/jquery.qtip.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    // <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700' type="text/css" rel="stylesheet" media="all" />
-    // <link href='//fonts.googleapis.com/css?family=Roboto:400,900italic,700italic,900,700,500italic,500,400italic,300italic,300,100italic,100' type="text/css" rel="stylesheet" media="all" />
-    // <link href='//fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' type="text/css" rel="stylesheet" media="all" />
-    // <link href='//fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900' type="text/css" rel="stylesheet" media="all" />
-    // <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
-    // <style>
-	
-	        // body {
-            // font-family: 'Roboto', sans-serif;
-            // font: 10px sans-serif;
-            // background-color: #e0e0e0;
-
-
-// }
-
 
 
 
