@@ -79,6 +79,7 @@ function mp(selectVar){
 
         d3.csv("data/report_output.csv", function(error, data) {
 
+		data=data.filter(function(d){ return d.orig_table == "measures and periods"; });
 		
            data.filter(function(d){ return d.orig_table == "measures and periods"; }).forEach(function(d) {
 				d.orig_table=d.orig_table;
