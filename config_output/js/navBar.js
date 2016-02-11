@@ -30,7 +30,7 @@ function navBar(Selection)
 		document.getElementById("Version History").className = '';
 		document.getElementById("Job Run Time").className = '';
 		document.getElementById("Latest Backup").className = '';
-		document.getElementById("Latest Backup").className = '';
+		document.getElementById("Measure Periods").className = '';
 		document.getElementById("Deploy Versions").className = 'active';
 		
 		document.getElementById("Deploy Versions Text").style.color = "#B7F6F6"

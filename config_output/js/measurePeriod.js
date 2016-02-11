@@ -77,20 +77,23 @@ function mp(selectVar){
         var allMeasures = [];
         var allPeriods = [];
 
-        d3.csv("data/measure_period.csv", function(error, data) {
-            data.forEach(function(d) {
+        d3.csv("data/report_output.csv", function(error, data) {
+
+		
+           data.filter(function(d){ return d.orig_table == "measures and periods"; }).forEach(function(d) {
+				d.orig_table=d.orig_table;
                 d.database_name = d.database_name;
-                d.measures = d.measures;
-                d.CLIENT = d.CLIENT;
-                d.ENV = d.ENV;
-                d.periods = d.periods;
-                d.periods_count = d.periods_count;
-				d.measure_count = d.measure_count;
-				d.periods_inactive=d.periods_inactive;
-				d.periods_inactive_run=d.periods_inactive_run;
-				d.inactive_measures=d.inactive_measures;
-				d.inactive_measures_run=d.inactive_measures_run;
-				d.max_run=d.max_run;
+                d.measures = d.value4;
+                d.CLIENT = d.client;
+                d.ENV = d.env;
+                d.periods = d.type;
+                d.periods_count = d.value1;
+				d.measure_count = d.value5;
+				d.periods_inactive=d.value2;
+				d.periods_inactive_run=d.value3;
+				d.inactive_measures=d.value6;
+				d.inactive_measures_run=d.value7;
+				d.max_run=d.date_value.substring(0, 10);
                 if (d.database_name == "all") {
                     allMeasures.push(d.measures);
                     allPeriods.push(d.periods);
@@ -132,7 +135,8 @@ function mp(selectVar){
 
             });
 
-			
+		
+		
 			
             allMeasures = allMeasures.toString().split(";");
             allMeasures.sort(d3.ascending);
@@ -145,7 +149,6 @@ function mp(selectVar){
 
             combinedTitle = combinedTitle.concat(allPeriods);
 			
-           
 
 		   var  distinctClients = d3.set(
                 data
@@ -206,7 +209,7 @@ function envLoop(envVar,client){
                 })).values();
 				
 
-	//console.log(distinctClients)
+	distinctClients.sort(d3.ascending);
 
 
         var svg = d3.select("#"+envVar+"MP").append("svg").attr("class","MPTitleLabel")
@@ -221,7 +224,7 @@ function envLoop(envVar,client){
             var clientLabel = d3.select("#"+envVar+"CLI")
                 .append("svg:svg").attr("class","measurePeriodChart")
                 .attr("width", "100%")
-                .attr("height", function(d) {
+                .attr("height", function(d) { 
                     return distinctClients.length * 40 +20+ "px";
                 })
 
@@ -530,7 +533,7 @@ function envLoop(envVar,client){
                     if(d==' 1TOTAL MEASURES'){return 'TOTAL'} else {return d}})
                  .attr("class", "cliLabel")              
 				.attr("font-weight",function(d){if (d==' 1TOTAL MEASURES' ||d==" TOTAL"){return "bold"}})
-				.style("font-size",function(d){if (d==' 1TOTAL MEASURES' ||d==" TOTAL"){return "18px"}else {return "12px"}})
+				.style("font-size",function(d){if (d==' 1TOTAL MEASURES' ||d==" TOTAL"){return "16px"}else {return "12px"}})
                 .attr("transform", function(d) {
 				if (d==' 1TOTAL MEASURES' ||d==" TOTAL"){k = combinedTitle.indexOf(d) * 30;}else{k = combinedTitle.indexOf(d) * 30+ 5;};
                     
